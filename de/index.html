@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Transitrix — Autonome Organisationen</title>
-  <meta name="description" content="Transitrix ist eine private Forschungsinitiative zu autonomen Organisationen: DSM, Swarm-Plattform, LiteEA.">
+  <title>Transitrix — offene Methodik und Werkzeuge für das Unternehmen als Text</title>
+  <meta name="description" content="Transitrix: offene Methodik und Werkzeuge, um ein Unternehmen als Text zu beschreiben — und es von Menschen und Maschinen gemeinsam führen zu lassen.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -25,40 +25,65 @@
   </header>
   <main id="main" class="wrap">
     <div class="hero">
-      <h1>Autonome Organisationen</h1>
+      <h1>Das Unternehmen als Text.<br>Geführt von Menschen und Maschinen gemeinsam.</h1>
       <p class="lede">
-        Transitrix ist <strong>kein Unternehmen</strong>, sondern ein privates Vorhaben, in dem ich untersuche, wie Organisationen <strong>autonomer</strong> handeln können: ihre Umwelt wahrnehmen, Struktur und Verhalten anpassen und dabei tragfähig bleiben, ohne ständige zentrale Steuerung.
+        Transitrix: offene Methodik und Werkzeuge, um ein Unternehmen als Text zu beschreiben — und es von Menschen und Maschinen gemeinsam führen zu lassen.
+      </p>
+      <p class="lede-sub">
+        Eine Forschungsinitiative in der Wiederbelebungsphase — auf der Suche nach ihrer nächsten Form durch Early-Adopter-Piloten sowie offene Methodik und Werkzeuge.
       </p>
     </div>
 
     <section aria-labelledby="about-heading">
       <h2 id="about-heading">Worum es geht</h2>
-      <p class="lede" style="margin-top: -0.5rem;">
-        Die Arbeit verteilt sich auf drei miteinander verbundene Projekte — jedes beleuchtet eine andere Ebene: ausführbare Unternehmensmodelle, Multiagentensysteme und Steuerungsmechanismen, mit denen sich eine Organisation neu ordnen kann, wenn sich die Rahmenbedingungen ändern.
-      </p>
+      <p>Organisationen haben Mühe, kohärent zu bleiben, wenn sie wachsen. Strategiedokumente driften von der Realität ab. Prozesse leben in Köpfen oder isolierten Tools. Wenn sich Bedingungen ändern, geht die Anpassung langsam — weil das Unternehmen nicht lesbar genug ist, um sich schnell zu verändern.</p>
+      <p>Die These hinter Transitrix ist einfach: Wenn man ein Unternehmen als Text beschreiben kann — Ziele, Prozesse, Fähigkeiten, Rollen — entsteht eine Grundlage, die sowohl Menschen als auch Maschinen lesen, versionieren und nutzen können. Text ist ehrlich, vergleichbar und kombinierbar.</p>
+      <p>Transitrix war eine Organisation. Sie wurde inaktiv. Jetzt wird sie als Forschungsinitiative wiederbelebt — mit dem Ziel zu erkunden, wie weit die Idee des textnativen Unternehmens tragen kann: durch offene Methodik, offene Werkzeuge und Early-Adopter-Piloten.</p>
     </section>
 
-    <section aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Projekte</h2>
-      <div class="project-grid">
+    <section aria-labelledby="stack-heading">
+      <h2 id="stack-heading">Der Stack</h2>
+      <p class="section-intro">Vier Einheiten. Eine kohärente These.</p>
+      <div class="stack-grid">
         <article class="card">
+          <div class="card-meta">Methodik · offen</div>
+          <h3>Transitrix</h3>
+          <p>Das Fundament. Eine textnative Methode, um eine Organisation — Ziele, Prozesse, Fähigkeiten, Struktur — als Code zu modellieren. Beschreibt <em>wie</em> ein Unternehmen dargestellt werden soll, damit es lesbar, versionierbar und ausführbar bleibt.</p>
+        </article>
+        <article class="card">
+          <div class="card-meta">Werkzeug · offen</div>
+          <h3>Transitrix Studio</h3>
+          <p>Die einheitliche VS-Code-Erweiterung und CLI zum Erstellen und Vorschau von Transitrix-Formaten. Referenzimplementierung der Methodik. Heute unterstützt: BPMN-Prozessdiagramme und verschachtelte Blockdiagramme. Ziel- und Fähigkeitskarten sind geplant.</p>
+        </article>
+        <article class="card">
+          <div class="card-meta">Strategieprodukt · noch nicht öffentlich</div>
           <h3>Transitrix DSM</h3>
-          <p>Ein System der <strong>Organisationsführung</strong>, das es einem Gebilde ermöglicht, sich <strong>dynamisch an</strong> den äußeren Kontext und den inneren Zustand <strong>anzupassen</strong> — mit Verknüpfung von Wahrnehmung, Entscheidungen und struktureller Veränderung statt fixierter Organigramme.</p>
+          <p>Dynamisches Strategiemanagement, das auf dem Transitrix-Modell operiert — und sich aktualisiert, wenn sich das Unternehmensmodell verändert. Zukünftiges kommerzielles Flaggschiff. Noch nicht öffentlich verfügbar.</p>
         </article>
         <article class="card">
-          <h3>Swarm-platform</h3>
-          <p>Eine Basis zum <strong>Erforschen von Multiagentensystemen</strong>: Interaktionen modellieren, Emergenz und Koordinationsmuster erproben — damit Intuition über Schwärme wiederholbare Experimente erhält.</p>
-        </article>
-        <article class="card">
-          <h3>LiteEA</h3>
-          <p>Eine <strong>schlanke EA-Methodik</strong> zum Gestalten und Lenken eines Unternehmensmodells mit dem Konzept <strong>Architecture as Code</strong> — Architektur lesbar, versioniert und nah an der technischen Umsetzung halten.</p>
+          <div class="card-meta">Forschung · Phase 2</div>
+          <h3>Transitrix Swarm</h3>
+          <p>Eine Forschungsplattform zur Modellierung dessen, was Agenten innerhalb eines Transitrix-beschriebenen Unternehmens tun. Die Verhaltensschicht des Stacks. Im Narrativ vorhanden; in den nächsten sechs Monaten nicht aktiv in Entwicklung.</p>
         </article>
       </div>
     </section>
+
+    <section aria-labelledby="open-heading">
+      <h2 id="open-heading">Was heute offen ist</h2>
+      <p>Die Methodikspezifikation und das Transitrix-Studio-Repository werden für die Veröffentlichung vorbereitet. Noch keine öffentlichen Links — diese Seite wird aktualisiert, sobald sie bereit sind.</p>
+      <p>Wenn Sie Transitrix für einen Piloten prüfen oder die Arbeit verfolgen möchten, schreiben Sie an <a href="mailto:vkgeorgia@icloud.com">vkgeorgia@icloud.com</a>.</p>
+    </section>
   </main>
   <footer class="site-footer">
-    <div class="wrap">
-      <p>Gehostet auf GitHub Pages · <a href="https://github.com/transitrix">github.com/transitrix</a></p>
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://vkgeorgia.github.io">vkgeorgia.github.io</a>
+      </p>
+      <nav class="lang-switch" aria-label="Sprache">
+        <a href="../en/" hreflang="en">EN</a>
+        <a href="./" aria-current="true">DE</a>
+      </nav>
     </div>
   </footer>
 </body>
