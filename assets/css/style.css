@@ -11,6 +11,22 @@
   --font-display: "Fraunces", Georgia, serif;
 }
 
+[data-theme="light"] {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --border: #c8d4df;
+  --text: #1c2b3a;
+  --muted: #5a6a7a;
+  --accent: #2a9d8f;
+  --accent-dim: #1d7a6e;
+}
+
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -40%, rgba(42, 157, 143, 0.06), transparent),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(29, 122, 110, 0.04), transparent);
+}
+
 *,
 *::before,
 *::after {
@@ -72,9 +88,48 @@ a:hover {
 .site-header .wrap {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--muted);
+  color: var(--text);
+}
+
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+.gateway-theme-toggle {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
 }
 
 .logo {
