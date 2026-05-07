@@ -1,0 +1,27 @@
+# Transitrix Site .gitignore
+# Last Updated: 2026-05-07
+
+# ============================================================
+# INTERNAL-ONLY FILES (kept local, not published in public repo)
+# ============================================================
+
+# Project-level strategic brief and AI-agent context — internal documents
+# that contain channel role, positioning rules, and strategic notes not
+# intended for the public repo. Stay on disk for local agents and contributors,
+# excluded from git tracking.
+STRATEGIC_BRIEF.md
+CLAUDE.md
+
+# Claude Code worktrees and per-agent state
+.claude/
+
+# ============================================================
+# OS / EDITOR ARTEFACTS
+# ============================================================
+
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
