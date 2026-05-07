@@ -103,8 +103,8 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: calc(0.875rem * 1.65 + 0.7rem);
+  height: calc(0.875rem * 1.65 + 0.7rem);
   padding: 0;
   border-radius: 6px;
   border: 1px solid var(--border);
