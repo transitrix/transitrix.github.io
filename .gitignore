@@ -15,6 +15,12 @@ CLAUDE.md
 # Claude Code worktrees and per-agent state
 .claude/
 
+# Local archive folders (move outdated material here instead of deleting; never commit)
+**/0. archive/
+
+# AI-agent rules files (internal personal preferences, not for public)
+*ai-agent-rules*.md
+
 # ============================================================
 # OS / EDITOR ARTEFACTS
 # ============================================================
