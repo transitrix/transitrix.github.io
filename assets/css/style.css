@@ -103,9 +103,9 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: calc(0.875rem * 1.65 + 0.7rem);
-  height: calc(0.875rem * 1.65 + 0.7rem);
-  padding: 0;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.875rem;
+  line-height: 1;
   border-radius: 6px;
   border: 1px solid var(--border);
   background: transparent;
@@ -118,6 +118,12 @@ a:hover {
 .theme-toggle:hover {
   border-color: var(--muted);
   color: var(--text);
+}
+
+.theme-toggle svg {
+  width: 1em;
+  height: 1em;
+  display: block;
 }
 
 .theme-toggle .icon-sun { display: none; }
