@@ -95,7 +95,7 @@ a:hover {
 
 .header-right {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 0.75rem;
 }
 
@@ -103,8 +103,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: calc(0.875rem * 1.65 + 0.7rem);
-  height: calc(0.875rem * 1.65 + 0.7rem);
+  aspect-ratio: 1;
   padding: 0;
   border-radius: 6px;
   border: 1px solid var(--border);
