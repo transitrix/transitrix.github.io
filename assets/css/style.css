@@ -103,15 +103,16 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1;
-  padding: 0;
+  padding: 0.35rem 0.65rem;
+  min-width: 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
   border-radius: 6px;
   border: 1px solid var(--border);
   background: transparent;
   color: var(--muted);
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s;
-  flex-shrink: 0;
 }
 
 .theme-toggle:hover {
