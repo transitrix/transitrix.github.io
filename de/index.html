@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Transitrix — offene Methodik und Werkzeuge für das Unternehmen als Text</title>
-  <meta name="description" content="Transitrix: offene Methodik und Werkzeuge, um ein Unternehmen als Text zu beschreiben — und es von Menschen und Maschinen gemeinsam führen zu lassen.">
+  <meta name="description" content="Transitrix: offene Methodik und Werkzeuge, um ein Unternehmen als Text zu beschreiben — Architecture-as-Code, das Menschen und Maschinen gemeinsam führen können.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -39,20 +39,24 @@
         Transitrix: offene Methodik und Werkzeuge, um ein Unternehmen als Text zu beschreiben — und es von Menschen und Maschinen gemeinsam führen zu lassen.
       </p>
       <p class="lede-sub">
-        Eine Forschungsinitiative in der Wiederbelebungsphase — auf der Suche nach ihrer nächsten Form durch Early-Adopter-Piloten sowie offene Methodik und Werkzeuge.
+        Eine offene Forschungsinitiative rund um Architecture-as-Code: die Methodik und die Werkzeuge, die daraus lauffähige Diagramme machen — offen entwickelt.
       </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio">Studio installieren</a>
+        <a class="btn" href="https://github.com/transitrix/methodology">Methodik lesen</a>
+      </div>
     </div>
 
     <section aria-labelledby="about-heading">
       <h2 id="about-heading">Worum es geht</h2>
       <p>Organisationen haben Mühe, kohärent zu bleiben, wenn sie wachsen. Strategiedokumente driften von der Realität ab. Prozesse leben in Köpfen oder isolierten Tools. Wenn sich Bedingungen ändern, geht die Anpassung langsam — weil das Unternehmen nicht lesbar genug ist, um sich schnell zu verändern.</p>
-      <p>Die These hinter Transitrix ist einfach: Wenn man ein Unternehmen als Text beschreiben kann — Ziele, Prozesse, Fähigkeiten, Rollen — entsteht eine Grundlage, die sowohl Menschen als auch Maschinen lesen, versionieren und nutzen können. Text ist ehrlich, vergleichbar und kombinierbar.</p>
-      <p>Transitrix war eine Organisation. Sie wurde inaktiv. Jetzt wird sie als Forschungsinitiative wiederbelebt — mit dem Ziel zu erkunden, wie weit die Idee des textnativen Unternehmens tragen kann: durch offene Methodik, offene Werkzeuge und Early-Adopter-Piloten.</p>
+      <p>Die These hinter Transitrix ist einfach: Wenn man ein Unternehmen als Text beschreiben kann — Ziele, Prozesse, Fähigkeiten, Rollen — entsteht eine Grundlage, die sowohl Menschen als auch Maschinen lesen, versionieren und nutzen können. Text ist ehrlich, vergleichbar und kombinierbar. Wir nennen das Architecture-as-Code.</p>
+      <p>Transitrix ist eine offene Forschungsinitiative, die erkundet, wie weit die Idee des textnativen Unternehmens tragen kann. Die Methodik und Transitrix Studio sind öffentlich; die Arbeit läuft weiter — durch offene Entwicklung und Early-Adopter-Piloten.</p>
     </section>
 
     <section aria-labelledby="stack-heading">
       <h2 id="stack-heading">Der Stack</h2>
-      <p class="section-intro">Vier Einheiten. Eine kohärente These.</p>
+      <p class="section-intro">Zwei Einheiten sind heute offen. Zwei weitere führen dieselbe These fort.</p>
       <div class="stack-grid">
         <article class="card">
           <div class="card-meta">Methodik · offen</div>
@@ -63,9 +67,12 @@
         <article class="card">
           <div class="card-meta">Werkzeug · offen</div>
           <h3>Transitrix Studio</h3>
-          <p>Die einheitliche VS-Code-Erweiterung und CLI zum Erstellen und Vorschau von Transitrix-Formaten. Referenzimplementierung der Methodik. Heute: BPMN-Prozessdiagramme, Zielbäume und verschachtelte Blockdiagramme. FGCA-Modul ausgeliefert; Fähigkeitskarte und weitere Formate in Vorbereitung.</p>
+          <p>Die einheitliche VS-Code-Erweiterung und CLI zum Erstellen und Vorschau von Transitrix-Formaten — die Referenzimplementierung der Methodik. Zeigt den vollständigen Transitrix-Notationssatz, von BPMN-Prozessdiagrammen und Zielbäumen über Fähigkeitskarten und FGCA bis zu Prozess-Blueprints — mit Live-Vorschau beim Tippen.</p>
           <a class="card-link" href="https://marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio">Im Marketplace ansehen →</a>
         </article>
+      </div>
+      <div class="stack-subhead">Auf der Roadmap</div>
+      <div class="stack-grid stack-grid--secondary">
         <article class="card">
           <div class="card-meta">Strategieprodukt · noch nicht öffentlich</div>
           <h3>Transitrix DSM</h3>
@@ -79,9 +86,18 @@
       </div>
     </section>
 
+    <section aria-labelledby="see-heading">
+      <h2 id="see-heading">So funktioniert es</h2>
+      <p>Aus wenigen Zeilen Text wird ein Diagramm, das man lesen, prüfen und versionieren kann. Sie schreiben eine Transitrix-Datei in VS Code; die Vorschau entsteht daneben, während Sie tippen.</p>
+      <figure class="product-shot">
+        <img src="../assets/img/studio-preview.png" alt="Transitrix Studio in VS Code: eine Transitrix-Quelldatei links, die gerenderte Diagramm-Vorschau rechts." loading="lazy" width="1600" height="900">
+        <figcaption>Transitrix Studio — eine Transitrix-Quelldatei und ihre Live-Vorschau nebeneinander.</figcaption>
+      </figure>
+    </section>
+
     <section aria-labelledby="open-heading">
       <h2 id="open-heading">Was heute offen ist</h2>
-      <p>Sowohl die Methodik als auch Transitrix Studio sind jetzt öffentlich. Die Methodikspezifikation liegt unter <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a>. Transitrix Studio (VS-Code-Erweiterung und CLI) ist im Visual Studio Marketplace verfügbar unter <a href="https://marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio">marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio</a>; Quellcode unter <a href="https://github.com/transitrix/transitrix-studio">github.com/transitrix/transitrix-studio</a>.</p>
+      <p>Sowohl die Methodik als auch Transitrix Studio sind öffentlich. Die Methodikspezifikation liegt unter <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a>. Transitrix Studio (VS-Code-Erweiterung und CLI) ist im Visual Studio Marketplace verfügbar unter <a href="https://marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio">marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio</a>; Quellcode unter <a href="https://github.com/transitrix/transitrix-studio">github.com/transitrix/transitrix-studio</a>.</p>
       <p>Wenn Sie Transitrix für einen Piloten prüfen oder die Arbeit verfolgen möchten, schreiben Sie an <a href="mailto:hello@transitrix.com">hello@transitrix.com</a>.</p>
     </section>
   </main>
