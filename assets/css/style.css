@@ -5,8 +5,14 @@
   --border: #243040;
   --text: #e8eef4;
   --muted: #8b99ab;
-  --accent: #3dd6c8;
-  --accent-dim: #2a9d8f;
+  /* Transitrix brand palette — see Brand/transitrix_brand.md */
+  --brand-primary: #004d67;    /* petrol — anchor, surfaces */
+  --brand-secondary: #ffaf00;  /* amber  — normal emphasis */
+  --brand-tertiary: #ff4d00;   /* orange — focus, active, CTA */
+  /* role mapping — dark theme: amber carries the everyday accent */
+  --accent: var(--brand-secondary);
+  --accent-dim: #b8842a;
+  --cta: var(--brand-tertiary);
   --font-sans: "DM Sans", system-ui, sans-serif;
   --font-display: "Fraunces", Georgia, serif;
 }
@@ -17,14 +23,16 @@
   --border: #c8d4df;
   --text: #1c2b3a;
   --muted: #5a6a7a;
-  --accent: #2a9d8f;
-  --accent-dim: #1d7a6e;
+  /* role mapping — light theme: petrol reads as the everyday accent */
+  --accent: var(--brand-primary);
+  --accent-dim: #2a6076;
+  --cta: var(--brand-tertiary);
 }
 
 [data-theme="light"] body {
   background-image:
-    radial-gradient(ellipse 120% 80% at 50% -40%, rgba(42, 157, 143, 0.06), transparent),
-    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(29, 122, 110, 0.04), transparent);
+    radial-gradient(ellipse 120% 80% at 50% -40%, rgba(0, 77, 103, 0.06), transparent),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(0, 77, 103, 0.04), transparent);
 }
 
 *,
@@ -46,8 +54,8 @@ body {
   color: var(--text);
   background: var(--bg);
   background-image:
-    radial-gradient(ellipse 120% 80% at 50% -40%, rgba(61, 214, 200, 0.12), transparent),
-    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(42, 157, 143, 0.08), transparent);
+    radial-gradient(ellipse 120% 80% at 50% -40%, rgba(255, 175, 0, 0.08), transparent),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(0, 77, 103, 0.10), transparent);
 }
 
 a {
@@ -162,7 +170,7 @@ a:hover {
 .lang-switch a[aria-current="true"] {
   border-color: var(--accent-dim);
   color: var(--accent);
-  background: rgba(61, 214, 200, 0.08);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .lang-switch a:hover:not([aria-current="true"]) {
@@ -270,7 +278,7 @@ section > p {
 }
 
 .card:hover {
-  border-color: rgba(61, 214, 200, 0.35);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   transform: translateY(-2px);
 }
 
@@ -367,11 +375,11 @@ section > p {
 
 .gateway-links a:hover {
   border-color: var(--accent-dim);
-  background: rgba(61, 214, 200, 0.07);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .gateway-links a:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--cta);
   outline-offset: 3px;
 }
 
@@ -400,22 +408,22 @@ section > p {
 
 .btn:hover {
   border-color: var(--accent-dim);
-  background: rgba(61, 214, 200, 0.07);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
   color: var(--text);
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--cta);
   outline-offset: 3px;
 }
 
 .btn-primary {
-  border-color: var(--accent-dim);
-  background: rgba(61, 214, 200, 0.12);
+  border-color: var(--cta);
+  background: color-mix(in srgb, var(--cta) 16%, transparent);
 }
 
 .btn-primary:hover {
-  background: rgba(61, 214, 200, 0.18);
+  background: color-mix(in srgb, var(--cta) 24%, transparent);
 }
 
 .card-link {
