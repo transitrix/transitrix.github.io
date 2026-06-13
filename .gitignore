@@ -15,7 +15,10 @@ CLAUDE.md
 # Claude Code worktrees and per-agent state
 .claude/
 
-# Local archive folders (move outdated material here instead of deleting; never commit)
+# Local archive folders (move outdated material here instead of deleting; never commit).
+# .archive/ also holds local-only maintainer operational files (internal automation
+# state and run logs) — internal tooling that must never reach this PUBLIC repo.
+.archive/
 **/0. archive/
 
 # AI-agent rules files (internal personal preferences, not for public)
