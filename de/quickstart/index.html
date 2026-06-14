@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Schnellstart | Transitrix</title>
-  <meta name="description" content="Ihr erstes Transitrix-Artefakt — ein gerenderter Zielbaum — in wenigen Minuten. Zwei Wege: der Onboarding-Skill in Claude Code (am schnellsten) oder eine manuelle Anleitung, die auch ohne Zugriff auf öffentliches GitHub funktioniert.">
+  <meta name="description" content="In wenigen Minuten mit Transitrix starten. Installieren Sie die Studio- und Mermaid-Viewer, dann entweder ein neues Repository anlegen oder einem bestehenden Ihrer Organisation beitreten — Diagramme aus reinem Text rendern, validieren und Änderungen wie Code prüfen.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -42,25 +42,34 @@
     </div>
 
     <section>
-      <p>Zwei Wege. Der schnellste nutzt den Onboarding-Skill in Claude Code. Der zweite funktioniert überall — auch hinter einem unternehmensinternen GitHub-Server — solange Sie den VS-Code-Marketplace und npm erreichen können.</p>
-      <p>Beide Wege erzeugen dasselbe Ergebnis: eine <code>.goals.transitrix.yaml</code>-Datei, die Transitrix Studio beim Tippen als Live-Diagramm rendert.</p>
+      <p><strong>Zwei Einstiege.</strong> <strong>Neu anfangen</strong> — ein neues Repository für Ihre Organisation anlegen. Oder <strong>beitreten</strong> — Ihre Organisation hat bereits ein Transitrix-Repository und Sie möchten mitarbeiten. In beiden Fällen installieren Sie zuerst die beiden Viewer.</p>
     </section>
 
-    <section aria-labelledby="path1-heading">
-      <h2 id="path1-heading">Weg 1 — Onboarding-Skill</h2>
+    <section aria-labelledby="viewers-heading">
+      <h2 id="viewers-heading">Die Viewer installieren</h2>
+      <p>Transitrix-Diagramme sind reiner Text. Zwei Editor-Erweiterungen rendern sie live beim Tippen:</p>
+      <ul class="qs-viewers">
+        <li><a href="https://marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio">Transitrix Studio</a> — die Enterprise-Notationen: Zielbäume, FGCA-/FGA-Strategieketten, Fähigkeitskarten, Prozess-Blueprints, BPMN und mehr. Für VS Code, Cursor, VSCodium und Windsurf (suchen Sie <em>Transitrix Studio</em> im Erweiterungen-Panel), dazu ein Plugin für IntelliJ IDEA im JetBrains-Marketplace.</li>
+        <li><a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> — rendert standardmäßige <a href="https://mermaid.js.org/">Mermaid</a>-Diagramme (Flussdiagramme, Sequenz, ER, Gantt), die in Ihr Markdown eingebettet sind. Im VS-Code-Marketplace und auf <a href="https://open-vsx.org/extension/bierner/markdown-mermaid">Open VSX</a>.</li>
+      </ul>
+      <p class="note"><strong>Warum beide?</strong> Diagramme-als-Text sind größtenteils standardmäßiges Mermaid, und Transitrix baut auf offenen Standards auf — ArchiMate 3.2 und BPMN 2.0. Studio ergänzt nur die Enterprise-Notationen, die Mermaid nicht abdeckt. Nichts bindet Sie: Ihre Fluss- und Sequenzdiagramme rendern in jedem Mermaid-Werkzeug, und die Transitrix-Dateien bleiben reiner, diff-barer Text auf einer offenen, MIT-lizenzierten Methodik — lesbar mit oder ohne uns.</p>
+    </section>
+
+    <section aria-labelledby="fresh-heading">
+      <h2 id="fresh-heading">Neu anfangen — ein neues Repository</h2>
+      <p>Legen Sie ein Repo an und erstellen Sie Ihr erstes Artefakt: einen Zielbaum, gerendert aus einer <code>.goals.transitrix.yaml</code>-Datei. Zwei Wege.</p>
+
+      <h3 id="path1-heading">Der schnelle Weg — Onboarding-Skill</h3>
       <p>Erfordert Claude Code mit Zugriff auf den Claude-Marketplace. In einer Claude-Code-Sitzung:</p>
       <pre><code>/plugin marketplace add transitrix/methodology
 /plugin install transitrix@transitrix-methodology
 /transitrix:onboard</code></pre>
-      <p>Der Skill fragt, was Sie zuerst modellieren möchten, legt die Repo-Struktur an (<code>canon/</code>, <code>field/</code>, <code>codex/</code>) und erstellt eine erste Zielbaumdatei. Öffnen Sie diese in VS Code mit installiertem Studio — das Diagramm wird beim Tippen daneben gerendert.</p>
-    </section>
+      <p>Der Skill fragt, was Sie zuerst modellieren möchten, legt die Repo-Struktur an (<code>canon/</code>, <code>field/</code>, <code>codex/</code>) und erstellt eine erste Zielbaumdatei. Öffnen Sie diese in VS Code — das Diagramm wird beim Tippen daneben gerendert.</p>
 
-    <section aria-labelledby="path2-heading">
-      <h2 id="path2-heading">Weg 2 — Manuelle Schritt-für-Schritt-Anleitung</h2>
-      <p>Kein Claude Code erforderlich. Funktioniert ohne Zugriff auf öffentliches GitHub.</p>
+      <h3 id="path2-heading">Der manuelle Weg</h3>
+      <p>Kein Claude Code erforderlich — und kein Zugriff auf öffentliches GitHub nötig.</p>
       <ol class="qs-steps">
-        <li>Installieren Sie <a href="https://marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio">Transitrix Studio</a> aus dem VS-Code-Marketplace.</li>
-        <li>Öffnen Sie VS Code in einem neuen leeren Ordner.</li>
+        <li>Öffnen Sie VS Code in einem neuen leeren Ordner (Studio installiert — siehe oben).</li>
         <li>Erstellen Sie die Datei <code>views/goals/HELLO.goals.transitrix.yaml</code>.</li>
         <li>
           Fügen Sie Folgendes ein:
@@ -111,6 +120,25 @@ goals:
         <li>Studio rendert den Zielbaum im Vorschaufenster. Bearbeiten Sie einen Zielnamen — das Diagramm aktualisiert sich in Echtzeit.</li>
       </ol>
       <p>Zur Validierung über die Kommandozeile (erfordert npm): <code>npx @transitrix/cli validate views/goals/HELLO.goals.transitrix.yaml</code></p>
+    </section>
+
+    <section aria-labelledby="join-heading">
+      <h2 id="join-heading">Einem bestehenden Repository Ihrer Organisation beitreten</h2>
+      <p>Jemand in Ihrem Team hat das Modell bereits aufgesetzt. Sie legen nichts an — Sie klonen es, sehen es rendern und machen Ihre erste Änderung wie jeden anderen Beitrag.</p>
+      <ol class="qs-steps">
+        <li>
+          Klonen Sie das Repository und öffnen Sie es in VS Code (beide Viewer installiert — siehe oben):
+          <pre><code>git clone &lt;repo-url-ihrer-organisation&gt;</code></pre>
+        </li>
+        <li>Öffnen Sie eine beliebige <code>.transitrix.yaml</code>-Datei unter <code>canon/</code> oder <code>views/</code>. Studio rendert das echte Diagramm Ihrer Organisation daneben.</li>
+        <li>Lesen Sie <code>AGENTS.md</code> im Repository-Stammverzeichnis — der Orientierungsleitfaden, den das Repo mitbringt: wo jede Zone liegt (<code>canon/</code>, <code>field/</code>, <code>codex/</code>), welche Notationen verwendet werden und die lokalen Konventionen.</li>
+        <li>
+          Nehmen Sie eine Änderung vor — ein Element bearbeiten oder hinzufügen — und validieren Sie sie:
+          <pre><code>npx @transitrix/cli validate &lt;datei&gt;</code></pre>
+        </li>
+        <li>Öffnen Sie einen Pull Request. Architekturänderungen werden wie Code geprüft, und die CI des Repositorys führt die Validierung bei jedem PR erneut aus.</li>
+      </ol>
+      <p>Das ist die ganze Schleife — klonen, rendern, ändern, validieren, PR — derselbe Review-as-Code-Workflow, den Ihr Team bereits für Quellcode nutzt.</p>
     </section>
 
     <section aria-labelledby="next-heading">
