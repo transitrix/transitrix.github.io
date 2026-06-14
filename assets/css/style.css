@@ -474,3 +474,57 @@ section > p {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+/* Code blocks */
+pre,
+code {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 1rem 0 1.25rem;
+}
+
+:not(pre) > code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.875em;
+}
+
+/* Quickstart page */
+.qs-steps {
+  padding-left: 1.5rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.qs-steps li {
+  margin-bottom: 0.75rem;
+}
+
+.qs-steps li:last-child {
+  margin-bottom: 0;
+}
+
+.qs-steps pre {
+  margin-top: 0.75rem;
+}
+
+section ul {
+  padding-left: 1.5rem;
+  color: var(--muted);
+}
+
+section ul li {
+  margin-bottom: 0.5rem;
+}

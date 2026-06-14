@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schnellstart | Transitrix</title>
+  <meta name="description" content="Ihr erstes Transitrix-Artefakt — ein gerenderter Zielbaum — in wenigen Minuten. Zwei Wege: der Onboarding-Skill in Claude Code (am schnellsten) oder eine manuelle Anleitung, die auch ohne Zugriff auf öffentliches GitHub funktioniert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" hreflang="en" href="../../quickstart/">
+  <link rel="alternate" hreflang="de" href="./">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Thema wechseln">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <nav class="lang-switch" aria-label="Sprache">
+          <a href="../../quickstart/" hreflang="en">EN</a>
+          <a href="./" aria-current="true">DE</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <h1>Schnellstart</h1>
+      <p class="lede">Ihr erstes Transitrix-Artefakt — ein aus einer YAML-Datei gerenderter Zielbaum — in wenigen Minuten.</p>
+    </div>
+
+    <section>
+      <p>Zwei Wege. Der schnellste nutzt den Onboarding-Skill in Claude Code. Der zweite funktioniert überall — auch hinter einem unternehmensinternen GitHub-Server — solange Sie den VS-Code-Marketplace und npm erreichen können.</p>
+      <p>Beide Wege erzeugen dasselbe Ergebnis: eine <code>.goals.transitrix.yaml</code>-Datei, die Transitrix Studio beim Tippen als Live-Diagramm rendert.</p>
+    </section>
+
+    <section aria-labelledby="path1-heading">
+      <h2 id="path1-heading">Weg 1 — Onboarding-Skill</h2>
+      <p>Erfordert Claude Code mit Zugriff auf den Claude-Marketplace. In einer Claude-Code-Sitzung:</p>
+      <pre><code>/plugin marketplace add transitrix/methodology
+/plugin install transitrix@transitrix-methodology
+/transitrix:onboard</code></pre>
+      <p>Der Skill fragt, was Sie zuerst modellieren möchten, legt die Repo-Struktur an (<code>canon/</code>, <code>field/</code>, <code>codex/</code>) und erstellt eine erste Zielbaumdatei. Öffnen Sie diese in VS Code mit installiertem Studio — das Diagramm wird beim Tippen daneben gerendert.</p>
+    </section>
+
+    <section aria-labelledby="path2-heading">
+      <h2 id="path2-heading">Weg 2 — Manuelle Schritt-für-Schritt-Anleitung</h2>
+      <p>Kein Claude Code erforderlich. Funktioniert ohne Zugriff auf öffentliches GitHub.</p>
+      <ol class="qs-steps">
+        <li>Installieren Sie <a href="https://marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio">Transitrix Studio</a> aus dem VS-Code-Marketplace.</li>
+        <li>Öffnen Sie VS Code in einem neuen leeren Ordner.</li>
+        <li>Erstellen Sie die Datei <code>views/goals/HELLO.goals.transitrix.yaml</code>.</li>
+        <li>
+          Fügen Sie Folgendes ein:
+          <pre><code>notation: goals
+spec_version: "0.1"
+
+id: GOALS-HELLO-1
+name: "Hello — Goals Tree"
+description: "A starter Goals tree."
+period: "2026"
+version: "0.1"
+date: "2026-01-01"
+author: Me
+
+goal_types:
+  - { name: "Strategic Goal", level: 0 }
+  - { name: "Tactical Goal",  level: 1 }
+
+goals:
+  - id: GOAL-1
+    name: "Expand into new markets"
+    type: "Strategic Goal"
+    level: 0
+
+  - id: GOAL-1-1
+    name: "Enter the German market by Q3"
+    type: "Tactical Goal"
+    level: 1
+    parent: GOAL-1
+
+  - id: GOAL-1-2
+    name: "Sign two distribution partnerships"
+    type: "Tactical Goal"
+    level: 1
+    parent: GOAL-1
+
+  - id: GOAL-2
+    name: "Improve customer retention"
+    type: "Strategic Goal"
+    level: 0
+
+  - id: GOAL-2-1
+    name: "Reduce churn by 20% in H2"
+    type: "Tactical Goal"
+    level: 1
+    parent: GOAL-2</code></pre>
+        </li>
+        <li>Studio rendert den Zielbaum im Vorschaufenster. Bearbeiten Sie einen Zielnamen — das Diagramm aktualisiert sich in Echtzeit.</li>
+      </ol>
+      <p>Zur Validierung über die Kommandozeile (erfordert npm): <code>npx @transitrix/cli validate views/goals/HELLO.goals.transitrix.yaml</code></p>
+    </section>
+
+    <section aria-labelledby="next-heading">
+      <h2 id="next-heading">Nächste Schritte</h2>
+      <ul>
+        <li>Vollständige Methodikspezifikation: <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a></li>
+        <li>Alle unterstützten Notationen — BPMN-Prozessdiagramme, Fähigkeitskarten, FGCA-Strategieketten und mehr: <a href="https://github.com/transitrix/methodology/tree/main/notations">Notationen auf GitHub</a></li>
+        <li>Early-Adopter-Piloten oder Fragen: <a href="mailto:hello@transitrix.com">hello@transitrix.com</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://x.com/transitrix">@transitrix</a> ·
+        <a href="https://vkgeorgia.github.io">vkgeorgia.github.io</a>
+      </p>
+      <nav class="lang-switch" aria-label="Sprache">
+        <a href="../../quickstart/" hreflang="en">EN</a>
+        <a href="./" aria-current="true">DE</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="../../assets/js/theme.js"></script>
+</body>
+</html>
