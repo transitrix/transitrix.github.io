@@ -520,6 +520,32 @@ pre {
   margin-top: 0.75rem;
 }
 
+.channels {
+  padding-left: 1.5rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.channels li {
+  margin-bottom: 0.7rem;
+}
+
+.note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.9rem 1.15rem;
+  margin: 1.25rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.note strong {
+  color: var(--text);
+}
+
 section ul {
   padding-left: 1.5rem;
   color: var(--muted);
