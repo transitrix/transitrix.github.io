@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Installieren | Transitrix</title>
+  <meta name="description" content="Holen Sie sich Transitrix Studio für Ihren Editor — VS Code, Cursor, VSCodium, Windsurf oder IntelliJ IDEA — oder starten Sie mit dem Claude-Code-Onboarding-Skill. Ein Modell, jede Ebene — offene Standards, reiner Text, kein Lock-in.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" hreflang="en" href="../../install/">
+  <link rel="alternate" hreflang="de" href="./">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Thema wechseln">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <nav class="lang-switch" aria-label="Sprache">
+          <a href="../../install/" hreflang="en">EN</a>
+          <a href="./" aria-current="true">DE</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <h1>Installieren</h1>
+      <p class="lede">Transitrix Studio rendert die Notationen live in Ihrem Editor. Wählen Sie Ihren Kanal — die Erweiterung ist überall identisch.</p>
+    </div>
+
+    <section aria-labelledby="editors-heading">
+      <h2 id="editors-heading">Transitrix Studio — in Ihrem Editor</h2>
+      <ul class="channels">
+        <li><strong><a href="https://marketplace.visualstudio.com/items?itemName=transitrix.transitrix-studio">VS Code</a></strong> — der VS-Code-Marketplace. Oder suchen Sie <em>Transitrix Studio</em> im Erweiterungen-Panel.</li>
+        <li><strong><a href="https://open-vsx.org/extension/transitrix/transitrix-studio">Cursor, VSCodium, Windsurf</a></strong> — die Open-VSX-Registry. Dieselbe Erweiterung und Kennung; suchen Sie <em>Transitrix Studio</em> im Erweiterungen-Panel.</li>
+        <li><strong>IntelliJ IDEA</strong> — der JetBrains-Marketplace. Öffnen Sie <em>Einstellungen → Plugins → Marketplace</em> und suchen Sie <em>Transitrix Studio</em>. Installiert auch in die anderen JetBrains-IDEs.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="ai-heading">
+      <h2 id="ai-heading">Oder starten Sie mit dem Claude-Code-Skill</h2>
+      <p>Lieber Schritt für Schritt geführt? Der Onboarding-Skill legt ein Repository an — oder orientiert Sie in einem, das Ihre Organisation bereits hat — und erstellt Ihre erste Datei. In einer Claude-Code-Sitzung:</p>
+      <pre><code>/plugin marketplace add transitrix/methodology
+/plugin install transitrix@transitrix-methodology
+/transitrix:onboard</code></pre>
+    </section>
+
+    <section aria-labelledby="companion-heading">
+      <h2 id="companion-heading">Mermaid — die technischen Ebenen</h2>
+      <p>Studio rendert die geschäftsnahen Ebenen Ihres Modells; die technischen Ebenen sind standardmäßiges <a href="https://mermaid.js.org/">Mermaid</a>. Installieren Sie neben Studio eine Mermaid-Vorschau-Erweiterung — <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> (im <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">VS-Code-Marketplace</a> und auf <a href="https://open-vsx.org/extension/bierner/markdown-mermaid">Open VSX</a>) — um Sequenz-, Zustands-, ER- und C4-Komponentendiagramme bis hinunter zur Anwendungs- und Technologieebene zu rendern.</p>
+      <p class="note"><strong>Ein Modell, jede Ebene.</strong> Studio rendert die geschäftsnahen Ebenen mit eigens entwickelten Notationen, die über generisches Diagrammieren hinausgehen — seine BPMN-, Prozess- und Aktivitätsansichten, keine abgespeckten Mermaid-Kopien. Mermaid rendert dann die technischen Ebenen, auf die Transitrix nicht spezialisiert ist — dasselbe reine Textmodell, jede Ebene, vom Vorstand bis zur Entwicklung. Und nichts bindet Sie: Transitrix baut auf offenen Standards auf (ArchiMate 3.2, BPMN 2.0), die technischen Ansichten sind standardmäßiges Mermaid, das in jedem Werkzeug rendert, und Ihre Dateien bleiben diff-barer Text auf einer offenen, MIT-lizenzierten Methodik — lesbar mit oder ohne unsere Werkzeuge.</p>
+    </section>
+
+    <section aria-labelledby="next-heading">
+      <h2 id="next-heading">Weiter</h2>
+      <ul>
+        <li>Neu hier? Folgen Sie dem <a href="../quickstart/">Schnellstart</a> — Ihr erstes Diagramm in wenigen Minuten.</li>
+        <li>Quellcode &amp; Issues: <a href="https://github.com/transitrix/transitrix-studio">github.com/transitrix/transitrix-studio</a></li>
+        <li>Vollständige Methodikspezifikation: <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://x.com/transitrix">@transitrix</a> ·
+        <a href="https://vkgeorgia.github.io">vkgeorgia.github.io</a>
+      </p>
+      <nav class="lang-switch" aria-label="Sprache">
+        <a href="../../install/" hreflang="en">EN</a>
+        <a href="./" aria-current="true">DE</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="../../assets/js/theme.js"></script>
+</body>
+</html>
