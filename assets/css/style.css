@@ -520,6 +520,16 @@ pre {
   margin-top: 0.75rem;
 }
 
+.qs-viewers {
+  padding-left: 1.5rem;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.qs-viewers li {
+  margin-bottom: 0.6rem;
+}
+
 .channels {
   padding-left: 1.5rem;
   color: var(--muted);
