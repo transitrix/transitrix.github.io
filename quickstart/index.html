@@ -61,9 +61,12 @@
 
       <h3 id="path1-heading">The fast path — onboarding Skill</h3>
       <p>Requires Claude Code with access to the Claude marketplace. In a Claude Code session:</p>
-      <pre><code>/plugin marketplace add transitrix/methodology
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy commands to clipboard">Copy</button>
+        <pre><code>/plugin marketplace add transitrix/methodology
 /plugin install transitrix@transitrix-methodology
 /transitrix:onboard</code></pre>
+      </div>
       <p>The Skill asks what you want to model first, scaffolds the repo layout (<code>canon/</code>, <code>field/</code>, <code>codex/</code>), and authors a starter Goals tree file. Open it in VS Code — the diagram renders alongside as you type.</p>
 
       <h3 id="path2-heading">The manual path</h3>
@@ -146,6 +149,7 @@ goals:
       <ul>
         <li>Full methodology specification: <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a></li>
         <li>All supported notations — BPMN process diagrams, capability maps, FGCA strategy chains, and more: <a href="https://github.com/transitrix/methodology/tree/main/notations">notations on GitHub</a></li>
+        <li>A worked example — a complete Transitrix architecture repository to reference as you build your own: <a href="https://github.com/transitrix/acme-corp">github.com/transitrix/acme-corp</a></li>
         <li>Early-adopter pilots or questions: <a href="mailto:hello@transitrix.com">hello@transitrix.com</a></li>
       </ul>
     </section>
