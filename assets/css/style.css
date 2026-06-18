@@ -544,6 +544,10 @@ pre {
   margin-bottom: 0.7rem;
 }
 
+#jb-install {
+  margin-top: 0.6rem;
+}
+
 .note {
   background: var(--surface);
   border: 1px solid var(--border);
