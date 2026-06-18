@@ -46,7 +46,11 @@
       <ul class="channels">
         <li><strong><a href="/install/go/vscode/">VS Code</a></strong> — der VS-Code-Marketplace. Oder suchen Sie <em>Transitrix Studio</em> im Erweiterungen-Panel.</li>
         <li><strong><a href="/install/go/openvsx/">Cursor, VSCodium, Windsurf</a></strong> — die Open-VSX-Registry. Dieselbe Erweiterung und Kennung; suchen Sie <em>Transitrix Studio</em> im Erweiterungen-Panel.</li>
-        <li><strong><a href="/install/go/jetbrains/">IntelliJ IDEA</a></strong> — der JetBrains-Marketplace. Öffnen Sie <em>Einstellungen → Plugins → Marketplace</em> und suchen Sie <em>Transitrix Studio</em>. Installiert auch in die anderen JetBrains-IDEs.</li>
+        <li>
+          <strong><a href="/install/go/jetbrains/">IntelliJ IDEA</a></strong> — der JetBrains-Marketplace. Installiert auch in die anderen JetBrains-IDEs.
+          <div id="jb-card"></div>
+          <div id="jb-install"></div>
+        </li>
       </ul>
     </section>
 
@@ -88,5 +92,10 @@
     </div>
   </footer>
   <script src="../../assets/js/theme.js"></script>
+  <script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js"></script>
+  <script>
+    MarketplaceWidget.setupMarketplaceWidget('card', 32282, "#jb-card");
+    MarketplaceWidget.setupMarketplaceWidget('install', 32282, "#jb-install");
+  </script>
 </body>
 </html>
