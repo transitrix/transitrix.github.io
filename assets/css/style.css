@@ -123,6 +123,10 @@ a:hover {
   transition: border-color 0.2s, color 0.2s;
 }
 
+.header-right .theme-toggle {
+  margin-right: 1.75rem;
+}
+
 .theme-toggle:hover {
   border-color: var(--muted);
   color: var(--text);
