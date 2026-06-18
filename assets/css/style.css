@@ -564,3 +564,38 @@ section ul {
 section ul li {
   margin-bottom: 0.5rem;
 }
+
+/* Copy button */
+.code-wrapper {
+  position: relative;
+}
+
+.code-wrapper pre {
+  padding-right: 4.5rem;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  line-height: 1.5;
+}
+
+.copy-btn:hover {
+  border-color: var(--accent-dim);
+  color: var(--text);
+}
+
+.copy-btn[data-copied] {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}

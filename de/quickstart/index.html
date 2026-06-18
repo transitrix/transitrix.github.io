@@ -61,9 +61,12 @@
 
       <h3 id="path1-heading">Der schnelle Weg — Onboarding-Skill</h3>
       <p>Erfordert Claude Code mit Zugriff auf den Claude-Marketplace. In einer Claude-Code-Sitzung:</p>
-      <pre><code>/plugin marketplace add transitrix/methodology
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Befehle in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>/plugin marketplace add transitrix/methodology
 /plugin install transitrix@transitrix-methodology
 /transitrix:onboard</code></pre>
+      </div>
       <p>Der Skill fragt, was Sie zuerst modellieren möchten, legt die Repo-Struktur an (<code>canon/</code>, <code>field/</code>, <code>codex/</code>) und erstellt eine erste Zielbaumdatei. Öffnen Sie diese in VS Code — das Diagramm wird beim Tippen daneben gerendert.</p>
 
       <h3 id="path2-heading">Der manuelle Weg</h3>
@@ -146,6 +149,7 @@ goals:
       <ul>
         <li>Vollständige Methodikspezifikation: <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a></li>
         <li>Alle unterstützten Notationen — BPMN-Prozessdiagramme, Fähigkeitskarten, FGCA-Strategieketten und mehr: <a href="https://github.com/transitrix/methodology/tree/main/notations">Notationen auf GitHub</a></li>
+        <li>Ein Beispiel-Repository — ein vollständiges Transitrix-Architektur-Repository als Referenz für Ihr eigenes: <a href="https://github.com/transitrix/acme-corp">github.com/transitrix/acme-corp</a></li>
         <li>Early-Adopter-Piloten oder Fragen: <a href="mailto:hello@transitrix.com">hello@transitrix.com</a></li>
       </ul>
     </section>
