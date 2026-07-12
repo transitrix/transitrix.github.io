@@ -555,6 +555,11 @@ pre {
   color: var(--text);
 }
 
+/* Install page — use-case jump-nav (reuses .note box) */
+.jump-nav {
+  margin-bottom: 3rem;
+}
+
 section ul {
   padding-left: 1.5rem;
   color: var(--muted);
