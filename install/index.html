@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Install &amp; start | Transitrix</title>
-  <meta name="description" content="Install Transitrix Studio in your editor, then author your first diagram — a Goals tree rendered from plain text, in a few minutes. Scaffold with the Claude Code onboarding Skill or work manually. One model, every layer — open standards, plain text, no lock-in.">
+  <meta name="description" content="Install Transitrix Studio in your editor, then author your first diagram — a Goals tree rendered from plain text, in a few minutes. Scaffold your organisation's Transitrix repository with the onboarding Skill or work manually. One model, every layer — open standards, plain text, no lock-in.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -49,6 +49,12 @@
           <ul>
             <li><a href="#fast-path-heading">Fast path</a> — the onboarding Skill</li>
             <li><a href="#manual-path-heading">Manual path</a> — no Claude Code required</li>
+          </ul>
+        </li>
+        <li><a href="#scaffold-heading">Setting up your organisation's Transitrix repo</a> — the real thing: zones, manifest, agent guides, CI.
+          <ul>
+            <li><a href="#scaffold-skill-heading">Fast path</a> — the onboarding Skill</li>
+            <li><a href="#scaffold-fallback-heading">Fallback</a> — fetch-and-follow prompt for any agent</li>
           </ul>
         </li>
         <li><a href="#join-heading">Joining a repository your team already has</a> — clone, render, and contribute.</li>
@@ -143,6 +149,33 @@ goals:
         <li>Studio renders the Goals tree in the preview panel. Edit a goal name — the diagram updates live.</li>
       </ol>
       <p>To validate from the command line (requires npm): <code>npx @transitrix/cli validate views/goals/HELLO.goals.transitrix.yaml</code></p>
+    </section>
+
+    <section aria-labelledby="scaffold-heading">
+      <h2 id="scaffold-heading">Setting up your organisation's Transitrix repository</h2>
+      <p>Not one loose diagram file — the real thing. A zoned repository with <code>canon/</code> (validated model), <code>field/</code> (raw inputs), and <code>codex/</code> (laws, policies, standards); a <code>transitrix.yaml</code> manifest declaring which notations and zones you use; an assistant-neutral <code>AGENTS.md</code> plus <code>ANALYST.md</code> and <code>VALIDATOR.md</code> role guides; a whole-repo validator under <code>.validators/</code>; and a GitHub Actions workflow that gates every pull request on structural and referential integrity. Two access paths, same output.</p>
+
+      <h3 id="scaffold-skill-heading">The fast path — onboarding Skill</h3>
+      <p>Requires Claude Code with access to the Claude marketplace <em>and</em> a surface that supports <code>/plugin</code> commands — the standalone terminal <code>claude</code> CLI does; the VS Code extension's chat surface does not yet. In a Claude Code terminal session, from the parent folder of the new repo:</p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy commands to clipboard">Copy</button>
+        <pre><code>/plugin marketplace add transitrix/methodology
+/plugin install transitrix@transitrix-methodology
+/transitrix:onboard</code></pre>
+      </div>
+      <p>The Skill asks what you want to model first, scaffolds the zoned layout, drops in <code>AGENTS.md</code>, <code>ANALYST.md</code>, <code>VALIDATOR.md</code>, the <code>transitrix.yaml</code> manifest, and VS Code / Copilot pointers, fetches the whole-repo validator and CI workflow from a pinned methodology release, and then authors a first notation file (Goals, DGCA, capability map — your choice) so a diagram renders in Studio the moment you open it. <a href="/install/go/claude/">View the Skill on GitHub →</a></p>
+
+      <h3 id="scaffold-fallback-heading">The fallback — fetch-and-follow prompt</h3>
+      <p>Any coding assistant that can fetch a URL and follow instructions runs the same scaffold — Cursor, Copilot Chat, Gemini CLI, or Claude Code on a surface without the plugin commands. From the parent folder of the new repo, paste this into your assistant:</p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy prompt to clipboard">Copy</button>
+        <pre><code>Fetch and read
+https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/onboard/SKILL.md
+then follow it exactly, with one substitution: wherever it references
+${CLAUDE_SKILL_DIR}/templates/&lt;file&gt;, instead fetch
+https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/onboard/templates/&lt;file&gt;</code></pre>
+      </div>
+      <p>The Skill in the methodology repo stays the single source of truth — this prompt just points a URL-capable assistant at it, so nothing has to be kept in sync here.</p>
     </section>
 
     <section aria-labelledby="join-heading">
