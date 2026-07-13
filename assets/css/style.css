@@ -603,3 +603,18 @@ section ul li {
   color: var(--accent);
   border-color: var(--accent-dim);
 }
+
+/* Install page — collapsed optional path */
+.optional-path {
+  margin: 1.5rem 0;
+}
+
+.optional-path summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.optional-path[open] summary {
+  margin-bottom: 0.75rem;
+}
