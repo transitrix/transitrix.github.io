@@ -53,7 +53,7 @@
     </section>
 
     <section aria-labelledby="start-heading">
-      <h2 id="start-heading">2. Erste Datei erstellen</h2>
+      <h2 id="start-heading">2. Repository anlegen — oder nur eine erste Datei</h2>
       <p>Fügen Sie dies in einen beliebigen Coding-Assistenten ein — Claude Code, Cursor, Copilot Chat, Gemini CLI — im Ordner, in dem Sie arbeiten möchten:</p>
       <div class="code-wrapper">
         <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Prompt in die Zwischenablage kopieren">Kopieren</button>
@@ -63,7 +63,12 @@ https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/
 fetch it instead from
 https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/onboard/templates/&lt;file&gt;</code></pre>
       </div>
-      <p>Der Assistent fragt, was Sie modellieren möchten, und legt es an: in einem leeren Ordner ein ganzes Repository, in einem bestehenden nur eine neue Datei. Öffnen Sie das Ergebnis in Ihrem Editor — das Diagramm rendert beim Tippen. <a href="/install/go/claude/">Skill-Quelle →</a></p>
+      <p>Der Assistent fragt, was Sie modellieren möchten, und legt es entsprechend an:</p>
+      <ul>
+        <li><strong>Leerer Ordner</strong> — das Transitrix-Repository Ihrer Organisation, von Grund auf: die Zonen <code>canon/</code>, <code>field/</code>, <code>codex/</code>, das <code>transitrix.yaml</code>-Manifest, <code>AGENTS.md</code>-Rollenanleitungen und ein GitHub-Actions-CI-Workflow, der jeden Pull Request validiert.</li>
+        <li><strong>Bestehendes Repository</strong> — orientiert sich dort und fügt eine erste Datei hinzu.</li>
+      </ul>
+      <p>In beiden Fällen: Öffnen Sie das Ergebnis in Ihrem Editor — das Diagramm rendert beim Tippen. <a href="/install/go/claude/">Skill-Quelle →</a></p>
 
       <details class="optional-path">
         <summary>Nutzen Sie den Claude-Code-Plugin-Workflow?</summary>
