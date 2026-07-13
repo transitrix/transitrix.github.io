@@ -53,7 +53,7 @@
     </section>
 
     <section aria-labelledby="start-heading">
-      <h2 id="start-heading">2. Author your first file</h2>
+      <h2 id="start-heading">2. Scaffold your repo — or just a first file</h2>
       <p>Paste this into any coding agent — Claude Code, Cursor, Copilot Chat, Gemini CLI — from the folder you want to work in:</p>
       <div class="code-wrapper">
         <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy prompt to clipboard">Copy</button>
@@ -63,7 +63,12 @@ https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/
 fetch it instead from
 https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/onboard/templates/&lt;file&gt;</code></pre>
       </div>
-      <p>It asks what you want to model, then scaffolds it: a full repository in an empty folder, or just a new file if you already have one. Open the result in your editor — the diagram renders as you type. <a href="/install/go/claude/">Skill source →</a></p>
+      <p>It asks what you want to model, then scaffolds accordingly:</p>
+      <ul>
+        <li><strong>Empty folder</strong> — your organisation's Transitrix repository, from scratch: <code>canon/</code>, <code>field/</code>, <code>codex/</code> zones, the <code>transitrix.yaml</code> manifest, <code>AGENTS.md</code> role guides, and a GitHub Actions CI workflow that validates every pull request.</li>
+        <li><strong>Existing repo</strong> — orients itself and adds a first file.</li>
+      </ul>
+      <p>Either way, open the result in your editor — the diagram renders as you type. <a href="/install/go/claude/">Skill source →</a></p>
 
       <details class="optional-path">
         <summary>Using the Claude Code plugin workflow instead?</summary>
