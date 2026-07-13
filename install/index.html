@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Install &amp; start | Transitrix</title>
-  <meta name="description" content="Install Transitrix Studio in your editor, then author your first diagram — a Goals tree rendered from plain text, in a few minutes. Scaffold your organisation's Transitrix repository with the onboarding Skill or work manually. One model, every layer — open standards, plain text, no lock-in.">
+  <meta name="description" content="Install Transitrix Studio in your editor, then author your first file with one prompt — works with any coding agent. A few minutes to a rendered diagram.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -38,132 +38,36 @@
   <main id="main" class="wrap">
     <div class="hero">
       <h1>Install &amp; start</h1>
-      <p class="lede">Install Transitrix Studio in your editor, then author your first diagram — a Goals tree rendered from plain text, in a few minutes.</p>
+      <p class="lede">Two steps to a rendered diagram: install Studio, then author your first file.</p>
     </div>
 
-    <section class="note jump-nav" aria-label="Jump to what you need">
-      <p><strong>What are you doing?</strong></p>
-      <ul>
-        <li><a href="#viewers-heading">Just want the viewers</a> — install Studio and the Mermaid extension.</li>
-        <li><a href="#first-heading">Starting fresh in an empty folder</a> — author your first diagram.
-          <ul>
-            <li><a href="#fast-path-heading">Fast path</a> — the onboarding Skill</li>
-            <li><a href="#manual-path-heading">Manual path</a> — no Claude Code required</li>
-          </ul>
-        </li>
-        <li><a href="#scaffold-heading">Setting up your organisation's Transitrix repo</a> — the real thing: zones, manifest, agent guides, CI.</li>
-        <li><a href="#join-heading">Joining a repository your team already has</a> — clone, render, and contribute.</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="viewers-heading">
-      <h2 id="viewers-heading">Install the viewers</h2>
-      <p>Transitrix diagrams are plain text. Two editor extensions render them live as you type — together they cover every layer of one model, from the board to the developer.</p>
-
-      <h3 id="studio-heading">Transitrix Studio — the business-facing layers</h3>
-      <p>Pick your channel; the extension is identical across all of them.</p>
-      <ul class="channels">
-        <li><strong><a href="/install/go/vscode/">VS Code</a></strong> — the VS Code Marketplace. Or search <em>Transitrix Studio</em> in the Extensions panel.</li>
-        <li><strong><a href="/install/go/openvsx/">Cursor, VSCodium, Windsurf</a></strong> — the Open VSX Registry. Same extension and identifier; search <em>Transitrix Studio</em> in the Extensions panel.</li>
-        <li>
-          <strong><a href="/install/go/jetbrains/">IntelliJ IDEA</a></strong> — the JetBrains Marketplace. Also installs into the other JetBrains IDEs.
-        </li>
-      </ul>
-
-      <h3 id="mermaid-heading">Markdown Preview Mermaid Support — the technical layers</h3>
-      <p>Studio renders the business-facing layers; the technical layers are standard <a href="https://mermaid.js.org/">Mermaid</a>. Install <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> alongside Studio (on the <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">VS Code Marketplace</a> and <a href="https://open-vsx.org/extension/bierner/markdown-mermaid">Open VSX</a>) to render sequence, state, ER and C4 component diagrams, down to the application and technology layers.</p>
-
-      <p class="note"><strong>One model, every layer.</strong> Studio renders the business-facing layers with purpose-built notations that go beyond generic diagramming — its BPMN, process and activity views, not stripped-down Mermaid copies. Mermaid then renders the technical layers Transitrix doesn't specialise — the same plain-text model, every layer, from the board to the developer. And nothing is locked in: Transitrix is built on open standards (ArchiMate 3.2, BPMN 2.0), the technical views are standard Mermaid that renders in any tool, and your files stay diffable text on an open, MIT-licensed methodology — readable with or without our tooling.</p>
-    </section>
-
-    <section aria-labelledby="first-heading">
-      <h2 id="first-heading">Your first diagram</h2>
-      <p>With the viewers installed, author your first Transitrix artefact: a Goals tree rendered from a <code>.goals.transitrix.yaml</code> file. Two paths.</p>
-
-      <h3 id="fast-path-heading">The fast path — onboarding Skill</h3>
-      <p>Requires Claude Code with access to the Claude marketplace. The Skill scaffolds a repository — or orients you in one your organisation already has — and authors your first file. In a Claude Code session:</p>
-      <div class="code-wrapper">
-        <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy commands to clipboard">Copy</button>
-        <pre><code>/plugin marketplace add transitrix/methodology
-/plugin install transitrix@transitrix-methodology
-/transitrix:onboard</code></pre>
+    <section aria-labelledby="install-heading">
+      <h2 id="install-heading">1. Install Studio</h2>
+      <p>Pick your editor — the extension is the same everywhere.</p>
+      <div class="hero-actions">
+        <a class="btn" href="/install/go/vscode/">VS Code</a>
+        <a class="btn" href="/install/go/openvsx/">Cursor / VSCodium / Windsurf</a>
+        <a class="btn" href="/install/go/jetbrains/">JetBrains IDEs</a>
       </div>
-      <p>The Skill asks what you want to model first, scaffolds the repo layout (<code>canon/</code>, <code>field/</code>, <code>codex/</code>), and authors a starter Goals tree file. Open it in VS Code — the diagram renders alongside as you type. <a href="/install/go/claude/">View the Skill on GitHub →</a></p>
-
-      <h3 id="manual-path-heading">The manual path</h3>
-      <p>No Claude Code required — and no public GitHub access needed.</p>
-      <ol class="qs-steps">
-        <li>Open VS Code in a new empty folder (Studio installed — see above).</li>
-        <li>Create the file <code>views/goals/HELLO.goals.transitrix.yaml</code>.</li>
-        <li>
-          Paste this into it:
-          <pre><code>notation: goals
-spec_version: "0.1"
-
-id: GOALS-HELLO-1
-name: "Hello — Goals Tree"
-description: "A starter Goals tree."
-period: "2026"
-version: "0.1"
-date: "2026-01-01"
-author: Me
-
-goal_types:
-  - { name: "Strategic Goal", level: 0 }
-  - { name: "Tactical Goal",  level: 1 }
-
-goals:
-  - id: GOAL-1
-    name: "Expand into new markets"
-    type: "Strategic Goal"
-    level: 0
-
-  - id: GOAL-1-1
-    name: "Enter the German market by Q3"
-    type: "Tactical Goal"
-    level: 1
-    parent: GOAL-1
-
-  - id: GOAL-1-2
-    name: "Sign two distribution partnerships"
-    type: "Tactical Goal"
-    level: 1
-    parent: GOAL-1
-
-  - id: GOAL-2
-    name: "Improve customer retention"
-    type: "Strategic Goal"
-    level: 0
-
-  - id: GOAL-2-1
-    name: "Reduce churn by 20% in H2"
-    type: "Tactical Goal"
-    level: 1
-    parent: GOAL-2</code></pre>
-        </li>
-        <li>Studio renders the Goals tree in the preview panel. Edit a goal name — the diagram updates live.</li>
-      </ol>
-      <p>To validate from the command line (requires npm): <code>npx @transitrix/cli validate views/goals/HELLO.goals.transitrix.yaml</code></p>
+      <p>Or search <em>Transitrix Studio</em> in your Extensions panel. Need sequence, state or ER diagrams too? Add <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> alongside it — same plain-text model, no lock-in.</p>
     </section>
 
-    <section aria-labelledby="scaffold-heading">
-      <h2 id="scaffold-heading">Setting up your organisation's Transitrix repository</h2>
-      <p>Not one loose diagram file — the real thing. A zoned repository with <code>canon/</code> (validated model), <code>field/</code> (raw inputs), and <code>codex/</code> (laws, policies, standards); a <code>transitrix.yaml</code> manifest declaring which notations and zones you use; an assistant-neutral <code>AGENTS.md</code> plus <code>ANALYST.md</code> and <code>VALIDATOR.md</code> role guides; a whole-repo validator under <code>.validators/</code>; and a GitHub Actions workflow that gates every pull request on structural and referential integrity.</p>
-      <p>Copy this prompt, paste it into a chat with your coding agent — Claude Code, Cursor, Copilot Chat, Gemini CLI, anything that can fetch a URL and follow instructions. From the parent folder of the new repo:</p>
+    <section aria-labelledby="start-heading">
+      <h2 id="start-heading">2. Author your first file</h2>
+      <p>Paste this into any coding agent — Claude Code, Cursor, Copilot Chat, Gemini CLI — from the folder you want to work in:</p>
       <div class="code-wrapper">
         <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy prompt to clipboard">Copy</button>
-        <pre><code>Fetch and read
+        <pre><code>Fetch and follow
 https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/onboard/SKILL.md
-then follow it exactly, with one substitution: wherever it references a
-file under templates/ (whether written as the bare path or via
-${CLAUDE_SKILL_DIR}/templates/&lt;file&gt;), fetch it instead from
+— for any templates/&lt;file&gt; path it references (incl. ${CLAUDE_SKILL_DIR}/templates/&lt;file&gt;),
+fetch it instead from
 https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/onboard/templates/&lt;file&gt;</code></pre>
       </div>
-      <p>The agent asks what you want to model first, scaffolds the zoned layout, drops in <code>AGENTS.md</code>, <code>ANALYST.md</code>, <code>VALIDATOR.md</code>, the <code>transitrix.yaml</code> manifest, and VS Code / Copilot pointers, fetches the whole-repo validator and CI workflow from a pinned methodology release, and then authors a first notation file (Goals, DGCA, capability map — your choice) so a diagram renders in Studio the moment you open it. The Skill in the methodology repo stays the single source of truth — this prompt just points your agent at it. <a href="/install/go/claude/">View the Skill on GitHub →</a></p>
+      <p>It asks what you want to model, then scaffolds it: a full repository in an empty folder, or just a new file if you already have one. Open the result in your editor — the diagram renders as you type. <a href="/install/go/claude/">Skill source →</a></p>
 
       <details class="optional-path">
-        <summary>Already use the Claude Code plugin workflow?</summary>
-        <p>If your surface supports <code>/plugin</code> commands — the standalone terminal <code>claude</code> CLI does; the VS Code extension's chat surface does not yet — you can install the Skill instead of pasting the prompt above. Same output, from the parent folder of the new repo:</p>
+        <summary>Using the Claude Code plugin workflow instead?</summary>
+        <p>Same result, from the terminal <code>claude</code> CLI:</p>
         <div class="code-wrapper">
           <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy commands to clipboard">Copy</button>
           <pre><code>/plugin marketplace add transitrix/methodology
@@ -171,33 +75,27 @@ https://raw.githubusercontent.com/transitrix/methodology/main/transitrix/skills/
 /transitrix:onboard</code></pre>
         </div>
       </details>
+
+      <p>No coding agent to hand? <a href="https://github.com/transitrix/acme-corp">Clone the worked example</a> instead and open any <code>.transitrix.yaml</code> file under <code>canon/</code> — see it rendered before you author your own.</p>
     </section>
 
     <section aria-labelledby="join-heading">
-      <h2 id="join-heading">Joining a repository your organisation already has</h2>
-      <p>Someone on your team has already set up the model. You don't scaffold anything — you clone it, watch it render, and make your first change like any other contribution.</p>
+      <h2 id="join-heading">Joining a repo your team already has</h2>
+      <p>Someone already set up the model — clone it and contribute like any other change:</p>
       <ol class="qs-steps">
-        <li>
-          Clone the repository and open it in VS Code (both viewers installed — see above):
-          <pre><code>git clone &lt;your-org-repo-url&gt;</code></pre>
-        </li>
-        <li>Open any <code>.transitrix.yaml</code> file under <code>canon/</code> or <code>views/</code>. Studio renders your organisation's real diagram beside it.</li>
-        <li>Read <code>AGENTS.md</code> at the repository root — the orientation guide the repo ships with: where each zone lives (<code>canon/</code>, <code>field/</code>, <code>codex/</code>), which notations are in use, and the local conventions.</li>
-        <li>
-          Make a change — edit an element or add one — then validate it:
-          <pre><code>npx @transitrix/cli validate &lt;file&gt;</code></pre>
-        </li>
-        <li>Open a pull request. Architecture changes are reviewed like code, and the repository's CI re-runs validation on every PR.</li>
+        <li>Clone the repo, open it in your editor (viewers installed — see above).</li>
+        <li>Read <code>AGENTS.md</code> at the root — zones, notations, conventions.</li>
+        <li>Edit or add a file, then <code>npx @transitrix/cli validate &lt;file&gt;</code>.</li>
+        <li>Open a pull request — CI re-validates automatically.</li>
       </ol>
-      <p>That's the whole loop — clone, render, change, validate, PR — the same review-as-code workflow your team already uses for source.</p>
     </section>
 
     <section aria-labelledby="next-heading">
       <h2 id="next-heading">Next</h2>
       <ul>
         <li>Full methodology specification: <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a></li>
-        <li>All supported notations — BPMN process diagrams, capability maps, FGCA strategy chains, and more: <a href="https://github.com/transitrix/methodology/tree/main/notations">notations on GitHub</a></li>
-        <li>A worked example — a complete Transitrix architecture repository to reference as you build your own: <a href="https://github.com/transitrix/acme-corp">github.com/transitrix/acme-corp</a></li>
+        <li>All supported notations: <a href="https://github.com/transitrix/methodology/tree/main/notations">notations on GitHub</a></li>
+        <li>Worked example repository: <a href="https://github.com/transitrix/acme-corp">github.com/transitrix/acme-corp</a></li>
         <li>Studio source &amp; issues: <a href="https://github.com/transitrix/transitrix-studio">github.com/transitrix/transitrix-studio</a></li>
         <li>Early-adopter pilots or questions: <a href="mailto:hello@transitrix.com">hello@transitrix.com</a></li>
       </ul>
