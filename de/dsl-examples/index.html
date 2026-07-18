@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DSL-Beispiele | Transitrix</title>
+  <meta name="description" content="Kanonische, schema-gültige YAML-Beispiele für jede Notation, die Transitrix Studio unterstützt — BPMN, Ziele, DGCA, Fähigkeitskarten und mehr. Eine Seite, copy-paste-fertig.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" hreflang="en" href="../../dsl-examples/">
+  <link rel="alternate" hreflang="de" href="./">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Thema wechseln">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <nav class="lang-switch" aria-label="Sprache">
+          <a href="../../dsl-examples/" hreflang="en">EN</a>
+          <a href="./" aria-current="true">DE</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <h1>DSL-Beispiele</h1>
+      <p class="lede">Ein minimales, gültiges Beispiel pro Notation, die Transitrix Studio unterstützt — kopieren Sie die Struktur direkt, statt sie zu erraten.</p>
+    </div>
+
+    <section aria-labelledby="shape-heading">
+      <h2 id="shape-heading">Die Struktur, in einem Satz</h2>
+      <p>Jede Transitrix-Quelldatei ist reines YAML mit zwei festen Ankern: einem <code>notation:</code>-Schlüssel, der das Format benennt, und einer <code>*.&lt;notation&gt;.transitrix.yaml</code>-Dateiendung. Es gibt keinen <code>type:</code>/<code>version:</code>-Wrapper, kein einzelnes <code>flow:</code>-Array, keine <code>next:</code>-basierte Sequenzierung — diese Formen waren nie ein Transitrix- oder Cervin-Format (dem Vorgängernamen), so plausibel sie auch aussehen.</p>
+      <p>Jedes Beispiel auf dieser Seite ist copy-paste-fertig und validiert mit <code>transitrix validate</code> fehlerfrei gegen das Schema der jeweiligen Notation.</p>
+      <div class="note">
+        <strong>Die vollständigen Beispiele gesucht</strong> — realistische Größe, Kommentare, Grenzfälle? Siehe <a href="https://github.com/transitrix/methodology/tree/main/notations/examples">notations/examples/</a> im methodology-Repository. Diese Seite tauscht Vollständigkeit gegen etwas Engeres: die kleinste Version jeder Struktur, die noch validiert, alles auf einer Seite.
+      </div>
+    </section>
+
+    <section aria-labelledby="jump-heading">
+      <h2 id="jump-heading">13 Notationen</h2>
+      <ul class="qs-viewers">
+        <li><a href="#goals">Zielbaum</a> · <a href="#dgca">DGCA / DGA</a> — Strategie</li>
+        <li><a href="#capability-map">Fähigkeitskarte</a> — Fähigkeit</li>
+        <li><a href="#process-map">Prozesslandkarte</a> · <a href="#process-blueprint">Prozess-Blueprint</a> · <a href="#bpmn">BPMN</a> — Prozess</li>
+        <li><a href="#action">Aktivitätsnetzwerk</a> · <a href="#action-card">Aktivitätskarte</a> — Zeitplan</li>
+        <li><a href="#scenarios">Szenarien</a> — Risiko</li>
+        <li><a href="#applications">Anwendungen</a> · <a href="#products">Produkte</a> — Katalog</li>
+        <li><a href="#blocks">Verschachtelte Blöcke</a> — Zerlegung</li>
+        <li><a href="#compliance-impact">Compliance Impact</a> — Compliance</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="strategy-heading">
+      <h2 id="strategy-heading">Strategie</h2>
+
+      <h3 id="goals">Zielbaum</h3>
+      <p>Hierarchische Zielzerlegung. Dateiname: <code>*.goals.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Zielbaum-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: goals
+
+id: GOALS-STRATEGY-2026
+name: "Strategy 2026 — Goals Tree"
+
+goal_types:
+  - { name: "Strategy",       level: 0 }
+  - { name: "Strategic Goal", level: 1 }
+  - { name: "Project Goal",   level: 2 }
+
+goals:
+  - id: GOAL-REVENUE-1
+    name: "Triple revenue in 3 years"
+    type: "Strategy"
+    level: 0
+
+  - id: GOAL-EU-1
+    name: "Launch in 3 EU markets"
+    type: "Strategic Goal"
+    level: 1
+    parent: GOAL-REVENUE-1
+
+  - id: GOAL-BERLIN-1
+    name: "Open Berlin office"
+    type: "Project Goal"
+    level: 2
+    parent: GOAL-EU-1</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/goals">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+
+      <h3 id="dgca">DGCA / DGA</h3>
+      <p>Treiber → Ziele → (Änderungen →) Aktivitäten-Ketten. Dateiname: <code>*.dgca.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="DGCA-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: dgca
+
+id: DGCA-STARTUP-1
+name: "Product launch — strategy chain"
+period: "2026"
+
+factors:
+  - id: DRIVER-MARKET-1
+    name: "Growing demand for automated reporting"
+    type: external
+    category: technological
+
+goals:
+  - id: GOAL-1
+    name: "Launch our analytics product to market"
+    factors: [DRIVER-MARKET-1]
+
+changes:
+  - id: CHANGE-1
+    name: "Build and release the core reporting feature set"
+    goals: [GOAL-1]
+
+actions:
+  - id: ACTION-1
+    name: "Analytics MVP"
+    type: Project
+    changes: [CHANGE-1]</code></pre>
+      </div>
+      <p>Dieselbe Datei, vier Ebenen (Treiber → Ziel → Änderung → Aktivität). Mit <code>view_config: { layers: { changes: off } }</code> rendert sie stattdessen als 3-Ebenen-DGA-Ansicht — Treiber direkt zu Aktivitäten, ohne Änderungsebene.</p>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/dgca">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+    </section>
+
+    <section aria-labelledby="capability-heading">
+      <h2 id="capability-heading">Fähigkeit</h2>
+
+      <h3 id="capability-map">Fähigkeitskarte</h3>
+      <p>Ist- vs. Ziel-Reifegrad je Fähigkeit. Dateiname: <code>*.capability-map.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Fähigkeitskarte-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: capability-map
+name: "Business Capabilities Map"
+
+capability_map:
+  id: CAPABILITY_MAP-BUSINESS-1
+  name: Business Capabilities Map
+  assessment_date: "2026-05-08"
+
+  capabilities:
+    - id: CAPABILITY-V1
+      name: Order Management
+      type: domain
+      current_maturity: 2
+      target_maturity: 3
+      children:
+        - id: CAPABILITY-V1.1
+          name: Order Intake
+          type: domain
+          current_maturity: 3
+          target_maturity: 3
+
+    - id: CAPABILITY-V2
+      name: Customer Relationship Management
+      type: domain
+      current_maturity: 3
+      target_maturity: 4</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/capability-map">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+    </section>
+
+    <section aria-labelledby="process-heading">
+      <h2 id="process-heading">Prozess</h2>
+
+      <h3 id="process-map">Prozesslandkarte</h3>
+      <p>Betriebs-, Unterstützungs- und Management-Prozesslandschaft. Dateiname: <code>*.process-map.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Prozesslandkarte-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: process-map
+name: "Enterprise Process Landscape"
+
+process_map:
+  id: PM-ENT-001
+  name: Enterprise Process Landscape
+  updated_at: "2026-05-08"
+
+  groups:
+    - id: GRP-OPERATING
+      name: Operating Processes
+      type: operating
+      processes:
+        - process_id: PROC-ORD-FULFILL-001
+          name: Order Fulfilment
+          owner_role: ROLE-OPS-001
+          status: Active
+        - process_id: PROC-CUST-ONBOARD-001
+          name: Customer Onboarding
+          owner_role: ROLE-SALES-001
+          status: Active</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/process-map">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+
+      <h3 id="process-blueprint">Prozess-Blueprint</h3>
+      <p>Stufenweises Design mit Systemen, Akteuren, Ausrüstung, Informationen. Dateiname: <code>*.process-blueprint.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Prozess-Blueprint-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: process-blueprint
+name: "Order fulfilment — operational blueprint"
+
+process_blueprint:
+  id: PROCESS_BLUEPRINT-FULFIL-1
+  name: "Order fulfilment — operational blueprint"
+  process: PROCESS-ORD-FULFIL-1
+
+  stages:
+    - id: STAGE-1
+      name: "Receive order"
+      goal: "Capture a validated customer order."
+      result: "Validated order record in OMS with payment pre-authorised."
+    - id: STAGE-2
+      name: "Pick &amp; pack"
+      goal: "Assemble the physical order from the reserved inventory."
+      result: "Packed shipment ready for carrier handover."
+
+  systems:
+    - id: APPLICATION-OMS-1
+      name: "Order Management System"
+      stages: [STAGE-1, STAGE-2]
+
+  actors:
+    - id: ROLE-WAREHOUSE-OP-1
+      name: "Warehouse operator"
+      stages: [STAGE-2]</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/process-blueprint">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+
+      <h3 id="bpmn">BPMN</h3>
+      <p>Vollständiges BPMN 2.0 — YAML-verfasst, als BPMN gerendert. Dateiname: <code>*.bpmn.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="BPMN-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: bpmn
+
+process:
+  id: order-fulfillment
+  name: Order Fulfillment
+  pools:
+    - id: pool-main
+      name: Main
+      lanes:
+        - id: lane-sales
+          name: Sales
+          elements:
+            - id: start
+              type: startEvent
+              name: Start
+            - id: receiveOrder
+              type: task
+              name: Receive order
+            - id: end
+              type: endEvent
+              name: End
+
+  flows:
+    - id: flow-1
+      from: start
+      to: receiveOrder
+    - id: flow-2
+      from: receiveOrder
+      to: end</code></pre>
+      </div>
+      <p>Die gesamte Struktur hat vier Verschachtelungsebenen: <code>process.pools[].lanes[].elements[]</code>, plus ein flaches <code>process.flows[]</code>-Array aus <code>{ from, to }</code>-Paaren. Kein <code>type:</code>/<code>version:</code> auf oberster Ebene, kein einzelnes <code>flow:</code>-Array, keine <code>next:</code>-Referenzen an Elementen.</p>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/bpmn">Vollständige Beispiele &amp; Spezifikation →</a></p>
+    </section>
+
+    <section aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading">Zeitplan</h2>
+
+      <h3 id="action">Aktivitätsnetzwerk</h3>
+      <p>PSND-/AoN-Diagramme + Gantt + kritischer Pfad. Dateiname: <code>*.action.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Aktivitätsnetzwerk-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: action
+
+name: "Platform Launch 2026"
+
+actions:
+  - id: A-001
+    name: Requirements analysis
+    duration: 5
+  - id: A-002
+    name: Architecture design
+    duration: 8
+    predecessors: [A-001]
+  - id: A-003
+    name: Backend implementation
+    duration: 15
+    predecessors: [A-002]</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/action">Vollständige Beispiele &amp; Spezifikation →</a></p>
+
+      <h3 id="action-card">Aktivitätskarte</h3>
+      <p>Narrativ für ein Einzelprojekt: Umfang, Motivationskette, Meilensteine. Dateiname: <code>*.action-card.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Aktivitätskarte-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: action-card
+name: "EU MDR Conformity Programme"
+
+action_card:
+  id: ACTION_CARD-EU-PROGRAMME-1
+  project: ACTION-EU-PROGRAMME-1
+
+  description: &gt;
+    Programme of work bringing the company's first product line into
+    compliance with the EU Medical Device Regulation.
+
+  milestones:
+    - id: MILESTONE-EU-CONFORMITY-CERT-1
+      name: "EU MDR conformity-assessment certification obtained"
+      date: "2027-01-31"</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/action-card">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+    </section>
+
+    <section aria-labelledby="risk-heading">
+      <h2 id="risk-heading">Risiko</h2>
+
+      <h3 id="scenarios">Szenarien</h3>
+      <p>Szenarioplanung über Einflussfaktoren. Dateiname: <code>*.scenarios.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Szenarien-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: scenarios
+name: "Optimistic Growth 2027"
+
+scenario:
+  id: SCN-001
+  name: Optimistic Growth 2027
+  status: Active
+
+  vision: |
+    By 2027 the organisation has expanded into three new markets
+    and doubled its digital product portfolio.
+
+  goals:
+    - goal_id: GOAL-REV-001
+    - goal_id: GOAL-MARKET-001
+
+  activities:
+    - activity_id: ACT-EXPAND-CEE-001</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/scenarios">Vollständige Beispiele &amp; Spezifikation →</a></p>
+    </section>
+
+    <section aria-labelledby="catalogue-heading">
+      <h2 id="catalogue-heading">Katalog</h2>
+
+      <h3 id="applications">Anwendungen</h3>
+      <p>Anwendungen, Integrationen, Plattformen, Datenspeicher. Dateiname: <code>*.applications.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Anwendungen-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: applications
+name: "Enterprise Applications Portfolio 2026"
+
+applications_catalogue:
+  id: APP-CAT-ENTERPRISE-001
+  name: Enterprise Applications Portfolio 2026
+  updated_at: "2026-05-14"
+
+  applications:
+    - app_id: APP-OMS-001
+      name: Order Management System
+      type: application
+      status: Active
+      domain: Operations
+      integrations:
+        - target: APP-CRM-001
+          direction: outbound
+          protocol: REST
+          description: Sends order events to CRM on state change
+
+    - app_id: APP-CRM-001
+      name: CRM System
+      type: application
+      status: Active
+      domain: Sales</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/applications">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+
+      <h3 id="products">Produkte</h3>
+      <p>Digitale Produkte, Services, Bündel. Dateiname: <code>*.products.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Produkte-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: products
+name: "Digital Products Portfolio 2026"
+
+products_catalogue:
+  id: portfolio-2026
+  name: Digital Products Portfolio 2026
+  updated_at: "2026-05-13"
+
+  products:
+    - product_id: prod-data-platform
+      name: Analytics Platform
+      type: platform
+      status: Active
+      domain: Data &amp; Analytics
+
+    - product_id: prod-mobile-app
+      name: Customer Mobile App
+      type: digital_product
+      status: Active
+      domain: Customer</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/products">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+    </section>
+
+    <section aria-labelledby="decomposition-heading">
+      <h2 id="decomposition-heading">Zerlegung</h2>
+
+      <h3 id="blocks">Verschachtelte Blöcke</h3>
+      <p>Rekursiver Blockbaum. Dateiname: <code>*.blocks.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Verschachtelte-Blöcke-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: blocks
+name: "Software architecture"
+
+nested_blocks:
+  id: BLOCKS-ARCH-1
+  name: "Software architecture"
+
+  blocks:
+    - id: FRONTEND
+      name: "Frontend"
+      children:
+        - id: REACT_APP
+          name: "React App"
+        - id: REDUX_STORE
+          name: "Redux Store"
+    - id: BACKEND
+      name: "Backend"
+      children:
+        - id: REST_API
+          name: "REST API"
+        - id: BUSINESS_LOGIC
+          name: "Business Logic"</code></pre>
+      </div>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/blocks">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+    </section>
+
+    <section aria-labelledby="compliance-heading">
+      <h2 id="compliance-heading">Compliance</h2>
+
+      <h3 id="compliance-impact">Compliance Impact</h3>
+      <p>Matrix aus Pflichten × betroffenen Subjekten. Dateiname: <code>*.compliance-impact.transitrix.yaml</code></p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Compliance-Impact-Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>notation: compliance-impact
+name: "Retail product — GDPR obligations"
+
+view:
+  id: COMPLIANCE_IMPACT-RETAIL-GDPR-1
+  name: "Retail product — GDPR obligations"
+  report_type: product
+
+  subjects:
+    products: [PRODUCT-RETAIL-1]
+
+  obligations:
+    filter:
+      derived_from_codex: [REGULATION-EU-GDPR-1]
+
+  grouping:
+    rows: "obligation"
+    columns: "product-stage-task"</code></pre>
+      </div>
+      <p>Compliance-Matrix, Coverage-Metrik und Gap-Dashboard sind Report-Ansichten, die aus diesen Daten sowie <code>assertion</code>-/<code>requirement</code>-Datensätzen berechnet werden — keine eigenen Dateiformate.</p>
+      <p><a href="https://github.com/transitrix/methodology/tree/main/notations/examples/compliance-impact">Vollständiges Beispiel &amp; Spezifikation →</a></p>
+    </section>
+
+    <section aria-labelledby="next-heading">
+      <h2 id="next-heading">Weiterführend</h2>
+      <ul>
+        <li>Vollständige Methodikspezifikation: <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a></li>
+        <li>Jede Notationsspezifikation: <a href="https://github.com/transitrix/methodology/tree/main/notations">Notationen auf GitHub</a></li>
+        <li>JSON Schemas: <a href="https://github.com/transitrix/transitrix-studio/tree/main/schemas">Schemas auf GitHub</a></li>
+        <li>Maschinenlesbare Projektübersicht: <a href="/llms.txt">llms.txt</a></li>
+        <li>Studio installieren, um alles oben live in der Vorschau zu sehen: <a href="/install/">Installieren &amp; starten →</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://x.com/transitrix">@transitrix</a> ·
+        <a href="https://vkgeorgia.github.io">vkgeorgia.github.io</a>
+      </p>
+      <nav class="lang-switch" aria-label="Sprache">
+        <a href="../../dsl-examples/" hreflang="en">EN</a>
+        <a href="./" aria-current="true">DE</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="../../assets/js/theme.js"></script>
+</body>
+</html>

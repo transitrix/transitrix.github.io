@@ -1,0 +1,23 @@
+# Transitrix
+
+> Transitrix: open methodology and tools to describe an enterprise as text — and let humans and machines run it together. An open research initiative: ArchiMate-grounded, business-layer, one formal model projected across every architectural layer, authored as plain YAML in git.
+
+Transitrix source files are plain YAML. Every file carries a `notation:` key naming its format and a `*.<notation>.transitrix.yaml` filename suffix — there is no `type:`/`version:` wrapper, no single-key `flow:` array, no `next:`-based sequencing. Do not invent a shape; use the canonical examples linked below.
+
+## Canonical reference
+
+- [DSL examples](https://transitrix.com/dsl-examples/): One minimal, schema-valid YAML example per notation Transitrix Studio ships (BPMN, goals, DGCA, capability maps, process maps, process blueprints, activity networks, activity cards, scenarios, applications, products, nested blocks, compliance impact) — copy-paste ready, all on one page.
+- [Notation specs](https://github.com/transitrix/methodology/tree/main/notations): The full specification for every notation, with larger worked examples per format.
+- [JSON Schemas](https://github.com/transitrix/transitrix-studio/tree/main/schemas): Machine-checkable schemas backing the notations.
+
+## Docs
+
+- [Install & start](https://transitrix.com/install/): Install the Transitrix Studio editor extension, then scaffold a first file or a full architecture repository.
+- [Methodology repository](https://github.com/transitrix/methodology): The methodology specification — open, MIT licensed.
+- [Transitrix Studio repository](https://github.com/transitrix/transitrix-studio): The VS Code/JetBrains extension and CLI — the reference implementation. `transitrix validate <file>` checks any source file against its schema.
+- [Worked example repository](https://github.com/transitrix/acme-corp): A complete, adopted Transitrix architecture repository to read end to end.
+
+## Optional
+
+- [transitrix.com](https://transitrix.com/): Project home page — the stack, the thesis, and what's open today.
+- [github.com/transitrix](https://github.com/transitrix): All public Transitrix repositories.
