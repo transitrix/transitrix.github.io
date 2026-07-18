@@ -134,9 +134,10 @@
       <p>Sie beschreiben Ihr Unternehmen einmal, als Text. Zwei Editor-Erweiterungen rendern dieses eine Modell über jede Ebene hinweg — sodass dieselbe Quelle den Vorstand und die Codebasis gleichermaßen bedient.</p>
       <ul>
         <li><strong>Geschäftsnahe Ebenen — Transitrix Studio.</strong> Eigens entwickelte Notationen für Strategie und Betrieb: Zielbäume, Fähigkeitskarten, Prozess-Blueprints, BPMN und Aktivitätsnetzwerke. Für die Business-/IT-Schnittstelle gebaut, keine abgespeckten Kopien generischer Diagramme.</li>
-        <li><strong>Technische Ebenen — Mermaid.</strong> Die Ansichten, auf die Transitrix nicht spezialisiert ist, rendern in standardmäßigem <a href="https://mermaid.js.org/">Mermaid</a>: Sequenz-, Zustands-, ER-/Klassen- und C4-Komponentendiagramme — aus demselben Modell erzeugt.</li>
+        <li><strong>Technische Ebenen — PlantUML.</strong> Sequenz-, Zustands-, ER-/Klassen- und C4-Komponentendiagramme — aus demselben Modell erzeugt — rendern in <a href="https://plantuml.com/">PlantUML</a>, nativ in Studio: kein Java, kein Graphviz, funktioniert sogar im Browser über vscode.dev. Studio stellt PlantUML dar wie Markdown — ein fremdes Format, keine Transitrix-Notation.</li>
+        <li><strong>Mermaid, als Fallback.</strong> Wo eine leichtere, schnellere Ansicht genügt, rendern dieselben Ebenen zusätzlich in standardmäßigem <a href="https://mermaid.js.org/">Mermaid</a>, über die empfohlene Editor-Erweiterung.</li>
       </ul>
-      <p class="note">Auf offenen Standards aufgebaut — ArchiMate 3.2 und BPMN 2.0 — und alles als reiner, diff-barer Text. Nichts bindet Sie: Die technischen Ansichten sind standardmäßiges Mermaid, und Ihre Dateien bleiben lesbar, mit oder ohne unsere Werkzeuge.</p>
+      <p class="note">Auf offenen Standards aufgebaut — ArchiMate 3.2 und BPMN 2.0 — und alles als reiner, diff-barer Text. Nichts bindet Sie: Die technischen Ansichten sind standardmäßiges PlantUML und Mermaid, und Ihre Dateien bleiben lesbar, mit oder ohne unsere Werkzeuge.</p>
     </section>
 
     <section aria-labelledby="open-heading">

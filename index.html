@@ -134,9 +134,10 @@
       <p>You describe your enterprise once, as text. Two editor extensions render that single model across every layer — so the same source serves the boardroom and the codebase.</p>
       <ul>
         <li><strong>Business-facing layers — Transitrix Studio.</strong> Purpose-built notations for strategy and operations: goals trees, capability maps, process blueprints, BPMN, and activity networks. Built for the business/IT interface, not stripped-down copies of generic diagrams.</li>
-        <li><strong>Technical layers — Mermaid.</strong> The views Transitrix doesn't specialise render in standard <a href="https://mermaid.js.org/">Mermaid</a>: sequence, state, ER/class, and C4 component diagrams — generated from the same model.</li>
+        <li><strong>Technical layers — PlantUML.</strong> Sequence, state, ER/class, and C4 component diagrams — generated from the same model — render in <a href="https://plantuml.com/">PlantUML</a>, natively inside Studio: no Java, no Graphviz, works even in the browser via vscode.dev. Studio previews PlantUML the way it previews Markdown — a foreign format, not a Transitrix notation.</li>
+        <li><strong>Mermaid, as a fallback.</strong> Where a lighter, quicker view is enough, the same layers also render in standard <a href="https://mermaid.js.org/">Mermaid</a>, via the recommended editor extension.</li>
       </ul>
-      <p class="note">Built on open standards — ArchiMate 3.2 and BPMN 2.0 — with everything as plain, diffable text. Nothing is locked in: the technical views are standard Mermaid, and your files stay readable with or without our tooling.</p>
+      <p class="note">Built on open standards — ArchiMate 3.2 and BPMN 2.0 — with everything as plain, diffable text. Nothing is locked in: the technical views are standard PlantUML and Mermaid, and your files stay readable with or without our tooling.</p>
     </section>
 
     <section aria-labelledby="open-heading">
