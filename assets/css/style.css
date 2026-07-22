@@ -13,8 +13,9 @@
   --accent: var(--brand-secondary);
   --accent-dim: #b8842a;
   --cta: var(--brand-tertiary);
-  --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "IBM Plex Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 [data-theme="light"] {
@@ -193,7 +194,7 @@ main {
 .hero h1 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 2.85rem);
-  font-weight: 550;
+  font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin: 0 0 1rem;
@@ -473,7 +474,7 @@ section > p {
 /* Code blocks */
 pre,
 code {
-  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
 }
 
 pre {
