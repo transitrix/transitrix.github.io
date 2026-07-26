@@ -1,0 +1,30 @@
+name: Public-surface hygiene
+
+# Fails when CLAUDE.md or AGENTS.md (internal agent-ops docs) are tracked in
+# this public repo. Minimal filename-ban check only - this repo has no other
+# public-surface hygiene checks yet.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-hygiene:
+    runs-on: ubuntu-latest
+    name: Internal-ops filename ban
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ban CLAUDE.md / AGENTS.md
+        shell: bash
+        run: |
+          if git ls-files | grep -qiE '(^|/)(CLAUDE|AGENTS)\.md$'; then
+            echo "::error::CLAUDE.md/AGENTS.md are not allowed in this public repo (internal agent-ops docs)"
+            exit 1
+          fi

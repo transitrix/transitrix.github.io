@@ -11,6 +11,7 @@
 # excluded from git tracking.
 STRATEGIC_BRIEF.md
 CLAUDE.md
+AGENTS.md
 
 # Claude Code worktrees and per-agent state
 .claude/
