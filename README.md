@@ -16,4 +16,4 @@ npx serve .
 
 ## Contributing
 
-Content changes go through pull requests. The site agent manages routine updates; for larger changes open an issue in the [strategy hub](https://github.com/vkgeorgia/strategy).
+Content changes go through pull requests. Routine updates are handled by automation; for anything larger, open an issue in this repository.
