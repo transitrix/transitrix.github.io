@@ -65,6 +65,16 @@ jobs:
               echo "::error::Private-hub pointer in an added diff line."
               fail=1
             fi
+
+            # Commit-message pass. This surface was scanned by nothing until
+            # 2026-07-30, and it holds the most: a message is written once, lands
+            # in the default branch, and no later pass over files or PR metadata
+            # can see it. Only BASE..HEAD is read, so a change is judged on what
+            # it adds and existing history is not re-litigated on every run.
+            if git log --format=%B "$BASE_SHA..$HEAD_SHA" 2>/dev/null | grep -Eqi "$PATTERN"; then
+              echo "::error::Private-hub pointer in a commit message."
+              fail=1
+            fi
           fi
 
           if [ "$fail" -ne 0 ]; then
@@ -86,7 +96,10 @@ jobs:
           # Two rules, on two different surfaces.
           #
           # 1. COMMITTED CONTENT carries no reference to a work item at all -
-          # neither the neutral `HUB-<number>` form nor a bare hash-number. The
+          # neither the neutral `HUB-<number>` form nor a bare hash-number.
+          # (Commit messages are read too, and were scanned by nothing before
+          # 2026-07-30 - the sweeps that cleaned files and PR metadata never
+          # looked at one.) The
           # evidence for the stronger rule is the sweep that produced it: of
           # roughly 110 such references across the two repositories that had
           # them, not one carried information a reader could use. The prose
@@ -96,12 +109,14 @@ jobs:
           # What a line needs is the REASON, and a durable reason is a decision -
           # cited by name and date, which is stable and resolvable by anyone.
           #
-          # 2. A PR TITLE OR BODY may cite a work item, and there `HUB-<number>`
-          # is the form. A pull request is a transient coordination surface, not
-          # content anyone reads later. A bare hash-number is still forbidden
-          # there: it auto-links to the item of that number IN THIS REPOSITORY,
-          # which renders as a WORKING link to something unrelated - worse than a
-          # dead reference, because it reads as correct.
+          # 2. NOR IN PR METADATA, NOR IN A COMMIT MESSAGE. A carve-out briefly
+          # allowed a citation in a PR title or body on the theory that a pull
+          # request is transient. It is not: this repository squashes with
+          # COMMIT_OR_PR_TITLE and merges with PR_TITLE, so a PR title BECOMES a
+          # commit subject on the default branch. A rule that depends on a
+          # per-repository merge setting also breaks quietly the day the setting
+          # differs. The reference lives in the hub issue, which already links to
+          # the pull request - the one place that can resolve it.
           #
           # A reference to this repository's own issue or PR is untouched by
           # either rule: a plain hash-number, and the `closes` / `fixes`
@@ -113,7 +128,6 @@ jobs:
           # from its own scan; that exclusion is also the escape hatch for a doc
           # that must legitimately show the form.
           WORKITEM='(\bHUB-[0-9]+|\b(task|epic|hub)s?[[:space:]:]+#[0-9]+)'
-          HASHREF='\b(task|epic|hub)s?[[:space:]:]+#[0-9]+'
           SELF='.github/workflows/public-surface-hygiene.yml'
 
           fail=0
@@ -129,14 +143,13 @@ jobs:
             return 0
           }
 
-          COMMITTED="committed content carries no work-item reference; keep the reason and drop the number, or cite the decision by name and date"
-          METADATA="write HUB-<number>; a bare #NNN auto-links to this repository's own item of that number"
+          ADVICE="a work-item reference does not go on a public surface - keep the reason and drop the number, cite the decision by name and date, and leave the work-item trail in the hub issue"
 
           # 1) Full tree.
           while IFS= read -r f; do
             [ -f "$f" ] || continue
             [ "$f" = "$SELF" ] && continue
-            if report "$WORKITEM" tree "$f" "file=$f" "$COMMITTED"; then fail=1; fi
+            if report "$WORKITEM" tree "$f" "file=$f" "$ADVICE"; then fail=1; fi
           done < <(git ls-files)
 
           # 2) Added diff lines, when there is a pull request to diff.
@@ -147,22 +160,31 @@ jobs:
               [ "$f" = "$SELF" ] && continue
               git diff "$BASE_SHA" "$HEAD_SHA" -- "$f" | grep -E '^\+[^+]' > "$tmp/added" || true
               [ -s "$tmp/added" ] || continue
-              if report "$WORKITEM" diff "$tmp/added" "file=$f" "$COMMITTED"; then fail=1; fi
+              if report "$WORKITEM" diff "$tmp/added" "file=$f" "$ADVICE"; then fail=1; fi
             done < <(git diff --name-only "$BASE_SHA" "$HEAD_SHA" || true)
           else
             echo "no pull-request context - scanning the tree only."
           fi
 
-          # 3) PR title/body - HUB-<number> is allowed here, the bare form is not.
+          # 3) PR title/body. The title becomes a commit subject on merge, so it
+          # is committed content with a delay.
           printf '%s' "${PR_TITLE:-}" > "$tmp/title"
           printf '%s' "${PR_BODY:-}" > "$tmp/body"
-          if report "$HASHREF" title "$tmp/title" "" "$METADATA"; then fail=1; fi
-          if report "$HASHREF" body "$tmp/body" "" "$METADATA"; then fail=1; fi
+          if report "$WORKITEM" title "$tmp/title" "" "$ADVICE"; then fail=1; fi
+          if report "$WORKITEM" body "$tmp/body" "" "$ADVICE"; then fail=1; fi
+
+          # 4) This change's own commit messages.
+          if [ -n "${BASE_SHA:-}" ] && [ -n "${HEAD_SHA:-}" ]; then
+            git log --format=%B "$BASE_SHA..$HEAD_SHA" > "$tmp/messages" 2>/dev/null || true
+            if [ -s "$tmp/messages" ]; then
+              if report "$WORKITEM" "commit message" "$tmp/messages" "" "$ADVICE"; then fail=1; fi
+            fi
+          fi
 
           if [ "$fail" -ne 0 ]; then
             exit 1
           fi
-          echo "OK - no work-item references in committed content, none in the banned form in PR metadata."
+          echo "OK - no work-item references on any scanned surface."
 
   check-hygiene:
     runs-on: ubuntu-latest
