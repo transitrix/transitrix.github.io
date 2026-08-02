@@ -127,7 +127,7 @@ jobs:
           # why the build failed routes around the rule. This file is excluded
           # from its own scan; that exclusion is also the escape hatch for a doc
           # that must legitimately show the form.
-          WORKITEM='(\bHUB-[0-9]+|\b(task|epic|hub)s?[[:space:]:]+#[0-9]+)'
+          WORKITEM='(\bHUB-[0-9]+|\b(task|epic|hub|issue)s?[[:space:]:]+#[0-9]+|\bhub[[:space:]]+(task|epic|issue)s?[[:space:]]+#?[0-9]+)'
           SELF='.github/workflows/public-surface-hygiene.yml'
 
           fail=0
@@ -200,3 +200,59 @@ jobs:
             echo "::error::CLAUDE.md/AGENTS.md are not allowed in this public repo (internal agent-ops docs)"
             exit 1
           fi
+
+  workitem-guard-selftest:
+    runs-on: ubuntu-latest
+    name: Work-item guard self-test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify the unpunctuated form is caught, ordinary prose is not
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Extracted from the live guard step so this test tracks the pattern
+          # actually enforced, instead of a copy that can drift from it.
+          WORKITEM="$(sed -n "s/.*WORKITEM='\(.*\)'.*/\1/p" .github/workflows/public-surface-hygiene.yml | head -1)"
+          if [ -z "$WORKITEM" ]; then
+            echo "::error::self-test could not extract the WORKITEM pattern from the guard step"
+            exit 1
+          fi
+
+          fail=0
+
+          assert_flagged() {
+            if echo "$1" | grep -oIiE "$WORKITEM" >/dev/null; then
+              echo "ok (flagged): $1"
+            else
+              echo "::error::self-test regression - '$1' should be flagged but was not"
+              fail=1
+            fi
+          }
+
+          assert_clear() {
+            if echo "$1" | grep -oIiE "$WORKITEM" >/dev/null; then
+              echo "::error::self-test regression - '$1' should NOT be flagged but was"
+              fail=1
+            else
+              echo "ok (clear): $1"
+            fi
+          }
+
+          # Positive - must be flagged.
+          assert_flagged "hub task 217"
+          assert_flagged "hub epic 391"
+          assert_flagged "HUB-905"
+          assert_flagged "issue #7"
+
+          # Negative - ordinary prose, must not be flagged.
+          assert_clear "task 3 of the pipeline"
+          assert_clear "closes #12"
+          assert_clear "GitHub 3"
+
+          if [ "$fail" -ne 0 ]; then
+            exit 1
+          fi
+          echo "work-item guard self-test: all cases passed."
