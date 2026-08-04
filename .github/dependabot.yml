@@ -1,0 +1,12 @@
+version: 2
+updates:
+  # GitHub Actions workflow files - this repo has no package manager manifest
+  # (static HTML/CSS/JS site, no build step), so this is the only ecosystem
+  # Dependabot has anything to cover here.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
