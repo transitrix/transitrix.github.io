@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://transitrix.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/install/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/install/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/install/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/quickstart/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/quickstart/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/quickstart/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/dsl-examples/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/dsl-examples/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/dsl-examples/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/ttrs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/ttrs/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/ttrs/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/dsm/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/dsm/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/dsm/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/strategy-and-behaviour/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/strategy-and-behaviour/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/strategy-and-behaviour/"/>
+  </url>
+
+  <url>
+    <loc>https://transitrix.com/de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/de/install/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/install/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/install/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/de/quickstart/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/quickstart/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/quickstart/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/de/dsl-examples/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/dsl-examples/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/dsl-examples/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/de/ttrs/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/ttrs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/ttrs/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/de/dsm/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/dsm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/dsm/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/de/strategy-and-behaviour/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/strategy-and-behaviour/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/strategy-and-behaviour/"/>
+  </url>
+
+</urlset>
