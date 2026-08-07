@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# The /install/go/ paths are redirects to external download pages. They carry
+# their own noindex, so they stay crawlable — a Disallow here would hide that
+# instruction from the crawler that needs to read it.
+
+Sitemap: https://transitrix.com/sitemap.xml

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Das Dokumentquellformat .ttrs | Transitrix</title>
+  <meta name="description" content="Das Dokumentquellformat .ttrs: was eine Quelldatei enthält, wie die mittlere Komponente des Dateinamens die Dokumentart benennt, die Direktivensprache und die Referenzzustände, die eine Implementierung unterscheiden muss.">
+  <link rel="canonical" href="/de/ttrs/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" hreflang="en" href="../../ttrs/">
+  <link rel="alternate" hreflang="de" href="./">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Thema wechseln">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <nav class="lang-switch" aria-label="Sprache">
+          <a href="../../ttrs/" hreflang="en">EN</a>
+          <a href="./" aria-current="true">DE</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <h1>Das Dokumentquellformat <code>.ttrs</code></h1>
+      <p class="lede">Eine Dokumentquelle ist Fließtext mit <code>{{ … }}</code>-Direktiven darin. Der Text wird unverändert übernommen; jede Direktive benennt etwas in einem Transitrix-Modell und wird durch das ersetzt, wozu sie aufgelöst wird.</p>
+    </div>
+
+    <section aria-labelledby="jump-heading">
+      <h2 id="jump-heading">Auf dieser Seite</h2>
+      <ul class="qs-viewers">
+        <li><a href="#file">Was eine Quelldatei enthält</a> · <a href="#filename">Wie der Dateiname gelesen wird</a></li>
+        <li><a href="#language">Die Direktivensprache</a> · <a href="#fragment">Ein durchgearbeitetes Beispiel</a></li>
+        <li><a href="#states">Referenzzustände</a> · <a href="#profiles">Render-Profile</a></li>
+        <li><a href="#today">Was heute existiert</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="file">
+      <h2 id="file">Was eine Quelldatei enthält</h2>
+      <p>Eine Textdatei, zweiteilig: ein YAML-Kopf, danach der Dokumentkörper.</p>
+      <p>Der Körper ist gewöhnlicher Fließtext. Alles außerhalb von <code>{{ … }}</code> ist fester Text und wird wortgetreu übernommen; jedes <code>{{ … }}</code> ist eine Direktive, die etwas im Modell benennt und durch das ersetzt wird, wozu sie aufgelöst wird.</p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Kopfbeispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>---
+document: Market Requirements Document   # erforderlich — der Name, den seine Leser verwenden
+kind: mrd                                # erforderlich — passt zur mittleren Komponente des Dateinamens
+template_id: product.mrd                 # erforderlich — im Laufprotokoll benannt
+template_version: "1.0"                  # erforderlich — im Laufprotokoll benannt
+canon: ../canon                          # optional — das Modell-Repository
+---</code></pre>
+      </div>
+      <p>Vier Kopffelder sind erforderlich; <code>canon:</code> ist es nicht. Eine Quelle, die kein Modellobjekt und keine abgeleitete Abbildung benennt, löst eigenständig auf, ganz ohne konfiguriertes Repository — das ist eine legitime Eingabe für sich, und eine Implementierung, die eine solche Quelle liest, meldet den Zustand „kein Repository konfiguriert“, statt ihn als fehlgeschlagene Auflösung zu behandeln.</p>
+    </section>
+
+    <section aria-labelledby="filename">
+      <h2 id="filename">Wie der Dateiname gelesen wird</h2>
+      <div class="code-wrapper">
+        <pre><code>&lt;basename&gt;.&lt;kind&gt;.ttrs        z. B.  product.mrd.ttrs
+                                     platform.srs.ttrs
+                                     gateway.sdd.ttrs</code></pre>
+      </div>
+      <p><strong>Die mittlere Komponente ist die <em>Dokumentart</em> — niemals eine Notation.</strong> Eine Art ist ein Layout über dem Modell: welche Elemente ein Dokument dieser Art auswählt und wie sie angeordnet werden. Sie trägt keinen eigenen Inhalt, erhält keine eigene Direktivensprache, und eine neue Art bedeutet nie eine neue Sprache. Die heute spezifizierten Arten sind <code>mrd</code>, <code>srs</code>, <code>sdd</code> und <code>sds</code>; das Kopffeld <code>kind:</code> muss mit dem Dateinamen übereinstimmen.</p>
+      <p>Jede Notation hat genau eine kanonische Dateiendung, und zwar entweder <code>*.&lt;short-name&gt;.transitrix.yaml</code> oder <code>*.&lt;short-name&gt;.ttrs</code>. Welche davon eine bestimmte Notation trägt, ist eine Eigenschaft dieser Notation. Wo <code>.ttrs</code> gilt, ersetzt es die längere Endung vollständig — es wird ihr nie angehängt, und keine Notation trägt beide.</p>
+      <p><code>.trs</code> liegt einen Tastendruck daneben und ist ein anderes, weit verbreitetes Format. Eine Datei mit der Endung <code>.trs</code> dort, wo eine Dokumentquelle erwartet wird, wird als eben diese Verwechslung benannt und nicht als unbekannte Datei gemeldet.</p>
+    </section>
+
+    <section aria-labelledby="language">
+      <h2 id="language">Die Direktivensprache</h2>
+      <p>Die Begrenzer sind <code>{{</code> und <code>}}</code>. Leerraum unmittelbar innerhalb der Begrenzer ist unerheblich, <code>{{REQ-14}}</code> und <code>{{ REQ-14 }}</code> sind also dieselbe Direktive. <code>\{{</code> erzeugt ein wörtliches <code>{{</code> und ist die einzige Maskierung der Sprache. Keine Direktive verschachtelt sich in eine andere, abgesehen davon, dass die beiden Blockformen unten einen Körper tragen.</p>
+
+      <h3>Inline-Formen</h3>
+      <ul>
+        <li><code>{{ REQ-14 }}</code> — <strong>Inline-Referenz.</strong> Setzt den Anzeigewert des benannten Objekts ein.</li>
+        <li><code>{{ REQ-14.parent.title }}</code> — <strong>Feldpfad.</strong> Setzt ein Feld ein und läuft dabei durch jede mittlere Komponente, die selbst ein Objekt benennt. <strong>Die Traversierung ist auf Tiefe 3 begrenzt</strong>; ein längerer Pfad ist ein Fehler und kein tieferer Lauf.</li>
+        <li><code>{{ .field }}</code> — <strong>Zeilenreferenz.</strong> Ein Feld der aktuellen Zeile des umgebenden <code>each</code>-Blocks, und nur innerhalb eines solchen sinnvoll.</li>
+        <li><code>{{ trace from = … to = … via = … }}</code> — <strong>Trace.</strong> Stellt die Trace-Abdeckung zwischen zwei Elementtypen entlang einer Beziehung dar; alle drei Attribute sind erforderlich.</li>
+        <li><code>{{ view &lt;pfad&gt; [as = …] [fit = width|page|none] }}</code> — <strong>abgeleitete Abbildung.</strong> Eine in einer bestehenden Notation verfasste Sicht, aus dem Modell gerendert. <code>fit</code> ist standardmäßig <code>width</code>.</li>
+        <li><code>{{ figure &lt;pfad&gt; [caption = "…"] [as = …] }}</code> — <strong>beigestellte Abbildung.</strong> Ein Asset, das unverändert eingebettet und nie erzeugt wird.</li>
+        <li><code>{{ figref &lt;name&gt; }}</code> — <strong>Abbildungsverweis</strong> über den <code>as</code>-Namen einer zuvor im selben Dokument deklarierten Abbildung. Abbildungen werden in Dokumentreihenfolge nummeriert, und ein Vorwärtsverweis ist ein Fehler und keine aufgeschobene Auflösung.</li>
+      </ul>
+
+      <h3>Blockformen — es gibt genau zwei</h3>
+      <p><code>{{# each &lt;TYP&gt; [where …] [order by &lt;feld&gt;] }} … {{/ each }}</code> wiederholt seinen Körper einmal je ausgewähltem Element und bindet jedes davon der Reihe nach als aktuelle Zeile. Die <code>where</code>-Klausel ist bewusst klein gehalten: nur <code>and</code>, kein <code>or</code> und keine Klammern; nur <code>=</code> und <code>!=</code>; rechts steht ein Literal, nie ein weiteres Feld. <code>order by</code> nimmt ein einzelnes Feld und ist das, was ein gerendertes Dokument reproduzierbar macht.</p>
+      <p><code>{{# instruct &lt;slot-id&gt; }} … {{/ instruct }}</code> deklariert einen Anweisungsslot — einen Abschnitt, den ein deterministischer Durchlauf nicht füllt, mit <code>question:</code> und <code>sufficient:</code> (beide erforderlich) und einem optionalen, kommagetrennten <code>inputs:</code>. <strong>Der Körper eines Slots ist opak:</strong> Ein Parser läuft vom öffnenden Tag direkt zum passenden schließenden und behält alles dazwischen als Rohtext, sodass ein innerhalb eines Slots geschriebenes <code>{{ REQ-14 }}</code> Anweisungstext ist und nie aufgelöst wird. Slot-Bezeichner bestehen aus Kleinbuchstaben, Ziffern und Bindestrichen und müssen innerhalb eines Dokuments eindeutig sein.</p>
+
+      <h3>Bezeichner</h3>
+      <p>Ein Bezeichner folgt der kanonischen Grammatik — <code>REQ-14</code>, <code>CAP-1</code>, <code>BUSINESS_SERVICE-3</code>. Ein Fähigkeitsbezeichner enthält eine Diagrammadresse, deren Punkte zum Bezeichner gehören; ein Parser trennt daher das Präfix <code>CAPABILITY-V</code> bzw. <code>CAPABILITY-H</code> ab, bevor er einen Feldpfad liest: <code>{{ CAPABILITY-V1.2.3 }}</code> ist ein Bezeichner ohne Feldpfad, <code>{{ CAPABILITY-V1.2.3.name }}</code> derselbe Bezeichner mit dem Feldpfad <code>name</code>.</p>
+    </section>
+
+    <section aria-labelledby="fragment">
+      <h2 id="fragment">Ein durchgearbeitetes Beispiel</h2>
+      <p>Das eingecheckte Konformitätsbeispiel, vollständig — ein Kopf, fester Text, eine Referenz, ein Feldpfad, ein zweistufiger Pfad, eine abgeleitete Abbildung mit einem Verweis darauf und ein Anweisungsslot.</p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Durchgearbeitetes Beispiel in die Zwischenablage kopieren">Kopieren</button>
+        <pre><code>---
+document: Market Requirements Document
+kind: mrd
+template_id: product.mrd
+template_version: "1.0"
+canon: canon
+---
+# {{ CAP-1.title }}
+
+## Scope
+
+This document covers {{ CAP-1.text }}
+
+## Requirements
+
+**{{ REQ-14 }}** — {{ REQ-14.text }}
+
+Its parent capability is {{ REQ-14.parent.name }}.
+
+{{ view diagrams/context.blocks.transitrix.yaml as = context fit = width }}
+
+{{ figref context }} shows where the capability sits.
+
+## Market
+
+{{# instruct market-size }}
+question: How large is the addressable market for this capability, and how fast is it growing?
+inputs: CAP-1, REQ-14
+sufficient: A market size with a currency and a year, a growth rate, and the method used to derive both.
+{{/ instruct }}</code></pre>
+      </div>
+      <p>Die Datei ist <a href="https://github.com/transitrix/methodology/blob/main/packages/document-renderer/tests/fixtures/product.mrd.ttrs">product.mrd.ttrs</a>, und die Ausgabe, die sie erzeugen muss, liegt daneben eingefroren als <a href="https://github.com/transitrix/methodology/blob/main/packages/document-renderer/tests/fixtures/product.mrd.expected.md">product.mrd.expected.md</a>.</p>
+    </section>
+
+    <section aria-labelledby="states">
+      <h2 id="states">Referenzzustände</h2>
+      <p>Die Auflösung einer Referenz ergibt genau einen Zustand. Neben <em>ok</em> — aufgelöst, zugelassen und innerhalb seines Gültigkeitsintervalls — benennt die Sprache fünf weitere, und <strong>eine Implementierung muss jeden Zustand, den sie meldet, von jedem anderen unterscheidbar halten.</strong></p>
+      <ul>
+        <li><strong>nicht aufgelöst</strong> <code>⚑U</code> — es existiert kein Objekt mit diesem Bezeichner.</li>
+        <li><strong>nicht zugelassen</strong> <code>⚑A</code> — das Objekt existiert, sein Zulassungsstatus ist aber nicht aktiv.</li>
+        <li><strong>außerhalb der Gültigkeit</strong> <code>⚑V</code> — sein Gültigkeitsintervall deckt das Renderdatum nicht ab.</li>
+        <li><strong>fraglich</strong> <code>⚑S</code> — das Objekt löst auf, die Verknüpfung dorthin steht aber unter Verdacht.</li>
+        <li><strong>kein Repository konfiguriert</strong> — das Dokument beruft sich auf das Modell, und es ist keines konfiguriert.</li>
+      </ul>
+      <p>Die ersten drei werden in dieser Reihenfolge bestimmt: Existenz, dann Zulassung, dann Gültigkeit. Zwei Zustände zu einem zusammenzuziehen ist Nichtkonformität und keine Vereinfachung — <em>Sie haben kein Repository</em> und <em>Ihr Repository kennt diesen Bezeichner nicht</em> sind verschiedene Probleme mit verschiedenen Behebungen, und jeder Zustand benennt für seinen Leser etwas anderes zu tun.</p>
+      <p><strong>Eine nicht-ok-Referenz wird nie als ihr blanker Wert dargestellt.</strong> Der Zustand, der sich wie korrekter Text liest, ist derjenige, den ein Leser nicht erkennen kann.</p>
+      <p><code>⚑S</code> wird aus der Commit-Historie abgeleitet statt aus einer Datei gelesen und ist der eine Zustand, dessen Berechnung eine Implementierung ablehnen darf. Ablehnen ist zulässig; darüber zu schweigen nicht — drei Ergebnisse müssen unterscheidbar bleiben: <em>fraglich</em>, <em>geprüft und sauber</em> und <em>nie geprüft</em>. Ein Dokument, das ganz ohne <code>⚑S</code> rendert, trifft eine Aussage; eine Implementierung, die die Prüfung nie ausgeführt hat, hat gar keine getroffen.</p>
+    </section>
+
+    <section aria-labelledby="profiles">
+      <h2 id="profiles">Render-Profile</h2>
+      <p>Eine Implementierung bietet mindestens zwei Profile an, beide auswählbar, und benennt, welches ein bestimmter Lauf verwendet hat:</p>
+      <ul>
+        <li><strong>strikt</strong> — lässt den Lauf bei jedem berechneten nicht-ok-Zustand fehlschlagen, über den Exit-Status und nicht nur im Text.</li>
+        <li><strong>tolerant</strong> — schlägt nicht fehl; stellt jede auflösbare Referenz dar, jede nicht-ok mit ihrem Kennzeichen, und meldet jeden gefundenen Zustand.</li>
+      </ul>
+      <p>Zwei Regeln binden das Paar aneinander: Das tolerante Profil erkennt <em>genau</em> das, woran das strikte scheitert — keine Teilmenge davon — und keines der beiden stellt eine nicht-ok-Referenz als ihren blanken Wert dar. Die Namen oben bezeichnen die Rollen, nicht eine vorgeschriebene Schreibweise.</p>
+      <p>Eine Implementierung darf jedes Konstrukt der Sprache unimplementiert lassen; eine Teilmenge zu unterstützen ist der erwartete Fall. Was sie in ihrer eigenen Dokumentation angibt, sind beide Hälften: was sie unterstützt und was sie erkennt und ablehnt. Ein erkanntes, aber nicht implementiertes Konstrukt schlägt unter eben diesem Namen fehl, mit einem Code, der sich von dem für unbekannte oder fehlerhafte Syntax unterscheidet — die beiden Meldungen lauten <em>das gehört nicht zur Sprache</em> und <em>das gehört zur Sprache und nicht zu diesem Werkzeug</em>, und sie schicken einen Autor an verschiedene Stellen.</p>
+    </section>
+
+    <section aria-labelledby="today">
+      <h2 id="today">Was heute existiert</h2>
+      <ul>
+        <li><strong>Die normative Spezifikation</strong> — <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/DIRECTIVE_LANGUAGE.md">DIRECTIVE_LANGUAGE.md</a>, Version 1.0, stabil, vom 2026-08-07. Sie ist ein Konformitätsvertrag, geschrieben, um dagegen zu bauen, und definiert die Sprache einmal für jede Quelle, die sie verwendet. Wo sie und eine Implementierung sich widersprechen, gilt die Spezifikation.</li>
+        <li><strong>Die Referenzimplementierung</strong> — <a href="https://github.com/transitrix/methodology/blob/main/packages/document-renderer/README.md">@transitrix/document-renderer</a>, der Parser und sein deterministischer erster Durchlauf. Sie existiert, um die Spezifikation prüfbar zu machen, und ihre README benennt, welche Konstrukte sie unterstützt und welche sie zurückstellt.</li>
+        <li><strong>Das Konformitätsbeispiel</strong> — eine vollständige Quelldatei und ihre eingefrorene Ausgabe, gemeinsam eingecheckt. Es ist das Artefakt, gegen das eine unabhängige Implementierung ihre eigene Ausgabe diffed, und es wird nie neu erzeugt.</li>
+        <li><strong>Die heute spezifizierten Arten</strong> — <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/29-mrd.md">29-mrd.md</a>, <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/30-srs.md">30-srs.md</a>, <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/31-sdd.md">31-sdd.md</a>, von denen jede ein Layout definiert und keine Sprache.</li>
+      </ul>
+      <div class="note">
+        <strong>Weiterlesen</strong> — das Verzeichnis dieser Klasse ist <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/README.md">notations/views/documents/README.md</a>; die gemeinsamen Kopf- und Endungsregeln, denen jede Notation folgt, stehen in <a href="https://github.com/transitrix/methodology/blob/main/notations/CONTRACT.md">CONTRACT.md</a>. Für die YAML-Notationen und ihre Dateistrukturen siehe die <a href="/de/dsl-examples/">DSL-Beispiele</a>.
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://x.com/transitrix">@transitrix</a> ·
+        <a href="https://vkgeorgia.github.io">vkgeorgia.github.io</a>
+      </p>
+      <nav class="lang-switch" aria-label="Sprache">
+        <a href="../../ttrs/" hreflang="en">EN</a>
+        <a href="./" aria-current="true">DE</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="../../assets/js/theme.js"></script>
+</body>
+</html>
