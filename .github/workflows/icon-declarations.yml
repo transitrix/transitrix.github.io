@@ -1,0 +1,142 @@
+name: Icon declarations
+
+# Every page listed in sitemap.xml declares the same icon set - the SVG icon,
+# the three PNG sizes and apple-touch - and every PNG referenced from a
+# rel="icon" link carries an alpha channel. assets/inc/favicon-links.html is
+# the one canonical copy of that declaration; this check is what keeps every
+# page's <head> identical to it, since the site has no build step to include
+# a partial at serve time.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-icon-declarations:
+    runs-on: ubuntu-latest
+    name: Every page declares the icon set; every icon PNG has alpha
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify sitemap pages and icon PNGs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PARTIAL=assets/inc/favicon-links.html
+          [ -f "$PARTIAL" ] || { echo "::error::$PARTIAL is missing - it is the canonical icon declaration"; exit 1; }
+
+          # check_page FILE - fails if FILE is unreadable, is missing any line
+          # from the canonical partial, or does not declare exactly 4 rel="icon"
+          # links and 1 apple-touch-icon link. Never reports OK on a missing file.
+          check_page() {
+            local file="$1"
+            local errs=0
+            if [ ! -f "$file" ]; then
+              echo "  MISSING FILE: $file"
+              return 1
+            fi
+            while IFS= read -r line; do
+              [ -z "${line// }" ] && continue
+              if ! grep -qF -- "$line" "$file"; then
+                echo "  MISSING LINE in $file: $line"
+                errs=1
+              fi
+            done < "$PARTIAL"
+            local icount acount
+            icount=$(grep -cE '<link[^>]*rel="icon"' "$file" || true)
+            acount=$(grep -cE '<link[^>]*rel="apple-touch-icon"' "$file" || true)
+            if [ "$icount" -ne 4 ]; then
+              echo "  $file: expected 4 rel=\"icon\" links, found $icount"
+              errs=1
+            fi
+            if [ "$acount" -ne 1 ]; then
+              echo "  $file: expected 1 apple-touch-icon link, found $acount"
+              errs=1
+            fi
+            return $errs
+          }
+
+          # check_png_alpha PNG - fails unless the PNG's IHDR colour type
+          # (byte offset 25) is 4 (grayscale+alpha) or 6 (RGB+alpha).
+          check_png_alpha() {
+            local png="$1"
+            if [ ! -f "$png" ]; then
+              echo "  MISSING PNG: $png"
+              return 1
+            fi
+            local ct
+            ct=$(od -An -tu1 -j 25 -N 1 "$png" | tr -d ' ')
+            if [ "$ct" != "4" ] && [ "$ct" != "6" ]; then
+              echo "  $png: expected colour type 4 or 6 (has alpha), found $ct"
+              return 1
+            fi
+            return 0
+          }
+
+          echo "== Self-test: the checker itself must catch what it's meant to catch =="
+          selftest_fail=0
+
+          fixture="$(mktemp --suffix=.html)"
+          cat > "$fixture" <<'EOF'
+          <!DOCTYPE html>
+          <html><head><meta charset="utf-8"><title>Fixture without icon declarations</title></head><body></body></html>
+          EOF
+          if check_page "$fixture" > /tmp/selftest-fixture.log 2>&1; then
+            echo "::error::self-test regression - a page with no icon declarations should fail check_page but passed"
+            selftest_fail=1
+          else
+            echo "ok: a layout without the partial correctly fails the check"
+          fi
+          rm -f "$fixture"
+
+          if check_page "/tmp/this-file-does-not-exist.html" > /tmp/selftest-missing.log 2>&1; then
+            echo "::error::self-test regression - an unreadable page should fail check_page but passed"
+            selftest_fail=1
+          else
+            echo "ok: an unreadable page correctly fails the check rather than reporting OK"
+          fi
+
+          if [ "$selftest_fail" -ne 0 ]; then
+            echo "::error::icon-declarations self-test failed - the checker itself is broken, not trusting its verdict on real pages"
+            exit 1
+          fi
+
+          echo "== Checking every page listed in sitemap.xml =="
+          [ -f sitemap.xml ] || { echo "::error::sitemap.xml is missing"; exit 1; }
+
+          fail=0
+          while IFS= read -r loc; do
+            [ -z "$loc" ] && continue
+            path="${loc#https://transitrix.com}"
+            path="${path%/}"
+            path="${path#/}"
+            if [ -z "$path" ]; then file="index.html"; else file="$path/index.html"; fi
+            echo "-- $loc -> $file"
+            if ! check_page "$file"; then
+              echo "::error file=$file::page does not declare the full icon set from $PARTIAL"
+              fail=1
+            fi
+          done < <(grep -oE '<loc>[^<]+</loc>' sitemap.xml | sed -E 's#</?loc>##g')
+
+          echo "== Checking every icon PNG referenced from the partial for an alpha channel =="
+          while IFS= read -r png; do
+            [ -z "$png" ] && continue
+            rel="${png#/}"
+            echo "-- $rel"
+            if ! check_png_alpha "$rel"; then
+              echo "::error file=$rel::icon PNG has no alpha channel"
+              fail=1
+            fi
+          done < <(grep -oE 'rel="icon"[^>]*href="[^"]+\.png"' "$PARTIAL" | grep -oE 'href="[^"]+"' | sed -E 's/^href="//; s/"$//')
+
+          if [ "$fail" -ne 0 ]; then
+            exit 1
+          fi
+          echo "icon-declarations: every sitemap page declares the full icon set, every icon PNG has alpha."
