@@ -1,0 +1,28 @@
+<!-- Canonical shape of the per-page head metadata block. The site has no build
+     step to include a partial at serve time, so this file is not copied
+     verbatim like assets/inc/favicon-links.html — four of its ten lines vary
+     per page. It is the reference every page's <head> is written against,
+     and .github/workflows/og-declarations.yml is what keeps them honest:
+     it checks structure and self-consistency (right tags, right order,
+     og:url/canonical absolute and matching, og:title/description matching
+     the page's own <title>/description, og:image resolving to a real file)
+     rather than diffing against this file line for line.
+
+     {{URL}}         - absolute, e.g. https://transitrix.com/install/
+     {{TITLE}}       - the page's own <title> text, verbatim
+     {{DESCRIPTION}} - the page's own meta description, verbatim
+     {{IMAGE}}       - absolute; the site default unless a page ships its own
+     {{LOCALE}}      - en_US on the EN tree, de_DE under /de/
+     {{ALT_LOCALE}}  - the other one -->
+  <link rel="canonical" href="{{URL}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{URL}}">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:image" content="{{IMAGE}}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="{{LOCALE}}">
+  <meta property="og:locale:alternate" content="{{ALT_LOCALE}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{IMAGE}}">

@@ -1,9 +1,10 @@
 name: Indexing declarations
 
-# Every page listed in sitemap.xml must declare rel=canonical pointing at
-# itself, and must be reachable by following <a href> links starting from
-# the homepage. The site has no build step, so nothing else keeps these two
-# facts true as pages are added or removed - this check does.
+# Every page listed in sitemap.xml must declare an absolute rel=canonical
+# pointing at itself on https://transitrix.com, and must be reachable by
+# following <a href> links starting from the homepage. The site has no build
+# step, so nothing else keeps these facts true as pages are added or removed
+# - this check does.
 
 on:
   push:
@@ -82,7 +83,7 @@ jobs:
           print("== Self-test: the checker itself must catch what it's meant to catch ==")
           selftest_fail = False
 
-          if extract_canonical('<link rel="canonical" href="/install/">') != "/install/":
+          if extract_canonical('<link rel="canonical" href="https://transitrix.com/install/">') != "https://transitrix.com/install/":
               print("::error::self-test regression - a correct canonical link was not read back correctly")
               selftest_fail = True
           else:
@@ -143,6 +144,7 @@ jobs:
               sitemap_pages[url_path] = file_path
 
           print("-- self-canonical --")
+          SITE_ORIGIN = "https://transitrix.com"
           for url_path, file_path in sitemap_pages.items():
               try:
                   with open(file_path, encoding="utf-8") as f:
@@ -153,8 +155,14 @@ jobs:
               href = extract_canonical(html)
               if href is None:
                   error(f"{file_path}: no rel=\"canonical\" link found (sitemap says index this, page names no authority)")
-              elif href != url_path:
-                  error(f"{file_path}: canonical points at {href!r}, expected self ({url_path!r}) - sitemap and canonical disagree")
+                  continue
+              parts = urlsplit(href)
+              if not parts.scheme or not parts.netloc:
+                  error(f"{file_path}: canonical {href!r} is not absolute - deliverable requires an absolute URL, not a site-relative path")
+              elif f"{parts.scheme}://{parts.netloc}" != SITE_ORIGIN:
+                  error(f"{file_path}: canonical {href!r} does not point at {SITE_ORIGIN} - sitemap and canonical disagree")
+              elif parts.path != url_path:
+                  error(f"{file_path}: canonical points at {parts.path!r}, expected self ({url_path!r}) - sitemap and canonical disagree")
               else:
                   print(f"  ok: {file_path} -> {href}")
 
