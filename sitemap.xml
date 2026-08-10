@@ -13,11 +13,6 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/install/"/>
   </url>
   <url>
-    <loc>https://transitrix.com/quickstart/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/quickstart/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/quickstart/"/>
-  </url>
-  <url>
     <loc>https://transitrix.com/dsl-examples/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/dsl-examples/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/dsl-examples/"/>
@@ -47,11 +42,6 @@
     <loc>https://transitrix.com/de/install/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/install/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/install/"/>
-  </url>
-  <url>
-    <loc>https://transitrix.com/de/quickstart/</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/quickstart/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/quickstart/"/>
   </url>
   <url>
     <loc>https://transitrix.com/de/dsl-examples/</loc>

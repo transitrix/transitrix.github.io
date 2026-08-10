@@ -1,0 +1,171 @@
+name: Indexing declarations
+
+# Every page listed in sitemap.xml must declare rel=canonical pointing at
+# itself, and must be reachable by following <a href> links starting from
+# the homepage. The site has no build step, so nothing else keeps these two
+# facts true as pages are added or removed - this check does.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-indexing-declarations:
+    runs-on: ubuntu-latest
+    name: Sitemap pages are self-canonical and reachable from the homepage
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify self-canonical + reachability
+        shell: python3 {0}
+        run: |
+          import os
+          import re
+          import sys
+          import shutil
+          import tempfile
+          import posixpath
+          from urllib.parse import urlsplit, urljoin
+
+          fail = False
+
+          def error(msg):
+              global fail
+              print(f"::error::{msg}")
+              fail = True
+
+          CANON_RE = re.compile(r'<link[^>]*rel="canonical"[^>]*href="([^"]+)"')
+          LINK_RE = re.compile(r'<a[^>]*href="([^"]+)"', re.IGNORECASE)
+
+          def extract_canonical(html):
+              m = CANON_RE.search(html)
+              return m.group(1) if m else None
+
+          def file_to_url_dir(file_path):
+              d = posixpath.dirname(file_path)
+              return ("/" + d + "/") if d else "/"
+
+          def crawl(root, start):
+              visited = set()
+              queue = [start]
+              while queue:
+                  current = queue.pop()
+                  if current in visited:
+                      continue
+                  visited.add(current)
+                  full = os.path.join(root, current)
+                  try:
+                      with open(full, encoding="utf-8") as f:
+                          html = f.read()
+                  except FileNotFoundError:
+                      continue
+                  base = file_to_url_dir(current)
+                  for href in LINK_RE.findall(html):
+                      if href.startswith(("http://", "https://", "mailto:", "#")):
+                          continue
+                      resolved = urljoin("https://transitrix.com" + base, href)
+                      path = urlsplit(resolved).path
+                      if not path.startswith("/"):
+                          continue
+                      rel = path.lstrip("/")
+                      candidate = (rel + "index.html") if (rel == "" or rel.endswith("/")) else rel
+                      if candidate not in visited:
+                          queue.append(candidate)
+              return visited
+
+          print("== Self-test: the checker itself must catch what it's meant to catch ==")
+          selftest_fail = False
+
+          if extract_canonical('<link rel="canonical" href="/install/">') != "/install/":
+              print("::error::self-test regression - a correct canonical link was not read back correctly")
+              selftest_fail = True
+          else:
+              print("ok: a correct canonical link is read back correctly")
+
+          if extract_canonical('<meta name="description" content="no canonical here">') is not None:
+              print("::error::self-test regression - a page with no canonical link should read back None but did not")
+              selftest_fail = True
+          else:
+              print("ok: a page missing rel=canonical correctly reads back None")
+
+          tmpdir = tempfile.mkdtemp()
+          try:
+              os.makedirs(os.path.join(tmpdir, "linked"))
+              with open(os.path.join(tmpdir, "index.html"), "w", encoding="utf-8") as f:
+                  f.write('<html><body><a href="linked/">linked</a></body></html>')
+              with open(os.path.join(tmpdir, "linked", "index.html"), "w", encoding="utf-8") as f:
+                  f.write('<html><body>no further links here</body></html>')
+              os.makedirs(os.path.join(tmpdir, "orphan"))
+              with open(os.path.join(tmpdir, "orphan", "index.html"), "w", encoding="utf-8") as f:
+                  f.write('<html><body>nothing links here</body></html>')
+
+              reached = crawl(tmpdir, "index.html")
+              if "linked/index.html" not in reached:
+                  print("::error::self-test regression - a page linked from / should be reachable but was not")
+                  selftest_fail = True
+              else:
+                  print("ok: a page linked from / is correctly found reachable")
+              if "orphan/index.html" in reached:
+                  print("::error::self-test regression - a page linked from nowhere should NOT be reachable but was")
+                  selftest_fail = True
+              else:
+                  print("ok: a page linked from nowhere is correctly found unreachable")
+          finally:
+              shutil.rmtree(tmpdir)
+
+          if selftest_fail:
+              print("::error::indexing-declarations self-test failed - the checker itself is broken, not trusting its verdict on real pages")
+              sys.exit(1)
+
+          print("== Checking every page listed in sitemap.xml ==")
+          with open("sitemap.xml", encoding="utf-8") as f:
+              sitemap = f.read()
+
+          locs = re.findall(r"<loc>([^<]+)</loc>", sitemap)
+          if not locs:
+              error("sitemap.xml has no <loc> entries")
+              sys.exit(1)
+
+          sitemap_pages = {}  # url_path -> file path
+          for loc in locs:
+              url_path = urlsplit(loc).path
+              if not url_path.endswith("/"):
+                  error(f"sitemap URL does not end in / (no bare-file entries expected): {loc}")
+                  continue
+              rel = url_path.lstrip("/")
+              file_path = rel + "index.html" if rel else "index.html"
+              sitemap_pages[url_path] = file_path
+
+          print("-- self-canonical --")
+          for url_path, file_path in sitemap_pages.items():
+              try:
+                  with open(file_path, encoding="utf-8") as f:
+                      html = f.read()
+              except FileNotFoundError:
+                  error(f"sitemap references a file that does not exist: {file_path}")
+                  continue
+              href = extract_canonical(html)
+              if href is None:
+                  error(f"{file_path}: no rel=\"canonical\" link found (sitemap says index this, page names no authority)")
+              elif href != url_path:
+                  error(f"{file_path}: canonical points at {href!r}, expected self ({url_path!r}) - sitemap and canonical disagree")
+              else:
+                  print(f"  ok: {file_path} -> {href}")
+
+          print("-- reachability from / --")
+          reached = crawl(".", "index.html")
+          for url_path, file_path in sitemap_pages.items():
+              if file_path in reached:
+                  print(f"  ok: {file_path} reachable")
+              else:
+                  error(f"{file_path}: in sitemap.xml but not reachable by following links from / - either link to it or drop it from the sitemap")
+
+          if fail:
+              sys.exit(1)
+          print("indexing-declarations: every sitemap page is self-canonical and reachable from the homepage.")
