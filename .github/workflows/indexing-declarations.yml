@@ -124,9 +124,24 @@ jobs:
               print("::error::indexing-declarations self-test failed - the checker itself is broken, not trusting its verdict on real pages")
               sys.exit(1)
 
-          print("== Checking every page listed in sitemap.xml ==")
+          print("== Checking sitemap.xml matches the generated page set ==")
+          sys.path.insert(0, "scripts")
+          from generate_sitemap import build_sitemap
+
           with open("sitemap.xml", encoding="utf-8") as f:
               sitemap = f.read()
+
+          generated = build_sitemap(".")
+          if sitemap != generated:
+              error(
+                  "sitemap.xml does not match the output of scripts/generate_sitemap.py "
+                  "- a page was added, removed or renamed without regenerating it. "
+                  "Run: python3 scripts/generate_sitemap.py > sitemap.xml"
+              )
+              sys.exit(1)
+          print("ok: sitemap.xml matches scripts/generate_sitemap.py")
+
+          print("== Checking every page listed in sitemap.xml ==")
 
           locs = re.findall(r"<loc>([^<]+)</loc>", sitemap)
           if not locs:
