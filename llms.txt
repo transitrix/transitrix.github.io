@@ -20,6 +20,16 @@ Each notation has exactly one canonical extension — either `*.<short-name>.tra
 - [Transitrix Studio repository](https://github.com/transitrix/transitrix-studio): The VS Code/JetBrains extension and CLI — the reference implementation. `transitrix validate <file>` checks any source file against its schema.
 - [Worked example repository](https://github.com/transitrix/acme-corp): A complete, adopted Transitrix architecture repository to read end to end.
 
+## Questions
+
+- [What is Transitrix?](https://transitrix.com/what-is-transitrix/): Open methodology and tooling for describing an enterprise as text — a research initiative, not a SaaS product.
+- [What does "enterprise as text" mean?](https://transitrix.com/enterprise-as-text/): The model is plain text under version control; diagrams and reports are generated views of it, not the source of truth.
+- [How is this different from drawing tools?](https://transitrix.com/vs-drawing-tools/): Drawing tools store pictures; Transitrix stores validated, version-controlled text, and the picture is derived from it.
+- [Which editor do I use?](https://transitrix.com/which-editor/): Transitrix Studio previews live in VS Code, Cursor, VSCodium, Windsurf and JetBrains IDEs; any editor plus the CLI works without it.
+- [Is Transitrix open source?](https://transitrix.com/is-it-open-source/): The methodology and Transitrix Studio are public, MIT licensed; Transitrix DSM is a separate, not-yet-public product.
+- [What can I model?](https://transitrix.com/what-can-i-model/): Processes, goals, capabilities, applications and behaviour — purpose-built notations, not one generic diagram type.
+- [Do I need DSM to get started?](https://transitrix.com/do-i-need-dsm/): No — the open methodology and Transitrix Studio are enough to start modelling; DSM is a later addition.
+
 ## Optional
 
 - [transitrix.com](https://transitrix.com/): Project home page — the stack, the thesis, and what's open today.
