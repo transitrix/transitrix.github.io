@@ -222,6 +222,13 @@ main {
   margin: -0.75rem 0 1.5rem;
 }
 
+.pub-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+  opacity: 0.7;
+  margin: 0.9rem 0 0;
+}
+
 section {
   margin-bottom: 3rem;
 }

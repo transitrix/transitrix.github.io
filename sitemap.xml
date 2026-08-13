@@ -8,6 +8,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/do-i-need-dsm/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/do-i-need-dsm/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/dsl-examples/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/dsl-examples/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/dsl-examples/"/>
@@ -18,9 +22,17 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/dsm/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/enterprise-as-text/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/enterprise-as-text/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/install/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/install/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/install/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/is-it-open-source/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/is-it-open-source/"/>
   </url>
   <url>
     <loc>https://transitrix.com/strategy-and-behaviour/</loc>
@@ -31,6 +43,22 @@
     <loc>https://transitrix.com/ttrs/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/ttrs/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/ttrs/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/vs-drawing-tools/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/vs-drawing-tools/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/what-can-i-model/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/what-can-i-model/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/what-is-transitrix/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/what-is-transitrix/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/which-editor/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/which-editor/"/>
   </url>
 
   <url>
