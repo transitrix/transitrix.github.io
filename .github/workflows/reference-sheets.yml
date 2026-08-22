@@ -1,0 +1,39 @@
+name: Reference sheets
+
+# The reference-sheet library's shape and no-gate contract - see
+# reference-sheets/README.md - is machine-enforced so a sheet that violates
+# it fails the build rather than reaching a reader. Passes vacuously with
+# zero sheets present.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'reference-sheets/**'
+      - 'scripts/check_reference_sheets.py'
+      - '.github/workflows/reference-sheets.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'reference-sheets/**'
+      - 'scripts/check_reference_sheets.py'
+      - '.github/workflows/reference-sheets.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-reference-sheets:
+    runs-on: ubuntu-latest
+    name: reference-sheets/ shape and no-gate contract hold
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check reference-sheets/ contract
+        run: python3 scripts/check_reference_sheets.py
