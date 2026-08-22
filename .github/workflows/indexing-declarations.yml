@@ -69,7 +69,10 @@ jobs:
                   try:
                       with open(full, encoding="utf-8") as f:
                           html = f.read()
-                  except FileNotFoundError:
+                  except (FileNotFoundError, UnicodeDecodeError):
+                      # A linked non-HTML file (e.g. a PDF take-away) is a reachable
+                      # leaf: mark it visited, but there are no further <a href> to
+                      # follow inside it.
                       continue
                   base = file_to_url_dir(current)
                   for href in LINK_RE.findall(html):
