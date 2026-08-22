@@ -35,6 +35,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/is-it-open-source/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/library/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/library/archimate-cheat-sheet/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/archimate-cheat-sheet/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/strategy-and-behaviour/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/strategy-and-behaviour/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/strategy-and-behaviour/"/>

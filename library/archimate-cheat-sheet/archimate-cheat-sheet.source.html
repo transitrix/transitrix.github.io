@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ArchiMate cheat sheet</title>
+<style>
+  @font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:block;
+    src:url('/assets/fonts/ibm-plex/IBMPlexSans-Regular.woff2') format('woff2')}
+  @font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:block;
+    src:url('/assets/fonts/ibm-plex/IBMPlexSans-Medium.woff2') format('woff2')}
+  @font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:block;
+    src:url('/assets/fonts/ibm-plex/IBMPlexSans-SemiBold.woff2') format('woff2')}
+  @font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:700;font-display:block;
+    src:url('/assets/fonts/ibm-plex/IBMPlexSans-Bold.woff2') format('woff2')}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:block;
+    src:url('/assets/fonts/ibm-plex/IBMPlexMono-Regular.woff2') format('woff2')}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:block;
+    src:url('/assets/fonts/ibm-plex/IBMPlexMono-Medium.woff2') format('woff2')}
+  :root{
+    --petrol:#004d67;
+    --amber:#ffaf00;
+    --ink:#1c2224;
+    --muted:#6b7376;
+    --rule:#ccd5d8;
+    --tint:#eef4f6;
+    /* ArchiMate layer colours — convention, not specification */
+    --c-mot:#dcdcff;
+    --c-str:#f6e3b4;
+    --c-bus:#feffc2;
+    --c-app:#c6feff;
+    --c-tec:#d3f0c2;
+    --c-imp:#ffe2e2;
+    --c-com:#fbe3f5;
+  }
+  @page { size: 297mm 167mm; margin: 0; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#d8d8d8;font-family:'IBM Plex Sans',sans-serif;color:var(--ink)}
+  .page{
+    width:297mm;height:167mm;margin:20px auto;background:#fff;
+    box-shadow:0 3px 24px rgba(0,0,0,.18);
+    padding:13px 20px 9px;display:flex;flex-direction:column;
+  }
+
+  header{display:flex;justify-content:space-between;align-items:flex-end;
+         border-bottom:2px solid var(--amber);padding-bottom:5px}
+  h1{font-size:19px;font-weight:600;color:var(--petrol);line-height:1}
+  .sub{font-size:9.6px;color:var(--muted);margin-top:3px}
+  .hdr-right{text-align:right;font-size:8.4px;color:var(--muted);line-height:1.5}
+  .hdr-right b{color:var(--petrol);font-weight:600;font-size:9px}
+
+  .body{flex:1;display:grid;grid-template-columns:1fr 268px;gap:0 12px;padding-top:7px;min-height:0}
+  .body > section{display:flex;flex-direction:column;min-height:0}
+
+  h2.ph{font-size:8.4px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;
+        color:var(--petrol);border-bottom:1px solid var(--rule);padding-bottom:2px;margin-bottom:4px;
+        display:flex;justify-content:space-between;align-items:baseline}
+  h2.ph em{font-style:normal;font-weight:400;text-transform:none;letter-spacing:0;
+           color:var(--muted);font-size:7.8px}
+
+  /* ── framework grid ── */
+  .fw{flex:1;display:grid;grid-template-columns:74px 1fr 1fr 1fr;
+      grid-template-rows:auto repeat(8,1fr);gap:2px;font-size:7.6px}
+  .fw .hd{font-size:7.4px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+          color:var(--petrol);text-align:center;padding:0 0 1px}
+  .fw .hd i{display:block;font-style:normal;font-weight:400;text-transform:none;
+            letter-spacing:0;color:var(--muted);font-size:7px}
+  .fw .lay{display:flex;flex-direction:column;justify-content:center;padding:3px 5px;
+           font-size:8px;font-weight:700;color:#2b3234;line-height:1.12}
+  .fw .lay i{display:block;font-style:normal;font-weight:400;font-size:6.8px;color:#5d6668;margin-top:1px}
+  .fw .cell{padding:3px 5px;line-height:1.42;display:flex;flex-wrap:wrap;gap:0 4px;align-content:center}
+  .fw .cell span{white-space:nowrap}
+  .fw .cell span::after{content:" ·";color:#9aa4a7}
+  .fw .cell span:last-child::after{content:""}
+  .fw .none{color:#9aa4a7;font-style:italic;align-items:center}
+  .fw .mot{grid-column:2/5}
+  .r-mot{background:var(--c-mot)}
+  .r-str{background:var(--c-str)}
+  .r-bus{background:var(--c-bus)}
+  .r-app{background:var(--c-app)}
+  .r-tec{background:var(--c-tec)}
+  .r-phy{background:var(--c-tec)}
+  .r-imp{background:var(--c-imp)}
+  .r-com{background:var(--c-com)}
+  .fw .mark{color:var(--petrol);font-weight:700}
+  .fw .phy-note{font-size:6.8px;color:#4a5254;font-weight:400}
+
+  .fw-note{font-size:7.4px;color:var(--muted);line-height:1.4;margin-top:4px}
+  .fw-note b{color:var(--ink);font-weight:600}
+
+  /* ── relationships ── */
+  .rel{display:grid;grid-template-columns:52px 1fr;gap:1px 7px;align-items:center;font-size:7.4px}
+  .rel .grp{grid-column:1/3;font-size:6.9px;font-weight:700;text-transform:uppercase;
+            letter-spacing:.08em;color:var(--petrol);margin-top:2px;padding-bottom:1px;
+            border-bottom:1px solid #e3e9eb}
+  .rel .grp:first-child{margin-top:0}
+  .rel b{font-weight:600;display:block;line-height:1.18}
+  .rel span{color:var(--muted);font-size:7px;line-height:1.2;display:block}
+  .rel svg{display:block}
+
+  .deriv{margin-top:5px;background:var(--tint);border-left:3px solid var(--petrol);
+         padding:4px 7px;font-size:7.2px;line-height:1.36}
+  .deriv .dh{color:var(--petrol);display:block;font-weight:700;font-size:7.6px;margin-bottom:1px}
+  .deriv b{font-weight:600;color:var(--ink)}
+  .deriv code{font-family:'IBM Plex Mono',monospace;font-size:7.4px;color:#2b3234}
+
+  .confuse{margin-top:4px;border-top:1px solid var(--rule);padding-top:3px}
+  .confuse .dh{color:var(--petrol);display:block;font-weight:700;font-size:7px;
+               text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+  .confuse p{font-size:7.1px;line-height:1.32;color:#3a4143;margin-bottom:2px}
+  .confuse p b{color:var(--ink);font-weight:600}
+  .confuse p i{font-style:italic}
+
+  /* ── bottom strip ── */
+  .strip{grid-column:1/3;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+         border-top:1px solid var(--rule);margin-top:4px;padding-top:4px}
+  .strip h3{font-size:7.1px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;
+            color:var(--petrol);margin-bottom:2px}
+  .strip p{font-size:7.2px;line-height:1.36;color:#33393b}
+  .strip p b{color:var(--ink);font-weight:600}
+
+  footer{display:flex;justify-content:space-between;align-items:center;
+         border-top:1px solid var(--rule);margin-top:5px;padding-top:4px;
+         font-size:7.2px;color:var(--muted)}
+  footer b{color:var(--petrol);font-weight:600}
+  footer .free{font-weight:600;color:var(--ink)}
+
+  @media print{body{background:none}.page{margin:0;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div>
+    <h1>ArchiMate cheat sheet — every element, by layer and aspect</h1>
+    <p class="sub">All 60 elements of ArchiMate&reg; 3.2 in one grid, placed by the two questions that decide where an element belongs.</p>
+  </div>
+  <div class="hdr-right">
+    <b>transitrix.com</b><br>
+    Free to share and print — no sign-up
+  </div>
+</header>
+
+<div class="body">
+
+  <!-- ═══ FRAMEWORK ═══ -->
+  <section>
+    <h2 class="ph">The framework <em>layer answers <b>whom it serves</b> · aspect answers <b>what kind of thing it is</b></em></h2>
+    <div class="fw">
+      <div></div>
+      <div class="hd">Active structure<i>who or what does it</i></div>
+      <div class="hd">Behaviour<i>what is done</i></div>
+      <div class="hd">Passive structure<i>what it is done to</i></div>
+
+      <!-- MOTIVATION -->
+      <div class="lay r-mot" style="grid-row:span 1">Motivation<i>why — its own aspect</i></div>
+      <div class="cell mot r-mot"><span>Stakeholder</span><span>Driver</span><span>Assessment</span><span>Goal</span><span>Outcome</span><span>Principle</span><span>Requirement</span><span>Constraint</span><span>Meaning</span><span>Value</span></div>
+
+      <!-- STRATEGY -->
+      <div class="lay r-str">Strategy<i>what we must be able to do</i></div>
+      <div class="cell r-str"><span>Resource</span></div>
+      <div class="cell r-str"><span>Capability</span><span>Value Stream</span><span>Course of Action</span></div>
+      <div class="cell r-str none">—</div>
+
+      <!-- BUSINESS -->
+      <div class="lay r-bus">Business<i>what the organisation does for its customers</i></div>
+      <div class="cell r-bus"><span>Business Actor</span><span>Business Role</span><span>Business Collaboration</span><span>Business Interface</span></div>
+      <div class="cell r-bus"><span>Business Process</span><span>Business Function</span><span>Business Interaction</span><span>Business Event</span><span>Business Service</span></div>
+      <div class="cell r-bus"><span>Business Object</span><span>Contract</span><span>Representation</span><span class="mark">Product&nbsp;†</span></div>
+
+      <!-- APPLICATION -->
+      <div class="lay r-app">Application<i>what software does for the business</i></div>
+      <div class="cell r-app"><span>Application Component</span><span>Application Collaboration</span><span>Application Interface</span></div>
+      <div class="cell r-app"><span>Application Function</span><span>Application Interaction</span><span>Application Process</span><span>Application Event</span><span>Application Service</span></div>
+      <div class="cell r-app"><span>Data Object</span></div>
+
+      <!-- TECHNOLOGY -->
+      <div class="lay r-tec">Technology<i>what infrastructure does for software</i></div>
+      <div class="cell r-tec"><span>Node</span><span>Device</span><span>System Software</span><span>Technology Collaboration</span><span>Technology Interface</span><span>Path</span><span>Communication Network</span></div>
+      <div class="cell r-tec"><span>Technology Function</span><span>Technology Process</span><span>Technology Interaction</span><span>Technology Event</span><span>Technology Service</span></div>
+      <div class="cell r-tec"><span>Artifact</span></div>
+
+      <!-- PHYSICAL -->
+      <div class="lay r-phy">Physical<i><span class="phy-note">part of Technology, not a layer of its own</span></i></div>
+      <div class="cell r-phy"><span>Equipment</span><span>Facility</span><span>Distribution Network</span></div>
+      <div class="cell r-phy none">— uses Technology behaviour</div>
+      <div class="cell r-phy"><span>Material</span></div>
+
+      <!-- IMPLEMENTATION -->
+      <div class="lay r-imp">Implementation &amp; Migration<i>how we get there</i></div>
+      <div class="cell r-imp none">—</div>
+      <div class="cell r-imp"><span>Work Package</span><span>Implementation Event</span></div>
+      <div class="cell r-imp"><span>Deliverable</span><span class="mark">Plateau&nbsp;‡</span><span class="mark">Gap&nbsp;‡</span></div>
+
+      <!-- COMPOSITE -->
+      <div class="lay r-com">Composite<i>no layer of their own</i></div>
+      <div class="cell mot r-com"><span>Grouping — anything that belongs together</span><span>Location — where elements sit or behaviour happens</span></div>
+    </div>
+    <p class="fw-note"><b>†&nbsp;Product is composite</b>, not passive structure: it aggregates services and passive elements across layers, under a contract. Most cheat sheets file it wrongly. &nbsp;<b>‡&nbsp;Plateau</b> aggregates core elements as they stand at one point in time; <b>Gap</b> states the difference between two plateaus.</p>
+  </section>
+
+  <!-- ═══ RELATIONSHIPS ═══ -->
+  <section>
+    <h2 class="ph">Relationships <em>11 + junction</em></h2>
+    <div class="rel">
+
+      <div class="grp">Structural — static coherence</div>
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M11 5.5H49" stroke="#1c2224" stroke-width="1.1" fill="none"/><path d="M1 5.5 L6 2.6 L11 5.5 L6 8.4 Z" fill="#1c2224"/></svg></div>
+      <div><b>Composition</b><span>the part cannot exist without the whole</span></div>
+
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M11 5.5H49" stroke="#1c2224" stroke-width="1.1" fill="none"/><path d="M1 5.5 L6 2.6 L11 5.5 L6 8.4 Z" fill="#fff" stroke="#1c2224" stroke-width="1.1"/></svg></div>
+      <div><b>Aggregation</b><span>groups parts that can exist alone</span></div>
+
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M5 5.5H43" stroke="#1c2224" stroke-width="1.1" fill="none"/><circle cx="3.4" cy="5.5" r="2.6" fill="#1c2224"/><path d="M43 2.6 L49 5.5 L43 8.4 Z" fill="#1c2224"/></svg></div>
+      <div><b>Assignment</b><span>who performs it, where it runs</span></div>
+
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M1 5.5H41" stroke="#1c2224" stroke-width="1.1" fill="none" stroke-dasharray="3 2.2"/><path d="M41 2 L49 5.5 L41 9 Z" fill="#fff" stroke="#1c2224" stroke-width="1.1"/></svg></div>
+      <div><b>Realization</b><span>the concrete one delivers the abstract one</span></div>
+
+      <div class="grp">Dependency — one needs another</div>
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M1 5.5H45" stroke="#1c2224" stroke-width="1.1" fill="none"/><path d="M43 2.4 L49 5.5 L43 8.6" stroke="#1c2224" stroke-width="1.1" fill="none"/></svg></div>
+      <div><b>Serving</b><span>provides its functionality to another</span></div>
+
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M1 5.5H45" stroke="#1c2224" stroke-width="1.1" fill="none" stroke-dasharray="2 2"/><path d="M44 3 L49 5.5 L44 8" stroke="#1c2224" stroke-width="1" fill="none"/></svg></div>
+      <div><b>Access</b><span>reads, writes or deletes a passive element</span></div>
+
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><text x="0" y="3.6" font-family="IBM Plex Mono, monospace" font-size="5.4" fill="#1c2224">+/-</text><path d="M1 8H45" stroke="#1c2224" stroke-width="1.1" fill="none" stroke-dasharray="4 2.4"/><path d="M44 5.5 L49 8 L44 10.5" stroke="#1c2224" stroke-width="1" fill="none"/></svg></div>
+      <div><b>Influence</b><span>affects a motivation element, for or against</span></div>
+
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M1 5.5H49" stroke="#1c2224" stroke-width="1.1" fill="none"/></svg></div>
+      <div><b>Association</b><span>a link the language has no word for</span></div>
+
+      <div class="grp">Dynamic — something moves</div>
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M1 5.5H43" stroke="#1c2224" stroke-width="1.1" fill="none"/><path d="M43 2.6 L49 5.5 L43 8.4 Z" fill="#1c2224"/></svg></div>
+      <div><b>Triggering</b><span>this then that — order in time</span></div>
+
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M1 5.5H43" stroke="#1c2224" stroke-width="1.1" fill="none" stroke-dasharray="4 2.4"/><path d="M43 2.6 L49 5.5 L43 8.4 Z" fill="#1c2224"/></svg></div>
+      <div><b>Flow</b><span>something is transferred — data, money, goods</span></div>
+
+      <div class="grp">Other &amp; connector</div>
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><path d="M1 5.5H41" stroke="#1c2224" stroke-width="1.1" fill="none"/><path d="M41 2 L49 5.5 L41 9 Z" fill="#fff" stroke="#1c2224" stroke-width="1.1"/></svg></div>
+      <div><b>Specialization</b><span>is a particular kind of</span></div>
+
+      <div><svg width="50" height="11" viewBox="0 0 50 11"><circle cx="14" cy="5.5" r="3" fill="#1c2224"/><circle cx="36" cy="5.5" r="3" fill="#fff" stroke="#1c2224" stroke-width="1.1"/></svg></div>
+      <div><b>Junction</b><span>and&nbsp;/&nbsp;or — joins relationships of one type</span></div>
+    </div>
+
+    <div class="deriv">
+      <span class="dh">The derivation rule — the one worth memorising</span>
+      A chain of relationships pointing the same way can be replaced by <b>the weakest link in the chain</b>. That is how a diagram stays readable when you zoom out.<br>
+      <code>composition › aggregation › assignment › realization › serving › access › influence › association</code>
+    </div>
+
+    <div class="confuse">
+      <span class="dh">Three pairs that get confused</span>
+      <p><b>Assignment vs realization.</b> Assignment allocates a performer — an actor <i>does</i> a process. Realization says something concrete delivers something abstract — a process <i>provides</i> a service.</p>
+      <p><b>Serving vs flow.</b> Serving is a standing offer: it is available to you. Flow is one actual transfer during one run.</p>
+      <p><b>Composition vs aggregation.</b> A composed part dies with its whole and has exactly one whole. An aggregated part survives on its own and may belong to several.</p>
+    </div>
+  </section>
+
+  <!-- ═══ BOTTOM STRIP ═══ -->
+  <aside class="strip">
+    <div>
+      <h3>Placing an element — two questions</h3>
+      <p><b>1. Whom does it serve?</b> That is the layer. Technology serves applications, applications serve the business, the business serves its customers. <b>2. What kind of thing is it?</b> Active structure does something, behaviour is what is done, passive structure is what it is done to.</p>
+    </div>
+    <div>
+      <h3>Internal or external — the pair people miss</h3>
+      <p>Every layer repeats the same pair. A <b>Service</b> is the outward face of <b>behaviour</b> — what others may use. An <b>Interface</b> is the outward face of <b>active structure</b> — where they reach it. Everything else in the layer is internal, and no one outside should depend on it.</p>
+    </div>
+    <div>
+      <h3>Reading the notation</h3>
+      <p><b>Colour is convention, not specification</b> — yellow business, blue application, green technology, purple motivation, tan strategy, pink implementation. The small <b>icon in the top-right</b> corner of a box carries the actual element type; a rounded box is behaviour, a square one is structure.</p>
+    </div>
+  </aside>
+
+</div>
+
+<footer>
+  <span>Made with <b>Transitrix</b> — an open method for describing a company as text · transitrix.com</span>
+  <span>Element set per the ArchiMate&reg; 3.2 Specification. ArchiMate is a registered trademark of The Open Group.</span>
+  <span class="free">More sheets: transitrix.com/library</span>
+</footer>
+
+</div>
+</body>
+</html>

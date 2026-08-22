@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ArchiMate cheat sheet</title>
+  <meta name="description" content="All 60 elements of ArchiMate® 3.2 in one grid, placed by the two questions that decide where an element belongs. Free to read on the page or take away as a PDF — no sign-up.">
+  <link rel="canonical" href="https://transitrix.com/library/archimate-cheat-sheet/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://transitrix.com/library/archimate-cheat-sheet/">
+  <meta property="og:title" content="ArchiMate cheat sheet">
+  <meta property="og:description" content="All 60 elements of ArchiMate® 3.2 in one grid, placed by the two questions that decide where an element belongs. Free to read on the page or take away as a PDF — no sign-up.">
+  <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <p class="pub-date"><a href="../">&larr; Library</a></p>
+      <h1>ArchiMate cheat sheet — every element, by layer and aspect</h1>
+      <p class="lede">All 60 elements of ArchiMate&reg; 3.2 in one grid, placed by the two questions that decide where an element belongs.</p>
+      <div class="sheet-actions">
+        <a class="btn" href="archimate-cheat-sheet.pdf">Download the PDF</a>
+        <span class="free-note">Free to share and print — no sign-up</span>
+      </div>
+    </div>
+
+    <section aria-labelledby="framework-heading">
+      <h2 id="framework-heading">The framework</h2>
+      <p>Layer answers <strong>whom it serves</strong> · aspect answers <strong>what kind of thing it is</strong>.</p>
+      <div class="sheet-framework">
+        <div class="sheet-layer">
+          <h3>Motivation</h3>
+          <p class="layer-desc">why — its own aspect</p>
+          <div class="sheet-aspect">
+            <span class="aspect-items">Stakeholder, Driver, Assessment, Goal, Outcome, Principle, Requirement, Constraint, Meaning, Value</span>
+          </div>
+        </div>
+
+        <div class="sheet-layer">
+          <h3>Strategy</h3>
+          <p class="layer-desc">what we must be able to do</p>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Active structure — who or what does it</span>
+            <span class="aspect-items">Resource</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Behaviour — what is done</span>
+            <span class="aspect-items">Capability, Value Stream, Course of Action</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Passive structure — what it is done to</span>
+            <span class="aspect-none">—</span>
+          </div>
+        </div>
+
+        <div class="sheet-layer">
+          <h3>Business</h3>
+          <p class="layer-desc">what the organisation does for its customers</p>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Active structure — who or what does it</span>
+            <span class="aspect-items">Business Actor, Business Role, Business Collaboration, Business Interface</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Behaviour — what is done</span>
+            <span class="aspect-items">Business Process, Business Function, Business Interaction, Business Event, Business Service</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Passive structure — what it is done to</span>
+            <span class="aspect-items">Business Object, Contract, Representation, Product&nbsp;†</span>
+          </div>
+        </div>
+
+        <div class="sheet-layer">
+          <h3>Application</h3>
+          <p class="layer-desc">what software does for the business</p>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Active structure — who or what does it</span>
+            <span class="aspect-items">Application Component, Application Collaboration, Application Interface</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Behaviour — what is done</span>
+            <span class="aspect-items">Application Function, Application Interaction, Application Process, Application Event, Application Service</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Passive structure — what it is done to</span>
+            <span class="aspect-items">Data Object</span>
+          </div>
+        </div>
+
+        <div class="sheet-layer">
+          <h3>Technology</h3>
+          <p class="layer-desc">what infrastructure does for software</p>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Active structure — who or what does it</span>
+            <span class="aspect-items">Node, Device, System Software, Technology Collaboration, Technology Interface, Path, Communication Network</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Behaviour — what is done</span>
+            <span class="aspect-items">Technology Function, Technology Process, Technology Interaction, Technology Event, Technology Service</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Passive structure — what it is done to</span>
+            <span class="aspect-items">Artifact</span>
+          </div>
+        </div>
+
+        <div class="sheet-layer">
+          <h3>Physical</h3>
+          <p class="layer-desc">part of Technology, not a layer of its own</p>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Active structure — who or what does it</span>
+            <span class="aspect-items">Equipment, Facility, Distribution Network</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Behaviour — what is done</span>
+            <span class="aspect-none">— uses Technology behaviour</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Passive structure — what it is done to</span>
+            <span class="aspect-items">Material</span>
+          </div>
+        </div>
+
+        <div class="sheet-layer">
+          <h3>Implementation &amp; Migration</h3>
+          <p class="layer-desc">how we get there</p>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Active structure — who or what does it</span>
+            <span class="aspect-none">—</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Behaviour — what is done</span>
+            <span class="aspect-items">Work Package, Implementation Event</span>
+          </div>
+          <div class="sheet-aspect">
+            <span class="aspect-label">Passive structure — what it is done to</span>
+            <span class="aspect-items">Deliverable, Plateau&nbsp;‡, Gap&nbsp;‡</span>
+          </div>
+        </div>
+
+        <div class="sheet-layer">
+          <h3>Composite</h3>
+          <p class="layer-desc">no layer of their own</p>
+          <div class="sheet-aspect">
+            <span class="aspect-items">Grouping — anything that belongs together, Location — where elements sit or behaviour happens</span>
+          </div>
+        </div>
+      </div>
+      <p class="sheet-footnote"><strong>†&nbsp;Product is composite</strong>, not passive structure: it aggregates services and passive elements across layers, under a contract. Most cheat sheets file it wrongly. <strong>‡&nbsp;Plateau</strong> aggregates core elements as they stand at one point in time; <strong>Gap</strong> states the difference between two plateaus.</p>
+    </section>
+
+    <section aria-labelledby="relationships-heading">
+      <h2 id="relationships-heading">Relationships</h2>
+      <p>11 + junction.</p>
+      <div class="sheet-relationships">
+        <div class="sheet-rel-group">
+          <h3>Structural — static coherence</h3>
+          <ul class="sheet-rel-list">
+            <li><b>Composition</b><span>the part cannot exist without the whole</span></li>
+            <li><b>Aggregation</b><span>groups parts that can exist alone</span></li>
+            <li><b>Assignment</b><span>who performs it, where it runs</span></li>
+            <li><b>Realization</b><span>the concrete one delivers the abstract one</span></li>
+          </ul>
+        </div>
+        <div class="sheet-rel-group">
+          <h3>Dependency — one needs another</h3>
+          <ul class="sheet-rel-list">
+            <li><b>Serving</b><span>provides its functionality to another</span></li>
+            <li><b>Access</b><span>reads, writes or deletes a passive element</span></li>
+            <li><b>Influence</b><span>affects a motivation element, for or against</span></li>
+            <li><b>Association</b><span>a link the language has no word for</span></li>
+          </ul>
+        </div>
+        <div class="sheet-rel-group">
+          <h3>Dynamic — something moves</h3>
+          <ul class="sheet-rel-list">
+            <li><b>Triggering</b><span>this then that — order in time</span></li>
+            <li><b>Flow</b><span>something is transferred — data, money, goods</span></li>
+          </ul>
+        </div>
+        <div class="sheet-rel-group">
+          <h3>Other &amp; connector</h3>
+          <ul class="sheet-rel-list">
+            <li><b>Specialization</b><span>is a particular kind of</span></li>
+            <li><b>Junction</b><span>and / or — joins relationships of one type</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>The derivation rule — the one worth memorising.</strong>
+        A chain of relationships pointing the same way can be replaced by the weakest link in the chain. That is how a diagram stays readable when you zoom out.
+        <pre><code>composition &rsaquo; aggregation &rsaquo; assignment &rsaquo; realization &rsaquo; serving &rsaquo; access &rsaquo; influence &rsaquo; association</code></pre>
+      </div>
+
+      <div class="sheet-confuse">
+        <h3>Three pairs that get confused</h3>
+        <p><strong>Assignment vs realization.</strong> Assignment allocates a performer — an actor <em>does</em> a process. Realization says something concrete delivers something abstract — a process <em>provides</em> a service.</p>
+        <p><strong>Serving vs flow.</strong> Serving is a standing offer: it is available to you. Flow is one actual transfer during one run.</p>
+        <p><strong>Composition vs aggregation.</strong> A composed part dies with its whole and has exactly one whole. An aggregated part survives on its own and may belong to several.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="reading-heading">
+      <h2 id="reading-heading">Reading the sheet</h2>
+      <div class="stack-grid">
+        <article class="card">
+          <h3>Placing an element — two questions</h3>
+          <p><strong>1. Whom does it serve?</strong> That is the layer. Technology serves applications, applications serve the business, the business serves its customers. <strong>2. What kind of thing is it?</strong> Active structure does something, behaviour is what is done, passive structure is what it is done to.</p>
+        </article>
+        <article class="card">
+          <h3>Internal or external — the pair people miss</h3>
+          <p>Every layer repeats the same pair. A <strong>Service</strong> is the outward face of <strong>behaviour</strong> — what others may use. An <strong>Interface</strong> is the outward face of <strong>active structure</strong> — where they reach it. Everything else in the layer is internal, and no one outside should depend on it.</p>
+        </article>
+        <article class="card">
+          <h3>Reading the notation</h3>
+          <p><strong>Colour is convention, not specification</strong> — yellow business, blue application, green technology, purple motivation, tan strategy, pink implementation. The small <strong>icon in the top-right</strong> corner of a box carries the actual element type; a rounded box is behaviour, a square one is structure.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="about-sheet-heading">
+      <h2 id="about-sheet-heading">About this sheet</h2>
+      <div class="sheet-attribution">
+        <p>Made with <strong>Transitrix</strong> — an open method for describing a company as text · transitrix.com</p>
+        <p>Element set per the ArchiMate&reg; 3.2 Specification. ArchiMate is a registered trademark of The Open Group.</p>
+        <p>More sheets: <a href="../">transitrix.com/library</a></p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://x.com/transitrix">@transitrix</a> ·
+        <a href="https://korobeinikov.consulting">korobeinikov.consulting</a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../assets/js/theme.js"></script>
+</body>
+</html>
