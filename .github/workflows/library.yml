@@ -1,0 +1,38 @@
+name: Library
+
+# The library's shape and no-gate contract - see library/README.md - is
+# machine-enforced so an item that violates it fails the build rather than
+# reaching a reader. Passes vacuously with zero items present.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'library/**'
+      - 'scripts/check_library.py'
+      - '.github/workflows/library.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'library/**'
+      - 'scripts/check_library.py'
+      - '.github/workflows/library.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-library:
+    runs-on: ubuntu-latest
+    name: library/ shape and no-gate contract hold
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check library/ contract
+        run: python3 scripts/check_library.py
