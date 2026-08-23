@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The .ttrs recipe format | Transitrix</title>
+  <meta name="description" content="The .ttrs recipe format: what a recipe contains, how the filename's middle segment names the document kind, the directive language, and the reference states an implementation must distinguish.">
+  <link rel="canonical" href="https://transitrix.com/recipes/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://transitrix.com/recipes/">
+  <meta property="og:title" content="The .ttrs recipe format | Transitrix">
+  <meta property="og:description" content="The .ttrs recipe format: what a recipe contains, how the filename's middle segment names the document kind, the directive language, and the reference states an implementation must distinguish.">
+  <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" hreflang="de" href="../de/recipes/">
+  <link rel="alternate" hreflang="en" href="./">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <nav class="lang-switch" aria-label="Language">
+          <a href="./" aria-current="true">EN</a>
+          <a href="../de/recipes/" hreflang="de">DE</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <h1>The <code>.ttrs</code> recipe format</h1>
+      <p class="lede">A recipe is prose with <code>{{ … }}</code> directives in it. The prose is copied through as written; each directive names something in a Transitrix model and is replaced by what it resolves to.</p>
+    </div>
+
+    <section aria-labelledby="jump-heading">
+      <h2 id="jump-heading">On this page</h2>
+      <ul class="qs-viewers">
+        <li><a href="#file">What a recipe contains</a> · <a href="#filename">How the filename is read</a></li>
+        <li><a href="#language">The directive language</a> · <a href="#fragment">A worked fragment</a></li>
+        <li><a href="#states">Reference states</a> · <a href="#profiles">Render profiles</a></li>
+        <li><a href="#today">What exists today</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="file">
+      <h2 id="file">What a recipe contains</h2>
+      <p>One text file, in two parts: a YAML header, then the recipe body.</p>
+      <p>The body is ordinary prose. Everything outside <code>{{ … }}</code> is fixed text and is copied through verbatim; each <code>{{ … }}</code> is a directive that names something in the model and is replaced by what it resolves to.</p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy the header example to clipboard">Copy</button>
+        <pre><code>---
+document: Market Requirements Document   # required — the name its readers use
+kind: mrd                                # required — matches the filename's middle segment
+template_id: product.mrd                 # required — named in the run record
+template_version: "1.0"                  # required — named in the run record
+canon: ../canon                          # optional — the model repository
+---</code></pre>
+      </div>
+      <p>Four header fields are required; <code>canon:</code> is not. A recipe that names no model object and no derived figure resolves standalone, with no repository configured at all — that is a legitimate input in its own right, and an implementation reading such a recipe reports the no-repository state rather than treating it as a failed lookup.</p>
+    </section>
+
+    <section aria-labelledby="filename">
+      <h2 id="filename">How the filename is read</h2>
+      <div class="code-wrapper">
+        <pre><code>&lt;basename&gt;.&lt;kind&gt;.ttrs        e.g.  product.mrd.ttrs
+                                    platform.srs.ttrs
+                                    gateway.sdd.ttrs</code></pre>
+      </div>
+      <p><strong>The middle segment is the document <em>kind</em> — never a notation.</strong> A kind is a shape over the model: which elements a document of that kind selects, and how they are arranged. It carries no content of its own, gets no directive language of its own, and a new kind never means a new language. The kinds specified today are <code>mrd</code>, <code>srs</code>, <code>sdd</code> and <code>sds</code>; the header's <code>kind:</code> must agree with the filename.</p>
+      <p>Each notation has exactly one canonical extension, and it is either <code>*.&lt;short-name&gt;.transitrix.yaml</code> or <code>*.&lt;short-name&gt;.ttrs</code>. Which one a given notation takes is a property of that notation. Where <code>.ttrs</code> applies it replaces the longer suffix in full — it is never appended to it, and no notation carries both.</p>
+      <p><code>.trs</code> is one keystroke away and is a different, widely used format. A file ending <code>.trs</code> where a recipe is expected is reported as that near-miss by name, not as an unknown file.</p>
+    </section>
+
+    <section aria-labelledby="language">
+      <h2 id="language">The directive language</h2>
+      <p>Delimiters are <code>{{</code> and <code>}}</code>. Whitespace just inside them is insignificant, so <code>{{REQ-14}}</code> and <code>{{ REQ-14 }}</code> are the same directive. <code>\{{</code> renders a literal <code>{{</code> and is the only escape in the language. No directive nests inside another, except that the two block forms below take a body.</p>
+
+      <h3>Inline forms</h3>
+      <ul>
+        <li><code>{{ REQ-14 }}</code> — <strong>inline reference.</strong> Substitutes the named object's display value.</li>
+        <li><code>{{ REQ-14.parent.title }}</code> — <strong>field path.</strong> Substitutes one field, walking through any middle segment that itself names an object. <strong>Traversal is capped at depth 3</strong>, and a longer path is a failure rather than a deeper walk.</li>
+        <li><code>{{ .field }}</code> — <strong>row reference.</strong> A field of the current row of the enclosing <code>each</code> block, and meaningful only inside one.</li>
+        <li><code>{{ trace from = … to = … via = … }}</code> — <strong>trace.</strong> Renders trace coverage between two element types along one relation; all three attributes are required.</li>
+        <li><code>{{ view &lt;path&gt; [as = …] [fit = width|page|none] }}</code> — <strong>derived figure.</strong> A view authored in an existing notation and rendered from the model. <code>fit</code> defaults to <code>width</code>.</li>
+        <li><code>{{ figure &lt;path&gt; [caption = "…"] [as = …] }}</code> — <strong>supplied figure.</strong> An asset embedded as it is; never generated.</li>
+        <li><code>{{ figref &lt;name&gt; }}</code> — <strong>figure cross-reference</strong>, by the <code>as</code> name of a figure declared earlier in the same document. Figures are numbered in document order, and a forward reference is a failure rather than a deferred lookup.</li>
+      </ul>
+
+      <h3>Block forms — there are exactly two</h3>
+      <p><code>{{# each &lt;TYPE&gt; [where …] [order by &lt;field&gt;] }} … {{/ each }}</code> repeats its body once per selected element, binding each in turn as the current row. The <code>where</code> clause is deliberately small: <code>and</code> only, no <code>or</code> and no parentheses; <code>=</code> and <code>!=</code> only; a literal on the right-hand side, never another field. <code>order by</code> takes a single field, and is what makes a rendered document reproducible.</p>
+      <p><code>{{# instruct &lt;slot-id&gt; }} … {{/ instruct }}</code> declares an instruction slot — a section a deterministic pass does not fill, carrying <code>question:</code> and <code>sufficient:</code> (both required) and an optional comma-separated <code>inputs:</code>. <strong>A slot body is opaque:</strong> a parser scans from the opening tag straight to the matching close and keeps everything between as raw text, so a <code>{{ REQ-14 }}</code> written inside a slot is instruction prose and is never resolved. Slot ids are lower-case letters, digits and hyphens, and must be unique within a document.</p>
+
+      <h3>Identifiers</h3>
+      <p>An id follows the canonical grammar — <code>REQ-14</code>, <code>CAP-1</code>, <code>BUSINESS_SERVICE-3</code>. A capability id embeds a diagram address whose dots belong to the id, so a parser splits the <code>CAPABILITY-V</code> / <code>CAPABILITY-H</code> prefix off before it reads a field path: <code>{{ CAPABILITY-V1.2.3 }}</code> is one id and no field path, while <code>{{ CAPABILITY-V1.2.3.name }}</code> is that same id with the field path <code>name</code>.</p>
+    </section>
+
+    <section aria-labelledby="fragment">
+      <h2 id="fragment">A worked fragment</h2>
+      <p>The committed conformance fixture, in full — a header, fixed text, a reference, a field path, a two-step path, a derived figure with a cross-reference to it, and one instruction slot.</p>
+      <div class="code-wrapper">
+        <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy the worked fragment to clipboard">Copy</button>
+        <pre><code>---
+document: Market Requirements Document
+kind: mrd
+template_id: product.mrd
+template_version: "1.0"
+canon: canon
+---
+# {{ CAP-1.title }}
+
+## Scope
+
+This document covers {{ CAP-1.text }}
+
+## Requirements
+
+**{{ REQ-14 }}** — {{ REQ-14.text }}
+
+Its parent capability is {{ REQ-14.parent.name }}.
+
+{{ view diagrams/context.blocks.transitrix.yaml as = context fit = width }}
+
+{{ figref context }} shows where the capability sits.
+
+## Market
+
+{{# instruct market-size }}
+question: How large is the addressable market for this capability, and how fast is it growing?
+inputs: CAP-1, REQ-14
+sufficient: A market size with a currency and a year, a growth rate, and the method used to derive both.
+{{/ instruct }}</code></pre>
+      </div>
+      <p>The file is <a href="https://github.com/transitrix/methodology/blob/main/packages/document-renderer/tests/fixtures/product.mrd.ttrs">product.mrd.ttrs</a>, and the output it must produce is frozen beside it as <a href="https://github.com/transitrix/methodology/blob/main/packages/document-renderer/tests/fixtures/product.mrd.expected.md">product.mrd.expected.md</a>.</p>
+    </section>
+
+    <section aria-labelledby="states">
+      <h2 id="states">Reference states</h2>
+      <p>Resolving a reference yields exactly one state. Besides <em>ok</em> — resolved, admitted, and inside its validity interval — the language names five, and <strong>an implementation must keep every state it reports distinct from every other.</strong></p>
+      <ul>
+        <li><strong>unresolved</strong> <code>⚑U</code> — no object with that id exists.</li>
+        <li><strong>not admitted</strong> <code>⚑A</code> — the object exists, but its admission state is not active.</li>
+        <li><strong>out of validity</strong> <code>⚑V</code> — its validity interval does not cover the render date.</li>
+        <li><strong>suspect</strong> <code>⚑S</code> — the object resolves, but the link to it is under suspicion.</li>
+        <li><strong>no repository configured</strong> — the document cites the model, and none is configured.</li>
+      </ul>
+      <p>The first three are classified in that order: existence, then admission, then validity. Collapsing any two states into one is non-conformance rather than a simplification — <em>you have no repository</em> and <em>your repository lacks this id</em> are different problems with different fixes, and each state names a different thing for its reader to go and do.</p>
+      <p><strong>A non-ok reference never renders as its bare value.</strong> The state that reads as correct text is the one a reader has no way to see.</p>
+      <p><code>⚑S</code> is derived from commit history rather than read from a file, and is the one state an implementation may decline to compute. Declining is permitted; being silent about it is not — three outcomes have to stay distinguishable: <em>suspect</em>, <em>checked and clean</em>, and <em>never checked</em>. A document that renders with no <code>⚑S</code> anywhere is making a claim, and an implementation that never ran the check has made no claim at all.</p>
+    </section>
+
+    <section aria-labelledby="profiles">
+      <h2 id="profiles">Render profiles</h2>
+      <p>An implementation offers at least two profiles, both selectable, and names which one a given run used:</p>
+      <ul>
+        <li><strong>strict</strong> — fails the run on every non-ok state it computes, by exit status and not only in prose.</li>
+        <li><strong>lenient</strong> — does not fail; renders each reference it can, every non-ok one carrying its flag, and reports every state it found.</li>
+      </ul>
+      <p>Two rules bind the pair: the lenient profile detects <em>exactly</em> what the strict one fails on — not a subset — and neither profile renders a non-ok reference as its bare value. The names above are the roles rather than a required spelling.</p>
+      <p>An implementation may leave any construct of the language unimplemented, and admitting a subset is expected. What it states in its own documentation is both halves: what it admits, and what it recognises and declines. A recognised-but-unimplemented construct fails by that name, under a code distinct from the one used for unknown or malformed syntax — the two messages are <em>this is not in the language</em> and <em>this is in the language and not in this tool</em>, and they send an author to different places.</p>
+    </section>
+
+    <section aria-labelledby="today">
+      <h2 id="today">What exists today</h2>
+      <ul>
+        <li><strong>The normative specification</strong> — <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/DIRECTIVE_LANGUAGE.md">DIRECTIVE_LANGUAGE.md</a>, version 1.0, stable, dated 2026-08-07. It is a conformance contract written to be built against, and it defines the language once for every recipe that uses it. Where it and any implementation disagree, the specification wins.</li>
+        <li><strong>The reference implementation</strong> — <a href="https://github.com/transitrix/methodology/blob/main/packages/document-renderer/README.md">@transitrix/document-renderer</a>, the parser and its deterministic first pass. It exists to make the specification checkable, and its README states which constructs it admits and which it defers.</li>
+        <li><strong>The conformance fixture</strong> — a complete recipe and its frozen output, committed together. It is the artefact an independent implementation diffs its own output against, and it is never regenerated.</li>
+        <li><strong>The kinds specified today</strong> — <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/29-mrd.md">29-mrd.md</a>, <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/30-srs.md">30-srs.md</a>, <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/31-sdd.md">31-sdd.md</a>, each defining a shape rather than a language.</li>
+      </ul>
+      <div class="note">
+        <strong>Reading further</strong> — the class index is <a href="https://github.com/transitrix/methodology/blob/main/notations/views/documents/README.md">notations/views/documents/README.md</a>; the shared header and extension rules every notation follows are in <a href="https://github.com/transitrix/methodology/blob/main/notations/CONTRACT.md">CONTRACT.md</a>. For the YAML notations and their file shapes, see the <a href="/dsl-examples/">DSL examples</a>.
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://x.com/transitrix">@transitrix</a> ·
+        <a href="https://korobeinikov.consulting">korobeinikov.consulting</a>
+      </p>
+      <nav class="lang-switch" aria-label="Language">
+        <a href="./" aria-current="true">EN</a>
+        <a href="../de/recipes/" hreflang="de">DE</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="../assets/js/theme.js"></script>
+</body>
+</html>

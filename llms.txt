@@ -2,14 +2,14 @@
 
 > Transitrix: open methodology and tools to describe an enterprise as text — and let humans and machines run it together. An open research initiative: ArchiMate-grounded, business-layer, one formal model projected across every architectural layer, authored as plain YAML in git.
 
-Most Transitrix source files are plain YAML: a `notation:` key naming the format and a `*.<notation>.transitrix.yaml` filename suffix — there is no `type:`/`version:` wrapper, no single-key `flow:` array, no `next:`-based sequencing. Document sources are the other shape: prose with `{{ … }}` directives, named `*.<kind>.ttrs`, where the middle segment is the document kind (`product.mrd.ttrs`) and never a notation.
+Most Transitrix source files are plain YAML: a `notation:` key naming the format and a `*.<notation>.transitrix.yaml` filename suffix — there is no `type:`/`version:` wrapper, no single-key `flow:` array, no `next:`-based sequencing. Recipes are the other shape: prose with `{{ … }}` directives, named `*.<kind>.ttrs`, where the middle segment is the document kind (`product.mrd.ttrs`) and never a notation.
 
 Each notation has exactly one canonical extension — either `*.<short-name>.transitrix.yaml` or `*.<short-name>.ttrs` — and which one it takes is a property of that notation. `.ttrs` replaces the longer suffix in full for the notation that takes it; it is never appended to it, and no notation carries both. Do not invent a shape; use the canonical examples linked below.
 
 ## Canonical reference
 
 - [DSL examples](https://transitrix.com/dsl-examples/): One minimal, schema-valid YAML example per notation Transitrix Studio ships (BPMN, goals, DGCA, capability maps, process maps, process blueprints, activity networks, activity cards, scenarios, applications, products, nested blocks, compliance impact) — copy-paste ready, all on one page.
-- [Document source format `.ttrs`](https://transitrix.com/ttrs/): What a `.ttrs` source file contains, how `<basename>.<kind>.ttrs` is read, the `{{ … }}` directive language, and the reference states an implementation must distinguish. Links the normative specification, the reference implementation and the conformance fixture.
+- [Recipe format `.ttrs`](https://transitrix.com/recipes/): What a `.ttrs` recipe contains, how `<basename>.<kind>.ttrs` is read, the `{{ … }}` directive language, and the reference states an implementation must distinguish. Links the normative specification, the reference implementation and the conformance fixture.
 - [Notation specs](https://github.com/transitrix/methodology/tree/main/notations): The full specification for every notation, with larger worked examples per format.
 - [JSON Schemas](https://github.com/transitrix/transitrix-studio/tree/main/schemas): Machine-checkable schemas backing the notations.
 
