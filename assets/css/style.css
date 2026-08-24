@@ -337,6 +337,10 @@ section > p {
   gap: 1rem;
 }
 
+.footer-attribution {
+  margin: 0.75rem 0 0;
+}
+
 /* Language gateway */
 .gateway {
   min-height: 100vh;
