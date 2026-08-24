@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How the repository works | Transitrix</title>
+  <meta name="description" content="The repository layout behind Transitrix: field, codex, knowledge and canon folders, the pull-request gate that admits a change, and how every diagram and document is generated from the model.">
+  <link rel="canonical" href="https://transitrix.com/explainers/how-the-repository-works/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://transitrix.com/explainers/how-the-repository-works/">
+  <meta property="og:title" content="How the repository works | Transitrix">
+  <meta property="og:description" content="The repository layout behind Transitrix: field, codex, knowledge and canon folders, the pull-request gate that admits a change, and how every diagram and document is generated from the model.">
+  <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <p class="pub-date"><a href="../">&larr; Explainers</a></p>
+      <h1>How the repository works</h1>
+    </div>
+
+    <section>
+      <h2>One repository, and everything else comes out of it</h2>
+      <p>Your architecture lives in a folder, in files a person can read. Not in a tool, not in a database, not in a hundred diagrams that stopped agreeing with each other two years ago.</p>
+      <p>Everything below is about that folder: what goes where, who may put it there, and what you get back.</p>
+
+      <h2>What you already have</h2>
+      <p>Interviews. A spreadsheet someone emailed. A slide deck from a project that finished. Notes from a meeting where three people described the same process differently.</p>
+      <p>None of it is thrown away, and none of it is cleaned up first. Nor does it have to be converted first: Word, PowerPoint, Excel, PDF, HTML — all of it becomes Markdown on the way in, and anything already written in Markdown or plain text goes in untouched. The original file is kept, with a fingerprint, so anything built on it leads back to the document it came from.</p>
+
+      <h2><code>field/</code> — what you were told</h2>
+      <p>Raw material, exactly as it arrived. An interview stays an interview. A draft stays a draft.</p>
+      <p>Two people may contradict each other here, and that is not a problem to fix: this folder records <strong>what was said</strong>, not what is true. What matters is knowing who said it and when, so that anything built on it can be traced back.</p>
+
+      <h2><code>codex/</code> — what you must obey</h2>
+      <p>Laws, regulations, industry standards — and your own policies, which count just as much.</p>
+      <p>The difference from everything else: you did not write these, and you do not get to adjust them. A regulation is kept as it was issued, word for word. If your model and a regulation disagree, the model is what changes.</p>
+
+      <h2><code>knowledge/</code> — what someone worked out</h2>
+      <p>The step in between. Someone reads five interviews and a policy, works out what they actually mean together, and writes that down — with the sources cited and the date on it.</p>
+      <p>It is not raw material any more, because a person has made sense of it. It is not the model yet, because nobody has admitted it. Think of it as a good, careful answer to one question, kept where the next person can find it instead of working it out again.</p>
+      <p>Many teams never need this folder. Keep it if your material arrives faster than you can model it; skip it if it does not.</p>
+
+      <h2><code>canon/</code> — what the organisation says is true</h2>
+      <p>The model itself. One thing per file: a process, an application, a goal, a requirement, each with its own file, its own type, and the dates between which it holds.</p>
+      <p>This is the only folder whose contents your organisation stands behind. Everything above feeds it; nothing above it is binding.</p>
+
+      <h2>The gate: a tool proposes, a person admits</h2>
+      <p>A tool can read your material and propose entries at any hour of the night. Nothing it proposes enters the model on its own.</p>
+      <p>Something becomes part of <code>canon/</code> only when a person lets it in — <strong>and that permission is the pull request your team already uses</strong>. Not a committee, not a second system, not a new ceremony. The review you already do is the gate.</p>
+
+      <h2><code>operations/decisions/</code> — why you did it that way</h2>
+      <p>Your team's own record of the choices it made: what was decided, when, and what the alternative was. One file per decision.</p>
+      <p>These sit <strong>beside</strong> the model rather than inside it, and the distinction does real work. A decision is a fact about your team. A weakness in the business you are modelling is a fact about the business, and belongs in the model.</p>
+
+      <h2>What comes out</h2>
+      <p>Diagrams, documents and reports are <strong>generated</strong> from the model. A capability map, a layered view, a process diagram — three different questions asked of the same content.</p>
+      <p>So they cannot drift from it, and nobody spends a Thursday bringing a diagram back in line with reality. Delete every generated view and you have lost nothing: run it again.</p>
+
+      <h2>And one repository is not the boundary</h2>
+      <p>Every project keeps its own repository, with its own model and its own decisions. Joining is one line of configuration.</p>
+      <p>A scheduled read collects every project's decisions into a single index. It only reads — nothing is written back into a team's repository, and no team has to change how it works to be included. Lose the index and you rebuild it by running the collection again.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://x.com/transitrix">@transitrix</a> ·
+        <a href="https://korobeinikov.consulting">korobeinikov.consulting</a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../assets/js/theme.js"></script>
+</body>
+</html>
