@@ -5,13 +5,14 @@
 # INTERNAL-ONLY FILES (kept local, not published in public repo)
 # ============================================================
 
-# Project-level strategic brief and AI-agent context — internal documents
-# that contain channel role, positioning rules, and strategic notes not
-# intended for the public repo. Stay on disk for local agents and contributors,
-# excluded from git tracking.
+# Project-level strategic brief and tool-specific coordination context —
+# internal documents that contain channel role, positioning rules, and
+# strategic notes not intended for the public repo. Stay on disk for local
+# agents and contributors, excluded from git tracking. AGENTS.md is the
+# tracked, canonical entrypoint for coding agents and is deliberately not
+# listed here — see AGENTS.md itself.
 STRATEGIC_BRIEF.md
 CLAUDE.md
-AGENTS.md
 
 # Claude Code worktrees and per-agent state
 .claude/

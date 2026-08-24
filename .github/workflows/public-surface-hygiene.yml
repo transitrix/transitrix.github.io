@@ -2,8 +2,9 @@ name: Public-surface hygiene
 
 # Two guards on this public surface:
 #
-#   1. Filename ban - CLAUDE.md / AGENTS.md are internal agent-ops docs and are
-#      never tracked here.
+#   1. Filename ban - CLAUDE.md is a private, tool-specific coordination doc and
+#      is never tracked here. AGENTS.md is the canonical, tracked agent guide
+#      for this repository (see AGENTS.md) and is not part of this ban.
 #   2. Hub-pointer scan - a public repository never points at the private hub.
 #      The slug lives only in the HYGIENE_HUB_SLUG secret, so this file does not
 #      name it and its own diff cannot trip the scan; failures report the file
@@ -193,11 +194,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ban CLAUDE.md / AGENTS.md
+      - name: Ban CLAUDE.md
         shell: bash
         run: |
-          if git ls-files | grep -qiE '(^|/)(CLAUDE|AGENTS)\.md$'; then
-            echo "::error::CLAUDE.md/AGENTS.md are not allowed in this public repo (internal agent-ops docs)"
+          if git ls-files | grep -qiE '(^|/)CLAUDE\.md$'; then
+            echo "::error::CLAUDE.md is not allowed in this public repo (private, tool-specific coordination doc)"
             exit 1
           fi
 

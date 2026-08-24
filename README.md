@@ -18,4 +18,4 @@ npx serve .
 
 ## Contributing
 
-Content changes go through pull requests. Routine updates are handled by automation; for anything larger, open an issue in this repository.
+Content changes go through pull requests. Routine updates are handled by automation; for anything larger, open an issue in this repository. A coding agent working in this repository should read [`AGENTS.md`](AGENTS.md) first.
