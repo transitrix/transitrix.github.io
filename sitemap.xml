@@ -26,6 +26,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/enterprise-as-text/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/explainers/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/explainers/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/explainers/how-the-repository-works/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/explainers/how-the-repository-works/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/install/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/install/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/install/"/>
