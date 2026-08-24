@@ -43,14 +43,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/archimate-cheat-sheet/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/recipes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/recipes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/recipes/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/strategy-and-behaviour/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/strategy-and-behaviour/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/strategy-and-behaviour/"/>
-  </url>
-  <url>
-    <loc>https://transitrix.com/ttrs/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/ttrs/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/ttrs/"/>
   </url>
   <url>
     <loc>https://transitrix.com/vs-drawing-tools/</loc>
@@ -90,13 +90,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/install/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/de/recipes/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/recipes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/recipes/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/de/strategy-and-behaviour/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/strategy-and-behaviour/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/strategy-and-behaviour/"/>
-  </url>
-  <url>
-    <loc>https://transitrix.com/de/ttrs/</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/ttrs/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/ttrs/"/>
   </url>
 </urlset>
