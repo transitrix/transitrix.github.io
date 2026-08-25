@@ -60,7 +60,7 @@
       <h2 id="jump-heading">On this page</h2>
       <ul class="qs-viewers">
         <li><a href="#file">What a recipe contains</a> · <a href="#filename">How the filename is read</a></li>
-        <li><a href="#language">The directive language</a> · <a href="#fragment">A worked fragment</a></li>
+        <li><a href="#language">The directive language</a> · <a href="#figures-which">Which pictures are legitimate</a> · <a href="#fragment">A worked fragment</a></li>
         <li><a href="#states">Reference states</a> · <a href="#profiles">Render profiles</a></li>
         <li><a href="#today">What exists today</a></li>
       </ul>
@@ -109,6 +109,7 @@ canon: ../canon                          # optional — the model repository
         <li><code>{{ figure &lt;path&gt; [caption = "…"] [as = …] }}</code> — <strong>supplied figure.</strong> An asset embedded as it is; never generated.</li>
         <li><code>{{ figref &lt;name&gt; }}</code> — <strong>figure cross-reference</strong>, by the <code>as</code> name of a figure declared earlier in the same document. Figures are numbered in document order, and a forward reference is a failure rather than a deferred lookup.</li>
       </ul>
+      <p id="figures-which"><strong>Which supplied pictures are legitimate.</strong> A <code>{{ figure }}</code> is a photograph, a screenshot of third-party software, or a scan. A picture of model content is a <code>{{ view }}</code>, never a pre-exported raster placed as a <code>{{ figure }}</code>.</p>
 
       <h3>Block forms — there are exactly two</h3>
       <p><code>{{# each &lt;TYPE&gt; [where …] [order by &lt;field&gt;] }} … {{/ each }}</code> repeats its body once per selected element, binding each in turn as the current row. The <code>where</code> clause is deliberately small: <code>and</code> only, no <code>or</code> and no parentheses; <code>=</code> and <code>!=</code> only; a literal on the right-hand side, never another field. <code>order by</code> takes a single field, and is what makes a rendered document reproducible.</p>
