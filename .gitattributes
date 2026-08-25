@@ -1,5 +1,0 @@
-# A committed source's bytes are what SHA256SUMS records - line-ending
-# normalization on checkout would make the hash disagree with itself on a
-# clone whose autocrlf setting differs from the one that last touched the
-# working tree. Force LF unconditionally rather than depend on that setting.
-library/**/*.source.html text eol=lf
