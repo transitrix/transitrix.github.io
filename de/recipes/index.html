@@ -60,7 +60,7 @@
       <h2 id="jump-heading">Auf dieser Seite</h2>
       <ul class="qs-viewers">
         <li><a href="#file">Was ein Rezept enthält</a> · <a href="#filename">Wie der Dateiname gelesen wird</a></li>
-        <li><a href="#language">Die Direktivensprache</a> · <a href="#fragment">Ein durchgearbeitetes Beispiel</a></li>
+        <li><a href="#language">Die Direktivensprache</a> · <a href="#figures-which">Welche Abbildungen zulässig sind</a> · <a href="#fragment">Ein durchgearbeitetes Beispiel</a></li>
         <li><a href="#states">Referenzzustände</a> · <a href="#profiles">Render-Profile</a></li>
         <li><a href="#today">Was heute existiert</a></li>
       </ul>
@@ -109,6 +109,7 @@ canon: ../canon                          # optional — das Modell-Repository
         <li><code>{{ figure &lt;pfad&gt; [caption = "…"] [as = …] }}</code> — <strong>beigestellte Abbildung.</strong> Ein Asset, das unverändert eingebettet und nie erzeugt wird.</li>
         <li><code>{{ figref &lt;name&gt; }}</code> — <strong>Abbildungsverweis</strong> über den <code>as</code>-Namen einer zuvor im selben Dokument deklarierten Abbildung. Abbildungen werden in Dokumentreihenfolge nummeriert, und ein Vorwärtsverweis ist ein Fehler und keine aufgeschobene Auflösung.</li>
       </ul>
+      <p id="figures-which"><strong>Welche beigestellten Abbildungen zulässig sind.</strong> Eine <code>{{ figure }}</code> ist eine Fotografie, ein Screenshot fremder Software oder ein Scan. Ein Bild von Modellinhalt ist eine <code>{{ view }}</code>, niemals ein vorab exportiertes Raster, das als <code>{{ figure }}</code> gesetzt wird.</p>
 
       <h3>Blockformen — es gibt genau zwei</h3>
       <p><code>{{# each &lt;TYP&gt; [where …] [order by &lt;feld&gt;] }} … {{/ each }}</code> wiederholt seinen Körper einmal je ausgewähltem Element und bindet jedes davon der Reihe nach als aktuelle Zeile. Die <code>where</code>-Klausel ist bewusst klein gehalten: nur <code>and</code>, kein <code>or</code> und keine Klammern; nur <code>=</code> und <code>!=</code>; rechts steht ein Literal, nie ein weiteres Feld. <code>order by</code> nimmt ein einzelnes Feld und ist das, was ein gerendertes Dokument reproduzierbar macht.</p>
