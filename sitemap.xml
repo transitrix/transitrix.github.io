@@ -30,6 +30,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/explainers/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/explainers/how-a-document-prints/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/explainers/how-a-document-prints/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/explainers/how-the-repository-works/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/explainers/how-the-repository-works/"/>
   </url>

@@ -17,7 +17,7 @@ Each notation has exactly one canonical extension — either `*.<short-name>.tra
 
 - [Install & start](https://transitrix.com/install/): Install the Transitrix Studio editor extension, then scaffold a first file or a full architecture repository.
 - [Library](https://transitrix.com/library/): Free reference sheets, templates and worked examples — read on the page, take the PDF away. No sign-up, no gate.
-- [Explainers](https://transitrix.com/explainers/): One subject per page, in more depth than the front page goes. Starts with how the repository works.
+- [Explainers](https://transitrix.com/explainers/): One subject per page, in more depth than the front page goes. How the repository works; how a model-backed document prints.
 - [Methodology repository](https://github.com/transitrix/methodology): The methodology specification — open, MIT licensed.
 - [Transitrix Studio repository](https://github.com/transitrix/transitrix-studio): The VS Code/JetBrains extension and CLI — the reference implementation. `transitrix validate <file>` checks any source file against its schema.
 - [Worked example repository](https://github.com/transitrix/acme-corp): A complete, adopted Transitrix architecture repository to read end to end.
