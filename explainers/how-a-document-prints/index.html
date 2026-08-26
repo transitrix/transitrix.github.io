@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Explainers | Transitrix</title>
-  <meta name="description" content="Explainers — one subject, one page. How Transitrix's ideas work, in more depth than the front page.">
-  <link rel="canonical" href="https://transitrix.com/explainers/">
+  <title>How a model-backed document prints | Transitrix</title>
+  <meta name="description" content="Page size, orientation, and what to do when a picture does not fit — how a model-backed document prints from its recipe.">
+  <link rel="canonical" href="https://transitrix.com/explainers/how-a-document-prints/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://transitrix.com/explainers/">
-  <meta property="og:title" content="Explainers | Transitrix">
-  <meta property="og:description" content="Explainers — one subject, one page. How Transitrix's ideas work, in more depth than the front page.">
+  <meta property="og:url" content="https://transitrix.com/explainers/how-a-document-prints/">
+  <meta property="og:title" content="How a model-backed document prints | Transitrix">
+  <meta property="og:description" content="Page size, orientation, and what to do when a picture does not fit — how a model-backed document prints from its recipe.">
   <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
@@ -35,7 +35,7 @@
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="logo" href="../">Transitrix</a>
+      <a class="logo" href="../../">Transitrix</a>
       <div class="header-right">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -46,24 +46,31 @@
   </header>
   <main id="main" class="wrap">
     <div class="hero">
-      <h1>Explainers</h1>
-      <p class="lede">One subject per page, in more depth than the front page goes. Read online — no PDF, no sign-up.</p>
+      <p class="pub-date"><a href="../">&larr; Explainers</a></p>
+      <h1>How a model-backed document prints</h1>
     </div>
 
-    <section aria-labelledby="items-heading">
-      <h2 id="items-heading">Explainers</h2>
-      <div class="stack-grid">
-        <article class="card">
-          <h3>How the repository works</h3>
-          <p>The folder structure behind Transitrix — <code>field/</code>, <code>codex/</code>, <code>knowledge/</code>, <code>canon/</code> — and how everything else is generated from it.</p>
-          <a class="card-link" href="how-the-repository-works/">Read it &rarr;</a>
-        </article>
-        <article class="card">
-          <h3>How a model-backed document prints</h3>
-          <p>Page size, orientation, and what to do when a picture does not fit.</p>
-          <a class="card-link" href="how-a-document-prints/">Read it &rarr;</a>
-        </article>
-      </div>
+    <section>
+      <p>You do not write the document — you write its recipe once, and the document comes from the model every time.</p>
+
+      <h2>Page size</h2>
+      <p>Page size is declared, never inherited. It is A4.</p>
+      <p>A render reporting <code>612 × 792 pt</code> went to US Letter, which is wrong. <code>595 × 842 pt</code> is A4.</p>
+
+      <h2>What a picture is</h2>
+      <p>A <code>view</code> is the model, rendered. A <code>figure</code> is an image the model cannot produce. The insert forms and which supplied pictures are legitimate live on the <a href="/recipes/#figures-which">recipe page</a>.</p>
+
+      <h2>Orientation</h2>
+      <p>Portrait by default. A wide picture takes a landscape page, not a shrunken font.</p>
+
+      <h2>How to insert</h2>
+      <p>One view file per illustration, written in the recipe. The syntax is on the <a href="/recipes/#language">recipe page</a>.</p>
+
+      <h2>When it does not fit</h2>
+      <p>Landscape first. If it still does not fit, the view is too large: split it in the model into overview and detail, as two views. Do not shrink the type, do not add a filter on the tag, and do not crop an export and place it as a <code>figure</code>.</p>
+
+      <h2>Specified, not built</h2>
+      <p>Print layout, landscape PDF, and embedded pictures are specified and not built. The current renderer does not emit a landscape page, and it does not embed a picture in the PDF — a figure comes out as a named placeholder. A render that looks otherwise is not from it.</p>
     </section>
   </main>
   <footer class="site-footer">
@@ -75,6 +82,6 @@
       </p>
     </div>
   </footer>
-  <script src="../assets/js/theme.js"></script>
+  <script src="../../assets/js/theme.js"></script>
 </body>
 </html>
