@@ -1,0 +1,41 @@
+name: Explainers
+
+# Explainers PDFs must be valid, single-page, and correctly sized.
+# This check validates the published contract only; rendering lives
+# in transitrix/coordinator.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'explainers/**'
+      - 'scripts/check_explainers.py'
+      - '.github/workflows/explainers.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'explainers/**'
+      - 'scripts/check_explainers.py'
+      - '.github/workflows/explainers.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-explainers:
+    runs-on: ubuntu-latest
+    name: explainers/ published PDF contract holds
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install PDF validator
+        run: python3 -m pip install 'pypdf==6.16.2'
+
+      - name: Check explainers/ contract
+        run: python3 scripts/check_explainers.py
