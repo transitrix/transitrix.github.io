@@ -9,12 +9,14 @@ on:
     branches: [main]
     paths:
       - 'library/**'
+      - 'explainers/**'
       - 'scripts/check_library.py'
       - '.github/workflows/library.yml'
   pull_request:
     branches: [main]
     paths:
       - 'library/**'
+      - 'explainers/**'
       - 'scripts/check_library.py'
       - '.github/workflows/library.yml'
 
