@@ -11,6 +11,10 @@ This check never launches a browser and never re-renders. It cannot detect a
 PDF that is out of date with a source that is not in this repository; do not
 add a check that pretends to.
 
+Explainer one-pagers (transitrix-hq#325) use the same published-PDF contract
+(geometry, one page, checksum, no source.html) under explainers/, listed in
+explainers/SHA256SUMS. Directories without a one-pager are ignored.
+
 Usage: python3 scripts/check_library.py
 Runs a self-test against throwaway fixtures in a temp directory before checking
 the real tree - see .github/workflows/library.yml for the same shape.
@@ -28,8 +32,9 @@ except ImportError:
     sys.exit("check_library: pypdf is required (pip install pypdf)")
 
 LIBRARY_DIR = "library"
+EXPLAINERS_DIR = "explainers"
 CHECKSUMS_FILE = "SHA256SUMS"
-NON_ITEM_ENTRIES = {"README.md", CHECKSUMS_FILE}
+NON_ITEM_ENTRIES = {"README.md", CHECKSUMS_FILE, "index.html"}
 GEOMETRY_TOLERANCE_PT = 0.5
 # Published sheet size. Read from the PDF's MediaBox, not from a source file.
 PAGE_W_MM, PAGE_H_MM = 297.0, 167.0
@@ -226,6 +231,62 @@ def run_checks(root):
     return errors, slugs
 
 
+def slugs_from_checksums(tree_root):
+    """Slugs named by <slug>/<slug>.pdf entries. None if SHA256SUMS is missing."""
+    checksums_path = os.path.join(tree_root, CHECKSUMS_FILE)
+    try:
+        entries = parse_checksums(checksums_path)
+    except ValueError as e:
+        return None, [str(e)]
+    if entries is None:
+        return None, None
+    slugs = []
+    errors = []
+    for rel in entries:
+        m = re.match(r"^([^/]+)/\1\.pdf$", rel.replace("\\", "/"))
+        if not m:
+            errors.append(f"{checksums_path}: entry {rel!r} is not <slug>/<slug>.pdf")
+            continue
+        slugs.append(m.group(1))
+    return sorted(set(slugs)), errors
+
+
+def pdfs_on_disk(tree_root):
+    found = []
+    if not os.path.isdir(tree_root):
+        return found
+    for name in sorted(os.listdir(tree_root)):
+        if name in NON_ITEM_ENTRIES or name.startswith("."):
+            continue
+        pdf = os.path.join(tree_root, name, f"{name}.pdf")
+        if os.path.isfile(pdf):
+            found.append(name)
+    return found
+
+
+def run_explainer_onepager_checks(root):
+    """Published one-pagers only. Explainer HTML pages without a PDF are not items."""
+    tree = os.path.join(root, EXPLAINERS_DIR)
+    on_disk = pdfs_on_disk(tree)
+    slugs, extra = slugs_from_checksums(tree)
+    if extra:
+        return extra, on_disk
+    if slugs is None:
+        if on_disk:
+            return (
+                [f"{os.path.join(tree, CHECKSUMS_FILE)}: missing (PDF present: {', '.join(on_disk)})"],
+                on_disk,
+            )
+        return [], []
+    errors = []
+    for slug in slugs:
+        errors.extend(check_shape(tree, slug))
+        errors.extend(check_gate(tree, slug))
+        errors.extend(check_geometry(tree, slug))
+    errors.extend(check_checksums(tree, slugs))
+    return errors, slugs
+
+
 def _write(path, content=""):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
@@ -291,6 +352,18 @@ def _fresh_item(tmp, slug="widgets", pdf_bytes=None):
     with open(pdf_path, "wb") as f:
         f.write(pdf_bytes if pdf_bytes is not None else _fixture_pdf())
     _write(os.path.join(tmp, LIBRARY_DIR, CHECKSUMS_FILE), _sha256sums_lines(tmp, slug))
+    return slug
+
+
+def _fresh_explainer(tmp, slug="widgets", pdf_bytes=None):
+    pdf_path = pdf_path_for(os.path.join(tmp, EXPLAINERS_DIR), slug)
+    os.makedirs(os.path.dirname(pdf_path), exist_ok=True)
+    with open(pdf_path, "wb") as f:
+        f.write(pdf_bytes if pdf_bytes is not None else _fixture_pdf())
+    _write(
+        os.path.join(tmp, EXPLAINERS_DIR, CHECKSUMS_FILE),
+        f"{sha256_of(pdf_path)}  {slug}/{slug}.pdf\n",
+    )
     return slug
 
 
@@ -450,6 +523,46 @@ def _selftest():
     finally:
         shutil.rmtree(tmp)
 
+    tmp = tempfile.mkdtemp()
+    try:
+        _fresh_explainer(tmp)
+        errors, slugs = run_explainer_onepager_checks(tmp)
+        _expect(
+            errors == [] and slugs == ["widgets"],
+            "a contract-clean explainer one-pager passes",
+            "a clean explainer one-pager was flagged",
+            failures,
+        )
+    finally:
+        shutil.rmtree(tmp)
+
+    tmp = tempfile.mkdtemp()
+    try:
+        _write(os.path.join(tmp, EXPLAINERS_DIR, "index.html"), "<html></html>")
+        errors, slugs = run_explainer_onepager_checks(tmp)
+        _expect(
+            errors == [] and slugs == [],
+            "explainers without a one-pager pass vacuously",
+            "an HTML-only explainer tree was flagged",
+            failures,
+        )
+    finally:
+        shutil.rmtree(tmp)
+
+    tmp = tempfile.mkdtemp()
+    try:
+        slug = _fresh_explainer(tmp)
+        _write(source_path_for(os.path.join(tmp, EXPLAINERS_DIR), slug), "<!-- source must not ship -->")
+        errors, _ = run_explainer_onepager_checks(tmp)
+        _expect(
+            any("unexpected" in e and "source.html" in e for e in errors),
+            "an explainer one-pager that ships its source is caught",
+            "a published source.html was not caught",
+            failures,
+        )
+    finally:
+        shutil.rmtree(tmp)
+
     if failures:
         print(
             f"::error::check_library self-test failed - {len(failures)} check(s) did not "
@@ -476,6 +589,16 @@ def main():
         return 1
     note = " (zero items present)" if not slugs else f" ({len(slugs)} item(s))"
     print(f"check_library: library/ contract holds{note}")
+
+    print("== Checking explainer one-pagers against the committed tree ==")
+    e_errors, e_slugs = run_explainer_onepager_checks(root)
+    for e in e_errors:
+        print(f"::error::{e}")
+    if e_errors:
+        print(f"check_library: {len(e_errors)} explainer one-pager problem(s), see above")
+        return 1
+    e_note = " (zero one-pagers)" if not e_slugs else f" ({len(e_slugs)} one-pager(s))"
+    print(f"check_library: explainer one-pager contract holds{e_note}")
     return 0
 
 
