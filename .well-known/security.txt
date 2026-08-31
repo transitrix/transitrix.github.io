@@ -1,0 +1,4 @@
+Contact: vkgeorgia@icloud.com
+Expires: 2027-08-31T00:00:00Z
+Preferred-Languages: en
+Canonical: https://transitrix.com/.well-known/security.txt
