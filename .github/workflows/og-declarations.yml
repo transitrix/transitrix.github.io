@@ -220,6 +220,10 @@ jobs:
 
           for loc in locs:
               url_path = urlsplit(loc).path
+              # Skip PDF entries - they are binary files with no HTML/OG structure
+              if url_path.endswith(".pdf"):
+                  print(f"-- {loc} (skipped - PDF, not HTML)")
+                  continue
               rel = url_path.lstrip("/")
               file_path = (rel + "index.html") if (rel == "" or rel.endswith("/")) else rel
               print(f"-- {loc} -> {file_path}")

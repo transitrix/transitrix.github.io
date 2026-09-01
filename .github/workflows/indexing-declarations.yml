@@ -159,6 +159,10 @@ jobs:
           sitemap_pages = {}  # url_path -> file path
           for loc in locs:
               url_path = urlsplit(loc).path
+              # Skip PDF entries - they are binary files with no HTML/canonical structure
+              if url_path.endswith(".pdf"):
+                  print(f"-- {loc} (skipped - PDF, not HTML)")
+                  continue
               if not url_path.endswith("/"):
                   error(f"sitemap URL does not end in / (no bare-file entries expected): {loc}")
                   continue
