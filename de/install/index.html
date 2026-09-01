@@ -58,12 +58,14 @@
 
     <section aria-labelledby="install-heading">
       <h2 id="install-heading">1. Studio installieren</h2>
-      <p>Wählen Sie Ihren Editor — die Erweiterung ist überall dieselbe.</p>
+      <p>Wählen Sie Ihren Editor — die Erweiterung ist überall dieselbe. Veröffentlicht wird sie über Open VSX.</p>
       <div class="hero-actions">
-        <a class="btn" href="/install/go/openvsx/">VS Code / Cursor / VSCodium / Windsurf</a>
+        <a class="btn" href="/install/go/openvsx/">Cursor / VSCodium / Windsurf</a>
         <a class="btn" href="/install/go/jetbrains/">JetBrains-IDEs</a>
       </div>
-      <p>Oder suchen Sie <em>Transitrix Studio</em> im Erweiterungen-Panel. Sequenz-, Zustands- und ER-/Klassendiagramme rendern nativ über PlantUML — keine zusätzliche Erweiterung nötig. Für leichtere, schnellere Ansichten installieren Sie zusätzlich <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> — dasselbe reine Textmodell, kein Lock-in.</p>
+      <p>In diesen Editoren genügt auch die Suche nach <em>Transitrix Studio</em> im Erweiterungen-Panel — sie lesen Open VSX.</p>
+      <p><strong>Im regulären VS Code nehmen Sie stattdessen die Datei.</strong> Der Build von Microsoft liest ausschließlich den eigenen Marketplace, daher findet die Erweiterungssuche Studio dort nicht. Laden Sie die <code>.vsix</code> von <a href="/install/go/openvsx/">der Open-VSX-Seite</a> herunter und wählen Sie dann <em>Erweiterungen &rarr; &hellip; &rarr; Aus VSIX installieren&hellip;</em> oder führen Sie <code>code --install-extension transitrix-studio-*.vsix</code> aus. Gleicher Build, gleiche Version.</p>
+      <p>Sequenz-, Zustands- und ER-/Klassendiagramme rendern nativ über PlantUML — keine zusätzliche Erweiterung nötig. Für leichtere, schnellere Ansichten installieren Sie zusätzlich <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> — dasselbe reine Textmodell, kein Lock-in.</p>
     </section>
 
     <section aria-labelledby="start-heading">
