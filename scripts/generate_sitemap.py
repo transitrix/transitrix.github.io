@@ -51,13 +51,30 @@ def mirror_of(url_path):
     return "/de/" + url_path[1:]
 
 
+def find_library_pdfs(root):
+    pdfs = []
+    library_dir = os.path.join(root, "library")
+    if not os.path.isdir(library_dir):
+        return pdfs
+    for slug in sorted(os.listdir(library_dir)):
+        slug_dir = os.path.join(library_dir, slug)
+        if not os.path.isdir(slug_dir) or slug in EXCLUDE_DIRS or slug.startswith("."):
+            continue
+        index_file = os.path.join(slug_dir, "index.html")
+        pdf_file = os.path.join(slug_dir, f"{slug}.pdf")
+        if os.path.isfile(index_file) and os.path.isfile(pdf_file):
+            pdfs.append(f"/library/{slug}/{slug}.pdf")
+    return pdfs
+
+
 def build_sitemap(root):
     pages = find_pages(root)
     page_set = set(pages)
     en_pages = [p for p in pages if lang_of(p) == "en"]
     de_pages = [p for p in pages if lang_of(p) == "de"]
+    pdfs = find_library_pdfs(root)
 
-    def emit(lines, url_path):
+    def emit_page(lines, url_path):
         lang = lang_of(url_path)
         mirror = mirror_of(url_path)
         lines.append("  <url>")
@@ -68,6 +85,11 @@ def build_sitemap(root):
             lines.append(f'    <xhtml:link rel="alternate" hreflang="{other_lang}" href="{ORIGIN}{mirror}"/>')
         lines.append("  </url>")
 
+    def emit_pdf(lines, url_path):
+        lines.append("  <url>")
+        lines.append(f"    <loc>{ORIGIN}{url_path}</loc>")
+        lines.append("  </url>")
+
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
@@ -75,10 +97,12 @@ def build_sitemap(root):
         "",
     ]
     for p in en_pages:
-        emit(lines, p)
+        emit_page(lines, p)
+    for pdf in pdfs:
+        emit_pdf(lines, pdf)
     lines.append("")
     for p in de_pages:
-        emit(lines, p)
+        emit_page(lines, p)
     lines.append("</urlset>")
     return "\n".join(lines) + "\n"
 

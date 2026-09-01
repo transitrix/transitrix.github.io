@@ -36,3 +36,11 @@ here so it is not tried again.
 This check cannot tell whether a PDF is current with a file that is not in this
 repository. A check that appears to cover that and does not is worse than its
 absence.
+
+## Page title rule — the search query, then the promise
+
+The page title contains the search query, and then earns the click. It carries, as a contiguous string, the words a reader actually types — so the match is visible in the result itself — and continues with what the reader gets: what is covered, how completely, which version, at what cost of entry. The sheet's printed name stays recognisably inside it, so a link handed out on paper and the page still agree. The title leads with the subject, never with the brand — the brand is the site suffix ` | Transitrix` and nothing more — and it does not sell: no superlatives, no campaign wording, no promise the sheet does not keep. Roughly 60 characters before the site suffix, because what is cut off cannot be read.
+
+**Form:** `<subject> — <what is covered>, <completeness>, <cost of entry> | Transitrix`
+
+Example: `ArchiMate 3.2 cheat sheet — 60 elements, free PDF, no sign-up | Transitrix`
