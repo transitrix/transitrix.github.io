@@ -193,11 +193,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ban CLAUDE.md / AGENTS.md
+      - name: Ban CLAUDE.md (internal agent-ops doc)
         shell: bash
         run: |
-          if git ls-files | grep -qiE '(^|/)(CLAUDE|AGENTS)\.md$'; then
-            echo "::error::CLAUDE.md/AGENTS.md are not allowed in this public repo (internal agent-ops docs)"
+          if git ls-files | grep -qiE '(^|/)CLAUDE\.md$'; then
+            echo "::error::CLAUDE.md is not allowed in this public repo (internal agent-ops doc)"
             exit 1
           fi
 
@@ -256,3 +256,78 @@ jobs:
             exit 1
           fi
           echo "work-item guard self-test: all cases passed."
+
+  publishing-declaration-check:
+    runs-on: ubuntu-latest
+    name: Publishing declaration enforcement
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check PR files against declaration
+        shell: python3
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          import os
+          import yaml
+          import subprocess
+          import fnmatch
+          import sys
+
+          # Read the publishing declaration
+          with open('_publishing.yaml', 'r') as f:
+            declaration = yaml.safe_load(f)
+
+          published_patterns = declaration.get('published', [])
+
+          # Get the list of files changed in this PR
+          try:
+            result = subprocess.run(
+              ['git', 'diff', '--name-only',
+               os.environ['BASE_SHA'], os.environ['HEAD_SHA']],
+              capture_output=True, text=True, check=True
+            )
+            changed_files = result.stdout.strip().split('\n')
+          except subprocess.CalledProcessError as e:
+            print(f"::error::Could not get PR diff: {e}")
+            sys.exit(1)
+
+          # Special files exempt from declaration check
+          exempt = {
+            '.gitignore',
+            '_publishing.yaml',
+            '.github/workflows/public-surface-hygiene.yml',
+            'README.md',
+            'package.json',
+            'package-lock.json',
+            'llms.txt',
+          }
+
+          failed = []
+          for filepath in changed_files:
+            if not filepath or filepath in exempt:
+              continue
+
+            # Check if the file matches any declared pattern
+            matched = False
+            for pattern in published_patterns:
+              if fnmatch.fnmatch(filepath, pattern):
+                matched = True
+                break
+
+            if not matched:
+              failed.append(filepath)
+
+          if failed:
+            print("::error::Files not declared in _publishing.yaml:")
+            for f in failed:
+              print(f"  - {f}")
+            print("\nAdd these files to the 'published' section in _publishing.yaml, or remove them.")
+            sys.exit(1)
+
+          print("✓ All changed files are declared in _publishing.yaml")

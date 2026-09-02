@@ -1,0 +1,90 @@
+# Publishing declaration for transitrix.github.io
+#
+# This file declares what content this repository publishes to readers at transitrix.com.
+# A pull request that modifies undeclared files fails the publishing gate.
+#
+# Format: paths and glob patterns relative to repository root.
+# Default policy: DENY — a file is published because it is listed here.
+
+published:
+  # Entry pages
+  - index.html
+  - de/index.html
+  - favicon.ico
+
+  # Section pages (site structure)
+  - dsl-examples/index.html
+  - de/dsl-examples/index.html
+  - dsm/index.html
+  - de/dsm/index.html
+  - install/index.html
+  - de/install/index.html
+  - install/go/*/index.html
+  - quickstart/index.html
+  - de/quickstart/index.html
+  - recipes/index.html
+  - de/recipes/index.html
+  - explainers/index.html
+  - explainers/*/index.html
+  - de/*/index.html
+  - learn/index.html
+  - library/index.html
+  - methodology/index.html
+  - strategy-and-behaviour/index.html
+  - what-*/index.html
+  - which-*/index.html
+  - is-it-*/index.html
+  - do-i-need-*/index.html
+  - vs-*/index.html
+  - enterprise-*/index.html
+
+  # Redirects and aliases (e.g., /ttrs/ → /recipes/)
+  - ttrs/index.html
+  - de/ttrs/index.html
+
+  # Styles
+  - assets/css/style.css
+
+  # Scripts
+  - assets/js/theme.js
+
+  # Fonts (IBM Plex)
+  - assets/fonts/ibm-plex/*.woff2
+  - assets/fonts/ibm-plex/OFL.txt
+
+  # Images, icons, og-images
+  - assets/img/favicon-*.png
+  - assets/img/apple-touch-icon.png
+  - assets/img/*.png
+  - assets/img/*.gif
+  - assets/img/*.svg
+  - assets/og/*.png
+
+  # HTML includes (meta tags, favicon links)
+  - assets/inc/*.html
+
+  # Published PDFs
+  - library/*.pdf
+  - explainers/*/*.pdf
+
+  # Checksums for published content
+  - library/SHA256SUMS
+  - explainers/SHA256SUMS
+
+  # Metadata
+  - sitemap.xml
+  - robots.txt
+  - llms.txt
+  - CNAME
+  - .nojekyll
+  - .well-known/security.txt
+
+  # Entrypoint (states where work is filed)
+  - AGENTS.md
+
+not_published:
+  - render source files (e.g., .source.html)
+  - render scripts (scripts/*.py)
+  - CI/CD workflows (.github/workflows/)
+  - internal documentation (CLAUDE.md, STRATEGIC_BRIEF.md, .gitignore, etc.)
+  - repository machinery (package.json, node_modules/)
