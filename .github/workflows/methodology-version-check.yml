@@ -1,0 +1,49 @@
+name: Methodology version check
+
+# The /methodology/ page serves the published specification address.
+# It fetches the latest transitrix/methodology release at runtime via JavaScript.
+# This check verifies that if the page is committed with a static version (for any reason),
+# it matches the current latest stable release.
+
+on:
+  push:
+    branches: [main]
+    paths: [methodology/index.html]
+  pull_request:
+    branches: [main]
+    paths: [methodology/index.html]
+
+permissions:
+  contents: read
+
+jobs:
+  check-methodology-version:
+    runs-on: ubuntu-latest
+    name: Methodology page version is current
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch latest methodology release
+        id: methodology
+        run: |
+          RESPONSE=$(curl -s https://api.github.com/repos/transitrix/methodology/releases/latest)
+          TAG=$(echo "$RESPONSE" | jq -r '.tag_name')
+          VERSION="${TAG#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "Latest methodology release: $TAG (v$VERSION)"
+
+      - name: Check page links to correct version
+        run: |
+          VERSION="${{ steps.methodology.outputs.version }}"
+          TAG="${{ steps.methodology.outputs.tag }}"
+          FILE="methodology/index.html"
+
+          if ! grep -q "$TAG" "$FILE"; then
+            echo "Error: methodology/index.html does not link to $TAG (latest release)"
+            echo "Page should link to: https://github.com/transitrix/methodology/releases/tag/$TAG"
+            exit 1
+          fi
+
+          echo "✓ Page correctly references $TAG"
