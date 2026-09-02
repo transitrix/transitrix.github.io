@@ -63,6 +63,8 @@ GATE_PATTERNS = [
     ),
 ]
 
+TITLE_SUFFIX = " | Transitrix"
+
 
 def find_slug_dirs(library_root):
     if not os.path.isdir(library_root):
@@ -133,6 +135,27 @@ def check_gate(library_root, slug):
     for pattern, label in GATE_PATTERNS:
         if pattern.search(text):
             errors.append(f"{pdf_path}: extracted text contains {label} - no gate is allowed on a library sheet")
+    return errors
+
+
+def check_page_title(library_root, slug):
+    errors = []
+    index_path = os.path.join(library_root, slug, "index.html")
+    if not os.path.isfile(index_path):
+        return errors
+    with open(index_path, encoding="utf-8") as f:
+        html = f.read()
+    title_match = re.search(r"<title>([^<]+)</title>", html)
+    if not title_match:
+        errors.append(f"{index_path}: missing <title> tag")
+        return errors
+    title = title_match.group(1)
+    if not title.endswith(TITLE_SUFFIX):
+        errors.append(f'{index_path}: <title> does not end with "{TITLE_SUFFIX}"')
+    slug_words = set(word.lower() for word in slug.split("-"))
+    for word in slug_words:
+        if word.lower() not in title.lower():
+            errors.append(f'{index_path}: <title> missing slug word "{word}" from "{slug}"')
     return errors
 
 
@@ -227,6 +250,7 @@ def run_checks(root):
         errors.extend(check_shape(library_root, slug))
         errors.extend(check_gate(library_root, slug))
         errors.extend(check_geometry(library_root, slug))
+        errors.extend(check_page_title(library_root, slug))
     errors.extend(check_checksums(library_root, slugs))
     return errors, slugs
 
@@ -518,6 +542,51 @@ def _selftest():
             any("entry for ghost/ghost.pdf but no such file exists" in e for e in errors),
             "a SHA256SUMS entry with no matching file is caught",
             "a stale checksum entry was not caught",
+            failures,
+        )
+    finally:
+        shutil.rmtree(tmp)
+
+    tmp = tempfile.mkdtemp()
+    try:
+        slug = _fresh_item(tmp)
+        index_path = os.path.join(tmp, LIBRARY_DIR, slug, "index.html")
+        _write(index_path, '<html><head><title>Widgets cheat sheet — everything needed | Transitrix</title></head></html>')
+        errors, _ = run_checks(tmp)
+        _expect(
+            not any("title" in e.lower() for e in errors),
+            "a page with a valid title passes",
+            "a valid title was flagged",
+            failures,
+        )
+    finally:
+        shutil.rmtree(tmp)
+
+    tmp = tempfile.mkdtemp()
+    try:
+        slug = _fresh_item(tmp, slug="my-sheet")
+        index_path = os.path.join(tmp, LIBRARY_DIR, slug, "index.html")
+        _write(index_path, '<html><head><title>Missing slug word</title></head></html>')
+        errors, _ = run_checks(tmp)
+        _expect(
+            any("slug word" in e for e in errors),
+            "a page missing a slug word in title is caught",
+            "a missing slug word was not caught",
+            failures,
+        )
+    finally:
+        shutil.rmtree(tmp)
+
+    tmp = tempfile.mkdtemp()
+    try:
+        slug = _fresh_item(tmp)
+        index_path = os.path.join(tmp, LIBRARY_DIR, slug, "index.html")
+        _write(index_path, '<html><head><title>Missing site suffix</title></head></html>')
+        errors, _ = run_checks(tmp)
+        _expect(
+            any("does not end with" in e and "Transitrix" in e for e in errors),
+            "a page missing the site suffix is caught",
+            "a missing site suffix was not caught",
             failures,
         )
     finally:

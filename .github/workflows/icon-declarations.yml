@@ -114,6 +114,10 @@ jobs:
           fail=0
           while IFS= read -r loc; do
             [ -z "$loc" ] && continue
+            if [[ "$loc" == *.pdf ]]; then
+              echo "-- $loc (skipped - PDF, not HTML)"
+              continue
+            fi
             path="${loc#https://transitrix.com}"
             path="${path%/}"
             path="${path#/}"
