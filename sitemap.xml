@@ -47,6 +47,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/is-it-open-source/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/learn/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/learn/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/library/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/"/>
   </url>
