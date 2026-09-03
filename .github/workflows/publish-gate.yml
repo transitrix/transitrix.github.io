@@ -1,0 +1,105 @@
+name: Publish gate
+
+# Enforces that only declared files (listed in MANIFEST.md) can be added or modified on the published surface.
+#
+# Purpose: a public repository declares what it publishes to readers. An undeclared file that reaches
+# main is a defect. This gate catches it before merge.
+#
+# The gate is mute: it reports what is undeclared (the file path), never why or what it protects.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  manifest-enforcement:
+    runs-on: ubuntu-latest
+    name: Manifest enforcement — declared files only
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract declared paths from MANIFEST.md
+        id: manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Extract all file paths from MANIFEST.md (lines with backticks).
+          # Format: `path/to/file` → path/to/file
+          declared=$(grep -oP '`\K[^`]+(?=`)' MANIFEST.md | sort -u)
+
+          # Write to a temp file for later use.
+          echo "$declared" > /tmp/declared_paths.txt
+
+          # Count for logging.
+          count=$(wc -l < /tmp/declared_paths.txt)
+          echo "declared_count=$count" >> "$GITHUB_OUTPUT"
+          echo "Found $count declared published paths."
+
+      - name: Check added/modified files
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          fail=0
+
+          # When on a PR, check diff. When on push to main, check HEAD vs HEAD~.
+          if [ -n "${BASE_SHA:-}" ] && [ -n "${HEAD_SHA:-}" ]; then
+            # Pull request: compare base..head
+            changed_files=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" 2>/dev/null || true)
+          else
+            # Push to main: check the new commit(s).
+            # For simplicity, scan files that exist now (if they were deleted, that's OK).
+            changed_files=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || true)
+          fi
+
+          # Exclude internal machinery files from the check — they are allowed to be added
+          # (e.g., workflow changes, configuration updates).
+          # These patterns should NOT be in the manifest:
+          # - .github/* (workflows, CI config)
+          # - .gitignore (repo metadata)
+          # - MANIFEST.md itself
+          # - README.md (repo documentation, not served content)
+          # - Scripts (scripts/*)
+
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+
+            # Skip internal/metadata files — these are allowed outside the manifest.
+            case "$f" in
+              .github/*) continue ;;
+              .gitignore) continue ;;
+              MANIFEST.md) continue ;;
+              README.md) continue ;;
+              scripts/*) continue ;;
+              .nojekyll) continue ;;
+              .well-known/*) continue ;;
+            esac
+
+            # Check if file exists (skip deletions).
+            [ -f "$f" ] || continue
+
+            # Check if it's in the declared list.
+            if ! grep -qFx "$f" /tmp/declared_paths.txt; then
+              echo "::error::Undeclared file: $f"
+              fail=1
+            fi
+          done <<< "$changed_files"
+
+          if [ "$fail" -ne 0 ]; then
+            echo "::error::Publish gate failed — one or more undeclared files. Add them to MANIFEST.md before merging."
+            exit 1
+          fi
+
+          echo "Publish gate: all changed files are declared."
