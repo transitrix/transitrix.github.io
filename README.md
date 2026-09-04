@@ -20,4 +20,4 @@ npx serve .
 
 Content changes go through pull requests. Routine updates are handled by automation.
 
-**Work for this repository is filed in [`transitrix/transitrix-hq`](https://github.com/transitrix/transitrix-hq)**, not in this repository's issue tracker. Open an issue there to propose a change, report a problem, or request a feature.
+**Work for this repository is filed in [`transitrix/transitrix-hq`](https://github.com/transitrix/transitrix-hq)** (a private repository), not in this repository's issue tracker. If you'd like to propose a change, report a problem, or request a feature, open a pull request here or email `hello@transitrix.com`.
