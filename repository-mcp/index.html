@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repository MCP: governed model access | Transitrix</title>
+  <meta name="description" content="Choose governed access to a Transitrix enterprise model: scopes, permissions, deployment and implementation options for Repository MCP.">
+  <link rel="canonical" href="https://transitrix.com/repository-mcp/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://transitrix.com/repository-mcp/">
+  <meta property="og:title" content="Repository MCP: governed model access | Transitrix">
+  <meta property="og:description" content="Choose governed access to a Transitrix enterprise model: scopes, permissions, deployment and implementation options for Repository MCP.">
+  <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <style>
+    .mcp-diagram { margin: 2rem 0; }
+    .mcp-flow { list-style: none; padding: 0; margin: 0 auto 1.5rem; max-width: 34rem; text-align: center; }
+    .mcp-flow li { position: relative; padding: .8rem; margin-bottom: 2rem; border: 1px solid var(--border); border-radius: .5rem; background: var(--surface); }
+    .mcp-flow li:not(:last-child)::after { content: "↓"; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); color: var(--accent); }
+    .mcp-diagram figcaption { color: var(--muted); font-size: .95rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="path-position"><a href="../explainers/">Explainers</a></div>
+    <div class="hero">
+      <h1>Governed access to your enterprise model</h1>
+      <p class="lede">Repository MCP lets people and their AI clients work with the parts of a Transitrix model they are allowed to see and change.</p>
+      <p><strong>Recommended architecture.</strong> This is an implementation guide for enterprise teams, not an available Transitrix MCP server or hosted service.</p>
+    </div>
+
+    <section aria-labelledby="access">
+      <h2 id="access">Who can see and change what?</h2>
+      <p>Model Context Protocol (MCP) connects an AI client to model operations. Your application must verify identity and enforce access policy before returning content. A professional title or an assistant mode does not grant access.</p>
+      <p>Keep four dimensions separate: <strong>expertise</strong> (what someone can judge), <strong>scope</strong> (which content they can access), <strong>permissions</strong> (read, propose, review, approve or administer policy), and <strong>assignment</strong> (their responsibility for this particular change).</p>
+      <div class="stack-grid">
+        <article class="card"><h3>Manager</h3><p>May read and propose changes to assigned strategy, and read shared approved requirements. Engineering content requires an explicit grant.</p></article>
+        <article class="card"><h3>Engineer</h3><p>May read and propose within assigned data or infrastructure scopes, and read shared approved requirements. Restricted strategy stays closed.</p></article>
+        <article class="card"><h3>Quality specialist</h3><p>May read shared requirements and review an assigned change within an authorized scope. That assignment grants neither unrelated access nor approval authority.</p></article>
+      </div>
+      <p>These are illustrative grants, not fixed role presets. Deny access without an explicit grant; document how denials take precedence. New or unclassified content stays closed. A model owner grants approval within a defined mandate; an access administrator controls policy. Editing an element does not authorize moving it into a more public scope.</p>
+      <p><strong>Automated validation</strong> checks schemas, references and formal constraints. <strong>Expert review</strong> assesses meaning, feasibility and completeness. <strong>Approval</strong> authorizes admission into canon. “Validator” names the expert-review function: a qualified analyst, engineer or quality specialist can perform it. Neither a passing check nor a favorable review admits a change; AI does not inherit approval authority.</p>
+    </section>
+
+    <section aria-labelledby="architecture">
+      <h2 id="architecture">One access boundary, one authoritative model</h2>
+      <figure class="mcp-diagram">
+        <ol class="mcp-flow" aria-label="Request flow">
+          <li>Employee and approved AI client</li>
+          <li>Internal HTTPS / MCP interface</li>
+          <li>Verified identity + current access policy</li>
+          <li>Model operations on an authorized scope</li>
+          <li>Git snapshot + derived SQL index</li>
+        </ol>
+        <figcaption>Requests follow the arrows. Results return with authorized sources, revision and coverage. Git synchronization validates and indexes a new snapshot before publishing it atomically.</figcaption>
+      </figure>
+      <p><strong>Git and admitted canon remain authoritative.</strong> SQL is a rebuildable index, not a second editable registry. Preserve the difference between admitted canon, unadmitted source material and derived views. Every response identifies its repository, commit, authorized sources, material status, indexing time and actual coverage.</p>
+      <p>All interfaces must use the same authorization layer. A shared service account never lends its broad Git access to a user. Development-factory control, project dispatch, releases and deployments stay outside Repository MCP.</p>
+    </section>
+
+    <section aria-labelledby="repositories">
+      <h2 id="repositories">Choose the repository boundary first</h2>
+      <div class="stack-grid">
+        <article class="card"><h3>One restricted repository</h3><p>The simplest starting point when only trusted owners and services need complete Git access. Everyone else uses MCP or another interface enforcing the same policy.</p></article>
+        <article class="card"><h3>Federated repositories</h3><p>Choose independent repositories when teams need direct Git access or storage-level isolation. Split along stable access boundaries; authorized relationships and stable identifiers connect the logical model.</p></article>
+      </div>
+      <p><strong>A complete Git clone bypasses MCP filtering.</strong> Sparse checkout is a convenience, not a security boundary. A federating service that reads every repository is still privileged; stronger isolation can require separate services and credentials. Model size alone does not decide isolation.</p>
+    </section>
+
+    <section aria-labelledby="deployment">
+      <h2 id="deployment">Choose a deployment your team can operate</h2>
+      <div class="stack-grid">
+        <article class="card"><h3>Small: one node + SQLite</h3><p>An HTTPS proxy, MCP application, local Git snapshot and SQLite index can share one VM or container host. Use one index writer and local storage; do not share the SQLite file across hosts. Enterprise identity and audit still apply.</p></article>
+        <article class="card"><h3>Larger: PostgreSQL or MySQL</h3><p>Use a server database for multiple application instances, concurrent work or high availability. A gateway fronts the instances; synchronization publishes completed snapshots, and analysis workers deliver controlled results.</p></article>
+      </div>
+      <p>Follow an established enterprise database standard. <strong>When none dominates, PostgreSQL is the recommended default</strong> for its query facilities and optional row-security defense. MySQL is a valid choice with established operations and tested scope isolation. Application authorization is mandatory with either. Even a small deployment can use an existing managed database.</p>
+      <p>Move beyond SQLite when measured latency, write contention, indexing time or recovery objectives require it. Rebuild the new index from Git, compare results and permissions, migrate non-derived records separately, and retain a rollback path.</p>
+      <p><strong>Python or TypeScript?</strong> Choose one official MCP SDK and the language your team supports. Python fits existing analysis and document-processing libraries; TypeScript fits Node.js services and web integrations. Both support all three databases. Both need runtime input validation and tested client/protocol versions. Neither language nor database choice confers security.</p>
+    </section>
+
+    <section aria-labelledby="capabilities">
+      <h2 id="capabilities">Start basic; extend only when needed</h2>
+      <p><strong>Basic:</strong> describe available scopes and revision, retrieve and search elements, trace bounded relationships, run automated checks, prepare a reviewable proposal and inspect its state. A read-only first deployment can precede proposals. Proposals can be patches; direct default-branch writes are unnecessary.</p>
+      <p><strong>Extended:</strong> impact analysis, revision comparison, federation, assigned expert review, approval requests, diagrams, documents, semantic search and long-running jobs. Discovering an installed extension does not grant permission to use it. Approval requests route to the authoritative approval process.</p>
+      <p><strong>Mandatory in both:</strong> authorization, audit, provenance, revision correctness, pagination, size/depth limits, timeouts and quotas. Do not expose arbitrary SQL, shell commands or filesystem reads.</p>
+      <ul class="reference-list">
+        <li><strong>Protect relationships and outputs.</strong> Authorize the relationship and both endpoints. Filter snippets, history, diagrams, documents and errors before AI receives them. Do not reveal hidden identifiers or automatically summarize restricted sources for another audience. Analysis states its authorized coverage.</li>
+        <li><strong>Apply current policy.</strong> Isolate caches by effective scope and policy revision. Reauthorize historical reads and delivery of stored or background results. Revocation affects subsequent access even if indexing fails; already downloaded content cannot be recalled. Protected operations fail closed when required authorization is unavailable.</li>
+        <li><strong>Keep snapshots consistent.</strong> Pin each request to one complete snapshot; federation records every source revision. A failed refresh retains the previous snapshot with an explicit stale/error state. An unavailable source is not an empty result.</li>
+        <li><strong>Bind changes to evidence.</strong> Record author, scope, base revision, diff and check results. Bind review and approval to the exact revision, recheck conflicts when it changes, and make retries idempotent. Proposal and CI audiences must match the content.</li>
+        <li><strong>Plan recovery.</strong> Rebuild indexes from Git, but back up authoritative reviews, approvals, audit and other non-derived records separately. Test recovery objectives. Service operation does not grant model approval authority; privileged storage access remains a trust boundary.</li>
+      </ul>
+      <p>Internal hosting alone does not keep data inside the enterprise: an AI client may forward results to a cloud model. Choose approved clients and processing boundaries, protect transport and service credentials, and keep restricted content and tokens out of routine logs.</p>
+    </section>
+
+    <section aria-labelledby="start">
+      <h2 id="start">Before implementation</h2>
+      <p>Agree identity, policy ownership, approved AI clients, the approval system and recovery objectives. Test a manager’s permitted strategy read and an engineer’s denied read; also test search leakage, revoked access, unauthorized approval, failed indexing and index recovery. Each control needs an allowed and a denied scenario.</p>
+      <p>Use the <a href="https://github.com/transitrix/methodology/blob/main/guides/repository-mcp-enterprise.md">enterprise Repository MCP reference</a> for implementation details and the full acceptance scenarios. The existing <a href="https://github.com/transitrix/methodology/blob/main/patterns/transitrix-repository-mcp.md">Repository MCP pattern</a> remains the architecture entry point.</p>
+    </section>
+    <nav class="path-nav" aria-label="Related reading">
+      <a href="../explainers/how-the-repository-works/">How the repository works</a>
+      <a href="../explainers/">All explainers →</a>
+    </nav>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>
+        <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+        <a href="https://x.com/transitrix">@transitrix</a> ·
+        <a href="https://korobeinikov.consulting">korobeinikov.consulting</a>
+      </p>
+    </div>
+  </footer>
+  <script src="../assets/js/theme.js"></script>
+</body>
+</html>
