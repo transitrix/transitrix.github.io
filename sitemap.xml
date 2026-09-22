@@ -68,6 +68,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/recipes/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/repository-mcp/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/repository-mcp/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/strategy-and-behaviour/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/strategy-and-behaviour/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/strategy-and-behaviour/"/>

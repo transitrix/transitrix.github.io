@@ -15,6 +15,8 @@ Each notation has exactly one canonical extension — either `*.<short-name>.tra
 
 ## Docs
 
+- [Repository MCP](https://transitrix.com/repository-mcp/): Recommended architecture for governed enterprise model access, scoped permissions, review and approval, and small or larger deployments.
+
 - [Install & start](https://transitrix.com/install/): Install the Transitrix Studio editor extension, then scaffold a first file or a full architecture repository.
 - [Library](https://transitrix.com/library/): Free reference sheets, templates and worked examples — read on the page, take the PDF away. No sign-up, no gate.
 - [Explainers](https://transitrix.com/explainers/): One subject per page, in more depth than the front page goes. How the repository works; how a model-backed document prints.

@@ -1,6 +1,6 @@
 # Published files declaration — transitrix.github.io
 
-**Last updated:** 2026-09-02
+**Last updated:** 2026-09-17
 
 This file declares the published artefacts served by transitrix.github.io (the transitrix.com website). A file served to a reader is listed below. Internal machinery, source files, and build artifacts are not published and are not listed.
 
@@ -33,6 +33,7 @@ This file declares the published artefacts served by transitrix.github.io (the t
 - `methodology/index.html` — Methodology page
 - `quickstart/index.html` — Quickstart page
 - `recipes/index.html` — Recipes page
+- `repository-mcp/index.html` — Governed enterprise model access explainer
 - `strategy-and-behaviour/index.html` — Strategy and behaviour page
 - `ttrs/index.html` — TTRS page
 - `vs-drawing-tools/index.html` — Vs drawing tools

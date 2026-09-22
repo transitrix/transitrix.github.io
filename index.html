@@ -72,7 +72,7 @@
         <article class="card">
           <div class="card-meta">5 minutes · nothing to set up</div>
           <h3>Draw a diagram</h3>
-          <p>Write a few lines of text, see a diagram. Install the Studio extension and open any file — the diagram renders in your editor as you type.</p>
+          <p>Write a few lines of text, see a diagram. Install the Studio extension and open a recognised file in VS Code — the preview refreshes on save.</p>
           <a class="card-link" href="install/">Install Studio →</a>
         </article>
         <article class="card">
@@ -104,7 +104,8 @@
         <article class="card">
           <div class="card-meta">tool · open</div>
           <h3>Transitrix Studio</h3>
-          <p>The unified editor extension and CLI to author and preview Transitrix formats — the reference implementation of the methodology. Previews the full Transitrix notation set, from BPMN process diagrams and goal trees to capability maps, FGCA, and process blueprints, with live preview as you type.</p>
+          <p>The unified editor extension and CLI to author and preview Transitrix formats — the reference implementation of the methodology. Preview strategy, processes, capabilities and catalogues, with the host differences described below.</p>
+          <a class="card-link" href="#studio-features">Explore Studio features →</a>
           <a class="card-link" href="install/">Install →</a>
         </article>
       </div>
@@ -125,12 +126,29 @@
       <p>Neither is open. <a href="strategy-and-behaviour/">See what they do and how to see them working →</a></p>
     </section>
 
+    <section aria-labelledby="studio-features">
+      <h2 id="studio-features">What you can do with Transitrix Studio</h2>
+      <p>Available in <strong>Studio 3.7.3</strong> for VS Code and JetBrains, and the separately installed <strong>CLI 2.9.2</strong>, with the host differences below.</p>
+      <ul>
+        <li><strong>Connect strategy to delivery.</strong> Preview goal trees, driver–goal–change–activity chains (DGCA/DGA), activity networks and activity cards. VS Code also offers Gantt and critical-path views for planning work. <a href="https://github.com/transitrix/transitrix-studio/blob/main/extension/README.md#17-notations-one-extension">Notation guide</a>.</li>
+        <li><strong>Describe processes in text.</strong> Preview process maps and stage-by-stage process blueprints. In VS Code, author BPMN in YAML and preview the diagram; the CLI compiles it to BPMN 2.0 XML with automatic layout. <a href="https://github.com/transitrix/transitrix-studio/blob/main/README.md#quick-start--bpmn">BPMN quick start</a>.</li>
+        <li><strong>Explore capabilities and catalogues.</strong> View capability maturity, applications, products, nested blocks and scenarios from structured YAML. These notation previews are available in both editor plugins. <a href="https://github.com/transitrix/transitrix-studio/blob/main/extension/README.md#17-notations-one-extension">Format overview</a>.</li>
+        <li><strong>Inspect compliance and traceability.</strong> VS Code provides compliance impact and coverage views, a gap dashboard, and a requirement–verification matrix to inspect requirements, assertions and verification results in a Transitrix repository. These views need the corresponding model records. <a href="https://github.com/transitrix/transitrix-studio/blob/main/docs/validation.md#compliance-suite---scoperepo-518">Compliance validation</a>.</li>
+        <li><strong>Share diagrams and findings.</strong> VS Code can save supported diagram previews as SVG or PNG, and export the gap dashboard and requirement–verification matrix as CSV. PNG clipboard copying is Windows-only. The CLI exports compliance reports as Markdown or PDF; PDF requires the optional WeasyPrint executable. <a href="https://github.com/transitrix/transitrix-studio/blob/main/extension/README.md#17-notations-one-extension">Preview exports</a> · <a href="https://github.com/transitrix/transitrix-studio/blob/main/docs/cli.md#commands">CLI commands</a>.</li>
+        <li><strong>Create consistent model elements.</strong> VS Code commands and the CLI scaffold goals, drivers, constraints and requirements with admission and lifecycle fields, checking IDs and references before writing. <a href="https://github.com/transitrix/transitrix-studio/blob/main/extension/README.md#creating-a-new-element">Element creation</a>.</li>
+        <li><strong>Check models in scripts and CI.</strong> The CLI validates individual files or repository models and emits JSON findings for automated checks. It runs independently of either editor and requires Node.js 20 or newer. <a href="https://github.com/transitrix/transitrix-studio/blob/main/docs/cli.md">CLI reference</a> · <a href="https://github.com/transitrix/transitrix-studio/blob/main/docs/validation.md#validation-scope-file-vs-repo">Validation scope</a>.</li>
+      </ul>
+      <p><strong>Choose your host:</strong> the VS Code extension (also installable in compatible Cursor, VSCodium and Windsurf editors) opens recognised previews automatically and refreshes them <strong>on save</strong>; autosave can shorten the edit–preview loop. <a href="https://github.com/transitrix/transitrix-studio/blob/main/extension/README.md#get-started-in-3-steps">Preview settings</a>.</p>
+      <p>The <strong>JetBrains plugin</strong> requires a compatible IDE with JCEF (platform builds 242–262). Open <strong>Transitrix: Preview Notation</strong> from the editor&#x27;s context menu. Its read-only preview is a <strong>snapshot: close and reopen it after editing</strong>. It supports the strategy, process-map/blueprint, capability and catalogue notations above, but does not include BPMN, the VS Code compliance dashboards, or its SVG/PNG export commands. <a href="https://github.com/transitrix/transitrix-studio/blob/main/intellij/README.md#installing-in-intellij-idea">JetBrains installation</a>.</p>
+      <p>The editor plugins bundle their renderers; the <strong>CLI is a separate installation</strong>, not a command added to your shell by installing an editor plugin. No DSM installation is required for the capabilities listed here. <a href="https://github.com/transitrix/transitrix-studio/blob/main/README.md#cli">Install the CLI</a>.</p>
+    </section>
+
     <section aria-labelledby="see-heading">
       <h2 id="see-heading">See it work</h2>
-      <p>A few lines of text become a diagram you can read, review, and version. You author a Transitrix file in VS Code; the preview renders alongside it as you type.</p>
+      <p>A few lines of text become a diagram you can read, review, and version. You author a Transitrix file in VS Code; the preview refreshes alongside it on save. Autosave can shorten the loop.</p>
       <figure class="product-shot">
-        <img src="assets/img/studio-preview.gif" alt="Transitrix Studio in VS Code: a goals-tree source file on the left; on the right, the preview redraws live as a new goal is added, showing the branch appear." loading="lazy" width="700" height="394">
-        <figcaption>Transitrix Studio — a Transitrix source file and its live preview, redrawing as you edit.</figcaption>
+        <img src="assets/img/studio-preview.gif" alt="Transitrix Studio in VS Code: a goals-tree source file on the left; on the right, the preview shows a newly added goal branch." loading="lazy" width="700" height="394">
+        <figcaption>Transitrix Studio — a Transitrix source file and its live preview, refreshing on save.</figcaption>
       </figure>
     </section>
 
@@ -147,7 +165,7 @@
 
     <section aria-labelledby="open-heading">
       <h2 id="open-heading">What's open today</h2>
-      <p>Both the methodology and Transitrix Studio are public. The methodology specification lives at <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a>. Transitrix Studio — an editor extension and CLI — installs into VS Code, Cursor, VSCodium, Windsurf and IntelliJ IDEA; see the <a href="install/">install options</a>. Source at <a href="https://github.com/transitrix/transitrix-studio">github.com/transitrix/transitrix-studio</a>. For the exact shape of every notation, see the <a href="dsl-examples/">DSL examples</a> reference; recipes — prose with directives, named <code>*.&lt;kind&gt;.ttrs</code> — are described on <a href="recipes/">the <code>.ttrs</code> recipe format</a> page.</p>
+      <p>Both the methodology and Transitrix Studio are public. The methodology specification lives at <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a>. Transitrix Studio’s editor plugins install into VS Code, compatible Cursor, VSCodium and Windsurf editors, and compatible JetBrains IDEs; the CLI installs separately. See the <a href="install/">install options</a>. Source at <a href="https://github.com/transitrix/transitrix-studio">github.com/transitrix/transitrix-studio</a>. For the exact shape of every notation, see the <a href="dsl-examples/">DSL examples</a> reference; recipes — prose with directives, named <code>*.&lt;kind&gt;.ttrs</code> — are described on <a href="recipes/">the <code>.ttrs</code> recipe format</a> page.</p>
       <p>If you are evaluating Transitrix for a pilot or want to follow the work, reach out at <a href="mailto:hello@transitrix.com">hello@transitrix.com</a>.</p>
       <div class="note">
         <strong>Follow releases</strong> — subscribe via Atom/RSS: <a href="https://github.com/transitrix/transitrix-studio/releases.atom">Transitrix Studio</a> · <a href="https://github.com/transitrix/methodology/releases.atom">Methodology</a>. Add either URL to any RSS/Atom reader, or use GitHub's Watch → Releases on each repository.
