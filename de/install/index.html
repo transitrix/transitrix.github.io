@@ -58,18 +58,28 @@
 
     <section aria-labelledby="install-heading">
       <h2 id="install-heading">1. Studio installieren</h2>
-      <p>Wählen Sie Ihren Editor — die Erweiterung ist überall dieselbe. Veröffentlicht wird sie über Open VSX.</p>
+      <p>Wählen Sie Ihre Anwendung. VS-Code-kompatible Editoren verwenden die Open-VSX-Erweiterung; JetBrains und Obsidian haben eigene Plugins.</p>
       <div class="hero-actions">
         <a class="btn" href="/install/go/openvsx/">Cursor / VSCodium / Windsurf</a>
         <a class="btn" href="/install/go/jetbrains/">JetBrains-IDEs</a>
+        <a class="btn" href="#obsidian-install">Obsidian Desktop</a>
       </div>
-      <p>In diesen Editoren genügt auch die Suche nach <em>Transitrix Studio</em> im Erweiterungen-Panel — sie lesen Open VSX.</p>
+      <p>In Cursor, VSCodium und Windsurf genügt auch die Suche nach <em>Transitrix Studio</em> im Erweiterungen-Panel — sie lesen Open VSX.</p>
       <p><strong>Im regulären VS Code nehmen Sie stattdessen die Datei.</strong> Der Build von Microsoft liest ausschließlich den eigenen Marketplace, daher findet die Erweiterungssuche Studio dort nicht. Laden Sie die <code>.vsix</code> von <a href="/install/go/openvsx/">der Open-VSX-Seite</a> herunter und wählen Sie dann <em>Erweiterungen &rarr; &hellip; &rarr; Aus VSIX installieren&hellip;</em> oder führen Sie <code>code --install-extension transitrix-studio-*.vsix</code> aus. Gleicher Build, gleiche Version.</p>
       <p>Sequenz-, Zustands- und ER-/Klassendiagramme rendern nativ über PlantUML — keine zusätzliche Erweiterung nötig. Für leichtere, schnellere Ansichten installieren Sie zusätzlich <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> — dasselbe reine Textmodell, kein Lock-in.</p>
+      <h3 id="obsidian-install">Obsidian Desktop — manuelle Installation</h3>
+      <p>Transitrix Studio 0.1.0 zeigt eigenständiges Diagramm-YAML in Ihren Notizen an. Voraussetzung: Obsidian Desktop 1.0.0 oder neuer.</p>
+      <ol class="qs-steps">
+        <li>Laden Sie <code>main.js</code>, <code>manifest.json</code> und <code>styles.css</code> aus den Assets von <a href="https://github.com/transitrix/transitrix-studio-obsidian/releases/tag/0.1.0">Release 0.1.0</a> herunter.</li>
+        <li>Erstellen Sie in Ihrem Vault den Ordner <code>.obsidian/plugins/transitrix-studio/</code> und legen Sie alle drei Dateien direkt darin ab.</li>
+        <li>Starten Sie Obsidian neu. Deaktivieren Sie unter <em>Einstellungen → Community-Plugins</em> den eingeschränkten Modus (Restricted mode), um Plugins zuzulassen, und aktivieren Sie <em>Transitrix Studio</em>.</li>
+        <li>Kopieren Sie einen Codeblock aus den <a href="https://github.com/transitrix/transitrix-studio-obsidian/tree/0.1.0/demo">Beispielnotizen</a> in eine Notiz und öffnen Sie diese in der <strong>Leseansicht (Reading view)</strong>.</li>
+      </ol>
+      <p>Unterstützte Blöcke: Goals, DGCA, DGA, Action network, Action Card, Blocks und Process Blueprint. <a href="https://github.com/transitrix/transitrix-studio-obsidian/blob/0.1.0/README.md">Blocknamen und Einstellungen</a>. Live Preview und Mobilgeräte werden nicht unterstützt. Jeder Block muss seine Diagrammdaten selbst enthalten: Dokumente mit ausschließlich <code>view_config</code> sowie <code>sources</code>-Verweise werden abgelehnt. Das Plugin verändert keine Notizen.</p>
     </section>
 
     <section aria-labelledby="start-heading">
-      <h2 id="start-heading">2. Repository anlegen — oder nur eine erste Datei</h2>
+      <h2 id="start-heading">2. Im Code-Editor: Repository anlegen — oder nur eine erste Datei</h2>
       <p>Fügen Sie dies in einen beliebigen Coding-Assistenten ein — Claude Code, Cursor, Copilot Chat, Gemini CLI — im Ordner, in dem Sie arbeiten möchten:</p>
       <div class="code-wrapper">
         <button class="copy-btn" data-copy-label="Kopieren" data-copied-label="Kopiert ✓" aria-label="Prompt in die Zwischenablage kopieren">Kopieren</button>
