@@ -59,18 +59,28 @@
 
     <section aria-labelledby="install-heading">
       <h2 id="install-heading">1. Install Studio</h2>
-      <p>Pick your editor — the extension is the same everywhere. Open VSX is where it is published.</p>
+      <p>Choose your host. VS Code-compatible editors use the Open VSX extension; JetBrains and Obsidian have separate plugins.</p>
       <div class="hero-actions">
         <a class="btn" href="/install/go/openvsx/">Cursor / VSCodium / Windsurf</a>
         <a class="btn" href="/install/go/jetbrains/">JetBrains IDEs</a>
+        <a class="btn" href="#obsidian-install">Obsidian Desktop</a>
       </div>
-      <p>In those editors you can also just search <em>Transitrix Studio</em> in the Extensions panel — they read Open VSX.</p>
+      <p>In Cursor, VSCodium and Windsurf you can also just search <em>Transitrix Studio</em> in the Extensions panel — they read Open VSX.</p>
       <p><strong>On stock VS Code, take the file instead.</strong> Microsoft's build reads only its own marketplace, so an Extensions search will not find Studio there. Download the <code>.vsix</code> from <a href="/install/go/openvsx/">the Open VSX listing</a>, then use <em>Extensions &rarr; &hellip; &rarr; Install from VSIX&hellip;</em>, or run <code>code --install-extension transitrix-studio-*.vsix</code>. Same build, same version.</p>
       <p>Sequence, state and ER/class diagrams render natively via PlantUML — no extra extension needed. For lighter, quicker views, add <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> alongside it — same plain-text model, no lock-in.</p>
+      <h3 id="obsidian-install">Obsidian Desktop — manual installation</h3>
+      <p>Transitrix Studio 0.1.0 previews self-contained diagram YAML in your notes. Requires Obsidian Desktop 1.0.0 or newer.</p>
+      <ol class="qs-steps">
+        <li>Download <code>main.js</code>, <code>manifest.json</code> and <code>styles.css</code> from the assets of <a href="https://github.com/transitrix/transitrix-studio-obsidian/releases/tag/0.1.0">release 0.1.0</a>.</li>
+        <li>In your vault, create <code>.obsidian/plugins/transitrix-studio/</code> and place all three files directly inside it.</li>
+        <li>Restart Obsidian. In <em>Settings → Community plugins</em>, turn Restricted mode off to allow plugins, then enable <em>Transitrix Studio</em>.</li>
+        <li>Copy a worked code block from the <a href="https://github.com/transitrix/transitrix-studio-obsidian/tree/0.1.0/demo">demo notes</a> into a note and open it in <strong>Reading view</strong>.</li>
+      </ol>
+      <p>Supported blocks: Goals, DGCA, DGA, Action network, Action Card, Blocks and Process Blueprint. <a href="https://github.com/transitrix/transitrix-studio-obsidian/blob/0.1.0/README.md">See fence names and settings</a>. Live Preview and mobile are not supported. Each block must contain its own diagram data: <code>view_config</code>-only documents and <code>sources</code> references are rejected. Notes are not modified by the plugin.</p>
     </section>
 
     <section aria-labelledby="start-heading">
-      <h2 id="start-heading">2. Scaffold your repo — or just a first file</h2>
+      <h2 id="start-heading">2. In a code editor: scaffold your repo — or just a first file</h2>
       <p>Paste this into any coding agent — Claude Code, Cursor, Copilot Chat, Gemini CLI — from the folder you want to work in:</p>
       <div class="code-wrapper">
         <button class="copy-btn" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy prompt to clipboard">Copy</button>
