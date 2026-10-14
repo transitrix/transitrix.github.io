@@ -59,6 +59,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/archimate-cheat-sheet/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/marketplace-status/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/marketplace-status/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/methodology/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/methodology/"/>
   </url>
