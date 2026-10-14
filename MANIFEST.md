@@ -1,6 +1,6 @@
 # Published files declaration — transitrix.github.io
 
-**Last updated:** 2026-09-17
+**Last updated:** 2026-10-14
 
 This file declares the published artefacts served by transitrix.github.io (the transitrix.com website). A file served to a reader is listed below. Internal machinery, source files, and build artifacts are not published and are not listed.
 
@@ -30,6 +30,7 @@ This file declares the published artefacts served by transitrix.github.io (the t
 - `learn/index.html` — Learning hub
 - `library/index.html` — Library page
 - `library/archimate-cheat-sheet/index.html` — ArchiMate cheat sheet HTML
+- `marketplace-status/index.html` — Marketplace status and release verification
 - `methodology/index.html` — Methodology page
 - `quickstart/index.html` — Quickstart page
 - `recipes/index.html` — Recipes page
