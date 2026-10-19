@@ -36,9 +36,10 @@ The output path must not exist. Reader URLs and included file bytes are preserve
 security contact, discovery files, downloads, domain markers and licensing remain.
 Contributor scripts, templates, tests, workflows and source-only assets stay in the
 public repository. Their exact paths remain covered by the repository inventory.
-The current legacy GitHub Pages source is still the repository root. Activating
-artifact-based publication is a separate deployment change; uploading this preview
-does not change what the live website serves.
+Uploading this preview does not change the Pages source or live publication.
+A legacy repository-root source also serves some repository-only paths; select
+GitHub Actions and perform a verified manual deployment to publish only the
+consumer artifact.
 
 ## Manual publication
 

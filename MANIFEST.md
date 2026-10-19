@@ -74,8 +74,9 @@ admits future files.
 The public developer repository also carries validators, generation scripts and
 workflows needed to maintain the site; exact inventory and packaging controls;
 and contributor/curator instructions. They are not part of the website artifact.
-The existing legacy Pages root still serves some of them until publication is
-explicitly switched to the verified artifact. This declaration does not deploy it.
+A legacy Pages root source also serves some repository-only paths. Manual
+artifact publication excludes them once GitHub Actions is selected as the Pages
+source and a verified deployment succeeds. This declaration does not deploy it.
 
 - `.github/dependabot.yml`
 - `.github/pull_request_template.md`
