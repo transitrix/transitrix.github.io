@@ -36,6 +36,22 @@ The output path must not exist. Reader URLs and included file bytes are preserve
 security contact, discovery files, downloads, domain markers and licensing remain.
 Contributor scripts, templates, tests, workflows and source-only assets stay in the
 public repository. Their exact paths remain covered by the repository inventory.
-The current legacy GitHub Pages source is still the repository root. Activating
-artifact-based publication is a separate deployment change; uploading this preview
-does not change what the live website serves.
+Uploading this preview does not change the Pages source or live publication.
+A legacy repository-root source also serves some repository-only paths; select
+GitHub Actions and perform a verified manual deployment to publish only the
+consumer artifact.
+
+## Manual publication
+
+`Deploy consumer website manually` runs only through `workflow_dispatch` on main.
+It repeats the publication tests, builds the consumer directory and verifies a
+regular-file `artifact.tar` before deploying through the existing `github-pages`
+environment. It never deploys on pull requests or pushes. Only the deploy job has
+Pages/OIDC write permissions; the standard Ubuntu runner uses no dependency cache
+and retains its small Pages artifact for one day.
+
+The tar packager preserves exact declared dot paths, including security.txt and
+the static-host marker. It rejects missing/extra/changed content and links.
+Activating this workflow requires selecting GitHub Actions as the Pages source;
+this does not change DNS, custom-domain or HTTPS settings. Until that source change
+is explicitly applied, legacy root publication remains active.
