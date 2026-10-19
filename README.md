@@ -55,3 +55,23 @@ the static-host marker. It rejects missing/extra/changed content and links.
 Activating this workflow requires selecting GitHub Actions as the Pages source;
 this does not change DNS, custom-domain or HTTPS settings. Until that source change
 is explicitly applied, legacy root publication remains active.
+
+After a completed manual deployment, verify the selected artifact and public
+responses from a clean checkout of its exact SHA:
+
+```sh
+python3 .github/scripts/check_live_site.py --run-id RUN_ID --artifact-id ARTIFACT_ID \
+  --environment-deployment-id ENVIRONMENT_DEPLOYMENT_ID \
+  --pages-deployment-id PAGES_DEPLOYMENT_ID --output /tmp/site-acceptance.json
+```
+
+Use the artifact and Pages deployment identifiers from the deployment log and
+the corresponding `github-pages` environment record. The read-only verifier uses
+existing `gh` access to bind the identifiers to a successful manual main run,
+downloads that exact artifact, verifies all 58 archived file hashes, and requires
+all 58 public files to return matching bytes. It also checks the exact 16 legacy
+repository-only URLs for HTTP 404 and requires `text/plain` for security.txt.
+Redirects, HTTP errors, fallback responses and changed bytes fail acceptance.
+The JSON receipt records identifiers, hashes and selected cache/request headers;
+keep it outside the checkout. A successful workflow alone is not public acceptance.
+This command does not deploy or change hosting settings.
