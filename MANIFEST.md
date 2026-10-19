@@ -109,3 +109,6 @@ explicitly switched to the verified artifact. This declaration does not deploy i
 - `assets/img/studio-preview.png`
 - `assets/inc/favicon-links.html`
 - `assets/inc/og-meta.html`
+- `.github/workflows/pages.yml`
+- `.github/scripts/package_site.py`
+- `.github/scripts/test_pages_package.py`

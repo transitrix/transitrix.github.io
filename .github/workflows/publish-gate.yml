@@ -35,6 +35,9 @@ jobs:
       - name: Build and validate consumer website artifact
         run: python3 .github/scripts/build_site.py --output "$RUNNER_TEMP/site-consumer"
 
+      - name: Verify Pages-format archive including security files
+        run: python3 .github/scripts/package_site.py --site "$RUNNER_TEMP/site-consumer" --output "$RUNNER_TEMP/site-consumer.tar"
+
       - name: Upload consumer preview without deployment
         uses: actions/upload-artifact@v4
         with:

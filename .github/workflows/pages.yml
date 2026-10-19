@@ -1,0 +1,53 @@
+name: Deploy consumer website manually
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-consumer-manual
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Test publication boundaries
+        run: python3 -m unittest discover -s .github/scripts -p 'test_*.py' -v
+      - name: Check exact repository inventory
+        run: python3 .github/scripts/check_publish_manifest.py
+      - name: Build consumer directory
+        run: python3 .github/scripts/build_site.py --output "$RUNNER_TEMP/site-consumer"
+      - name: Package and verify Pages archive including security files
+        run: python3 .github/scripts/package_site.py --site "$RUNNER_TEMP/site-consumer" --output "$RUNNER_TEMP/artifact.tar"
+      - name: Upload verified Pages archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the verified consumer artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
