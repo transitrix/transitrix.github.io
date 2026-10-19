@@ -1,8 +1,8 @@
 # Published files declaration — transitrix.github.io
 
-**Last updated:** 2026-10-14
+**Last updated:** 2026-10-19
 
-This file declares the published artefacts served by transitrix.github.io (the transitrix.com website). A file served to a reader is listed below. Internal machinery, source files, and build artifacts are not published and are not listed.
+This file declares exact paths admitted to the public repository. The full tracked tree is checked. GitHub Pages currently serves the root of main with .nojekyll; scripts and repository documentation below are also directly reachable. This inventory preserves existing content as-is and does not change deployment.
 
 ## HTML pages
 
@@ -91,13 +91,34 @@ This file declares the published artefacts served by transitrix.github.io (the t
 - `library/archimate-cheat-sheet/archimate-cheat-sheet.pdf` — ArchiMate cheat sheet PDF
 - `library/SHA256SUMS` — Checksum file for library
 
-## Not published
+## Additional files served from the current Pages root
 
-- Source and generation scripts (`scripts/`)
-- Workflows and build configuration (`.github/`)
-- Repository documentation (`.gitignore`, `README.md`)
-- Internal-only documents (`CLAUDE.md`, `STRATEGIC_BRIEF.md`, etc. — see `.gitignore`)
+- `MANIFEST.md`
+- `README.md`
+- `explainers/how-a-document-prints/index.html`
+- `library/README.md`
+- `scripts/check_explainers.py`
+- `scripts/check_library.py`
+- `scripts/generate_sitemap.py`
 
----
+## Repository machinery and metadata
 
-A pull request that adds or modifies a file not in this list will fail the publication gate and not merge.
+These exact paths are admitted to the repository; no directory entry admits future files.
+
+- `.github/dependabot.yml`
+- `.github/pull_request_template.md`
+- `.github/scripts/check_publish_manifest.py`
+- `.github/scripts/test_publish_manifest.py`
+- `.github/workflows/dependabot-auto-merge.yml`
+- `.github/workflows/explainers.yml`
+- `.github/workflows/icon-declarations.yml`
+- `.github/workflows/indexing-declarations.yml`
+- `.github/workflows/library.yml`
+- `.github/workflows/methodology-version-check.yml`
+- `.github/workflows/og-declarations.yml`
+- `.github/workflows/public-surface-hygiene.yml`
+- `.github/workflows/publish-gate.yml`
+- `.github/workflows/simple-pr-automerge.yml`
+- `.gitignore`
+
+Every tracked path must be declared. New or existing undeclared paths fail the gate, independently of diff context.
