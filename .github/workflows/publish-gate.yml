@@ -27,7 +27,18 @@ jobs:
           fetch-depth: 0
 
       - name: Test manifest checker
-        run: python3 -m unittest discover -s .github/scripts -p 'test_publish_manifest.py' -v
+        run: python3 -m unittest discover -s .github/scripts -p 'test_*.py' -v
 
       - name: Check full tracked tree
         run: python3 .github/scripts/check_publish_manifest.py
+
+      - name: Build and validate consumer website artifact
+        run: python3 .github/scripts/build_site.py --output "$RUNNER_TEMP/site-consumer"
+
+      - name: Upload consumer preview without deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-consumer-preview
+          path: ${{ runner.temp }}/site-consumer
+          include-hidden-files: true
+          if-no-files-found: error
