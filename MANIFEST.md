@@ -113,3 +113,5 @@ source and a verified deployment succeeds. This declaration does not deploy it.
 - `.github/workflows/pages.yml`
 - `.github/scripts/package_site.py`
 - `.github/scripts/test_pages_package.py`
+- `.github/scripts/check_live_site.py`
+- `.github/scripts/test_live_site.py`
