@@ -6,12 +6,12 @@ const vm = require('node:vm');
 const html = readFileSync('methodology/index.html', 'utf8');
 const latest = 'https://github.com/transitrix/methodology/releases/latest';
 const api = 'https://api.github.com/repos/transitrix/methodology/releases/latest';
-const script = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].at(-1)[1];
+const script = [...html.matchAll(/<script>([\s\S]*?)<\/script>/gi)].at(-1)[1];
 
 function initialElements() {
   const elements = {};
   for (const id of ['spec-link', 'version-placeholder']) {
-    const match = html.match(new RegExp(`<([a-z]+) id="${id}"([^>]*)>([^<]*)</\\1>`));
+    const match = html.match(new RegExp(`<([a-z]+) id="${id}"([^>]*)>([^<]*)</\\1>`, 'i'));
     assert.ok(match, `Missing ${id}`);
     elements[id] = { textContent: match[3], href: match[2].match(/href="([^"]+)"/)?.[1] };
   }
