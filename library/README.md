@@ -23,8 +23,11 @@ rather than reaching a reader.
 
 `scripts/check_library.py` verifies the *committed* PDF — it never launches a
 browser and never re-renders. Concretely it checks: the checksum against the
-committed file, the PDF's page count and its `MediaBox` against the sheet size
-(297 × 167 mm), and the no-gate patterns against the PDF's own extracted text.
+committed file, the PDF's page count and its `MediaBox` against the item's size,
+and the no-gate patterns against the PDF's own extracted text. The default is
+297 × 167 mm. The named `acme-architecture-on-a-page` worked example is A3
+landscape (420 × 297 mm); its explicit format is enforced in the checker.
+This exception does not change any reference sheet or explainer one-pager size.
 
 **Do not add a check that re-renders and diffs the two PDFs.** It cannot work: a
 browser embeds a creation date in the PDF it writes, and rendered output shifts

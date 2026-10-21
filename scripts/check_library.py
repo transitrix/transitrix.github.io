@@ -3,7 +3,7 @@
 
 Checked against library/ (see library/README.md for the contract in prose): every
 item directory carries <slug>.pdf and no other file named .pdf, the PDF is exactly
-one page whose MediaBox matches the sheet size (297 x 167 mm), no-gate patterns
+one page whose MediaBox matches its declared size (297 x 167 mm by default), no-gate patterns
 are matched against the PDF's own extracted text, and library/SHA256SUMS carries
 a matching hash for every item's PDF, byte-for-byte.
 
@@ -38,6 +38,8 @@ NON_ITEM_ENTRIES = {"README.md", CHECKSUMS_FILE, "index.html"}
 GEOMETRY_TOLERANCE_PT = 0.5
 # Published sheet size. Read from the PDF's MediaBox, not from a source file.
 PAGE_W_MM, PAGE_H_MM = 297.0, 167.0
+# Named library formats only; explainer one-pagers retain the default geometry.
+LIBRARY_PAGE_SIZES_MM = {"acme-architecture-on-a-page": (420.0, 297.0)}
 
 
 def mm_to_pt(mm):
@@ -168,15 +170,19 @@ def check_geometry(library_root, slug):
     if isinstance(got, str):
         return [got]
     got_w_pt, got_h_pt, page_count, _text = got
+    expected_mm = (PAGE_W_MM, PAGE_H_MM)
+    if os.path.basename(os.path.normpath(library_root)) == LIBRARY_DIR:
+        expected_mm = LIBRARY_PAGE_SIZES_MM.get(slug, expected_mm)
+    expected_w_pt, expected_h_pt = map(mm_to_pt, expected_mm)
 
     errors = []
     if page_count != 1:
         errors.append(f"{pdf_path}: expected exactly 1 page, found {page_count}")
-    if abs(got_w_pt - PAGE_W_PT) > GEOMETRY_TOLERANCE_PT or abs(got_h_pt - PAGE_H_PT) > GEOMETRY_TOLERANCE_PT:
+    if abs(got_w_pt - expected_w_pt) > GEOMETRY_TOLERANCE_PT or abs(got_h_pt - expected_h_pt) > GEOMETRY_TOLERANCE_PT:
         errors.append(
             f"{pdf_path}: MediaBox {got_w_pt:.2f}x{got_h_pt:.2f}pt does not match "
-            f"sheet size {PAGE_W_PT:.2f}x{PAGE_H_PT:.2f}pt "
-            f"({PAGE_W_MM:g} x {PAGE_H_MM:g} mm, tolerance {GEOMETRY_TOLERANCE_PT}pt)"
+            f"sheet size {expected_w_pt:.2f}x{expected_h_pt:.2f}pt "
+            f"({expected_mm[0]:g} x {expected_mm[1]:g} mm, tolerance {GEOMETRY_TOLERANCE_PT}pt)"
         )
     return errors
 
@@ -402,6 +408,24 @@ def _expect(condition, ok_msg, fail_msg, failures):
 def _selftest():
     print("== Self-test: the checker itself must catch what it's meant to catch ==")
     failures = []
+
+    # An A3 format is scoped to one library item, never a geometry bypass.
+    for slug, w_mm, h_mm, explainer, accepted in [
+        ("acme-architecture-on-a-page", 420, 297, False, True),
+        ("acme-architecture-on-a-page", 297, 167, False, False),
+        ("acme-architecture-on-a-page", 297, 210, False, False),
+        ("widgets", 420, 297, False, False),
+        ("acme-architecture-on-a-page", 420, 297, True, False),
+    ]:
+        with tempfile.TemporaryDirectory() as tmp:
+            create = _fresh_explainer if explainer else _fresh_item
+            create(tmp, slug=slug, pdf_bytes=_fixture_pdf(
+                w_pt=mm_to_pt(w_mm), h_pt=mm_to_pt(h_mm)))
+            tree = EXPLAINERS_DIR if explainer else LIBRARY_DIR
+            errors = check_geometry(os.path.join(tmp, tree), slug)
+            _expect((errors == []) == accepted,
+                    f"geometry {tree}/{slug} {w_mm}x{h_mm} accepted={accepted}",
+                    f"incorrect format admission for {tree}/{slug} {w_mm}x{h_mm}", failures)
 
     tmp = tempfile.mkdtemp()
     try:

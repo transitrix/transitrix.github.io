@@ -55,6 +55,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/library/acme-architecture-on-a-page/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/acme-architecture-on-a-page/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/library/archimate-cheat-sheet/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/archimate-cheat-sheet/"/>
   </url>
@@ -99,6 +103,9 @@
   <url>
     <loc>https://transitrix.com/which-editor/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/which-editor/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/library/acme-architecture-on-a-page/acme-architecture-on-a-page.pdf</loc>
   </url>
   <url>
     <loc>https://transitrix.com/library/archimate-cheat-sheet/archimate-cheat-sheet.pdf</loc>
