@@ -970,3 +970,46 @@ button:focus-visible {
   margin: 2rem 0 0;
   max-width: 44rem;
 }
+
+/* Notation stays beside its selectable name at every reading width. */
+.sheet-aspect .aspect-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.sheet-element {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 100%;
+}
+
+.sheet-element > span {
+  min-width: 0;
+}
+
+.sheet-element .element-symbol {
+  width: 1.65rem;
+  height: 1.4rem;
+  flex: none;
+  color: var(--text);
+  --symbol-fill: var(--surface);
+}
+
+#notation-licenses {
+  margin: 0.75rem 0;
+}
+
+#notation-licenses summary {
+  cursor: pointer;
+}
+
+#notation-licenses pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.site-footer a {
+  overflow-wrap: anywhere;
+}
