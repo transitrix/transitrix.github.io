@@ -53,6 +53,9 @@ class SiteArtifactTests(unittest.TestCase):
                 ]
                 self.assertEqual(menus[0]["label"], "Hauptnavigation" if german else "Primary")
                 self.assertEqual([(a["href"], a["text"].strip()) for a in menus[0]["links"]], expected)
+                methodology = menus[0]["links"][2]
+                self.assertEqual(methodology.get("target"), "_blank")
+                self.assertEqual(set(methodology.get("rel", "").split()), {"noopener", "noreferrer"})
                 for href, _ in expected:
                     if href.startswith("/"):
                         self.assertTrue((root / href.lstrip("/") / "index.html").is_file())
