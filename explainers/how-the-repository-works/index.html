@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How the repository works | Transitrix</title>
-  <meta name="description" content="The repository layout behind Transitrix: field, codex, knowledge and canon folders, the pull-request gate that admits a change, and how every diagram and document is generated from the model.">
+  <title>How an Enterprise Architecture Repository Works | Transitrix</title>
+  <meta name="description" content="A practical guide based on the Transitrix Methodology. Learn where source material and model content live, how changes are reviewed, and how derived views are produced.">
   <link rel="canonical" href="https://transitrix.com/explainers/how-the-repository-works/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://transitrix.com/explainers/how-the-repository-works/">
-  <meta property="og:title" content="How the repository works | Transitrix">
-  <meta property="og:description" content="The repository layout behind Transitrix: field, codex, knowledge and canon folders, the pull-request gate that admits a change, and how every diagram and document is generated from the model.">
+  <meta property="og:title" content="How an Enterprise Architecture Repository Works | Transitrix">
+  <meta property="og:description" content="A practical guide based on the Transitrix Methodology. Learn where source material and model content live, how changes are reviewed, and how derived views are produced.">
   <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -55,8 +55,9 @@
   </header>
   <main id="main" class="wrap" tabindex="-1">
     <div class="hero">
-      <p class="pub-date"><a href="../">&larr; Explainers</a></p>
-      <h1>How the repository works</h1>
+      <p class="pub-date"><a href="../">&larr; Explainers</a> · <a href="how-the-repository-works.pdf">one-pager (PDF)</a></p>
+      <h1>How an Enterprise Architecture Repository Works</h1>
+      <p class="lede">A practical guide based on the Transitrix Methodology</p>
     </div>
 
     <section>
@@ -66,7 +67,7 @@
 
       <h2>What you already have</h2>
       <p>Interviews. A spreadsheet someone emailed. A slide deck from a project that finished. Notes from a meeting where three people described the same process differently.</p>
-      <p>None of it is thrown away, and none of it is cleaned up first. Nor does it have to be converted first: Word, PowerPoint, Excel, PDF, HTML — all of it becomes Markdown on the way in, and anything already written in Markdown or plain text goes in untouched. The original file is kept, with a fingerprint, so anything built on it leads back to the document it came from.</p>
+      <p>Keep the original file and its provenance. Where a supported converter is configured, Office documents, PDFs and HTML can be converted into a readable working form. Check conversion failures and uncertain extraction before using the result. Markdown and plain text can be retained directly. A converted document is still source material; conversion does not establish truth or approval.</p>
 
       <h2><code>field/</code> — what you were told</h2>
       <p>Raw material, exactly as it arrived. An interview stays an interview. A draft stays a draft.</p>
@@ -74,7 +75,7 @@
 
       <h2><code>codex/</code> — what you must obey</h2>
       <p>Laws, regulations, industry standards — and your own policies, which count just as much.</p>
-      <p>The difference from everything else: you did not write these, and you do not get to adjust them. A regulation is kept as it was issued, word for word. If your model and a regulation disagree, the model is what changes.</p>
+      <p>External authorities issue laws and regulations; your organisation also issues its own authority documents. Preserve the issuing source faithfully, with its status and effective dates. Do not rewrite an authority document to make the model appear compliant. Use it to identify which obligations apply.</p>
 
       <h2><code>knowledge/</code> — what someone worked out</h2>
       <p>The step in between. Someone reads five interviews and a policy, works out what they actually mean together, and writes that down — with the sources cited and the date on it.</p>
@@ -83,23 +84,23 @@
 
       <h2><code>canon/</code> — what the organisation says is true</h2>
       <p>The model itself. One thing per file: a process, an application, a goal, a requirement, each with its own file, its own type, and the dates between which it holds.</p>
-      <p>This is the only folder whose contents your organisation stands behind. Everything above feeds it; nothing above it is binding.</p>
+      <p>This is the admitted architecture model. Source statements do not become model facts merely because they were collected or analysed. Authority documents in <code>codex/</code> retain their own force; admission to <code>canon/</code> is a separate question.</p>
 
       <h2>The gate: a tool proposes, a person admits</h2>
       <p>A tool can read your material and propose entries at any hour of the night. Nothing it proposes enters the model on its own.</p>
-      <p>Something becomes part of <code>canon/</code> only when a person lets it in — <strong>and that permission is the pull request your team already uses</strong>. Not a committee, not a second system, not a new ceremony. The review you already do is the gate.</p>
+      <p>Open a pull request so the team's authorised human reviewer can inspect the change and its evidence. <strong>Validation is not approval.</strong> Admit the change only after the required review, checks and merge, and record who ran the admission gate. The pull request is the review surface; opening one alone does not admit a candidate.</p>
 
       <h2><code>operations/decisions/</code> — why you did it that way</h2>
       <p>Your team's own record of the choices it made: what was decided, when, and what the alternative was. One file per decision.</p>
       <p>These sit <strong>beside</strong> the model rather than inside it, and the distinction does real work. A decision is a fact about your team. A weakness in the business you are modelling is a fact about the business, and belongs in the model.</p>
 
       <h2>What comes out</h2>
-      <p>Diagrams, documents and reports are <strong>generated</strong> from the model. A capability map, a layered view, a process diagram — three different questions asked of the same content.</p>
-      <p>So they cannot drift from it, and nobody spends a Thursday bringing a diagram back in line with reality. Delete every generated view and you have lost nothing: run it again.</p>
+      <p>Derived diagrams, documents and reports answer questions about the model. A capability map, a layered view, a process diagram — three different questions asked of the same content. View definitions live in <code>views/</code>, alongside <code>canon/</code>. Use the renderer that supports the selected view or document format.</p>
+      <p>Check the source revision and regenerate configured views when their sources change. Keep both the model and the view definitions: those are the inputs needed to reproduce a projection. An exported picture or PDF is a snapshot and can become stale; it does not promise automatic refresh.</p>
 
       <h2>And one repository is not the boundary</h2>
-      <p>Every project keeps its own repository, with its own model and its own decisions. Joining is one line of configuration.</p>
-      <p>A scheduled read collects every project's decisions into a single index. It only reads — nothing is written back into a team's repository, and no team has to change how it works to be included. Lose the index and you rebuild it by running the collection again.</p>
+      <p>Each project can keep its own repository, model and decisions. A shared decision index can help teams read choices across projects while retaining the source repository and revision.</p>
+      <p>Where read-only collection is configured, verify which repositories it can access, what it collected and when it last ran. Collection does not grant write access to another team's repository. Rebuilding an index requires the retained source decisions and collection configuration; a schedule or automatic collection must be established explicitly.</p>
     </section>
     <p class="next-step">Explore the structure in the <a href="https://github.com/transitrix/acme-corp">public example enterprise repository</a>, or <a href="/install/">create your own model</a>.</p>
   </main>
