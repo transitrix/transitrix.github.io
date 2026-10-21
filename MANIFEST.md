@@ -39,6 +39,7 @@ admits future files.
 - `explainers/SHA256SUMS`
 - `explainers/how-a-document-prints/how-a-document-prints.pdf`
 - `explainers/how-a-document-prints/index.html`
+- `explainers/how-the-repository-works/how-the-repository-works.pdf`
 - `explainers/how-the-repository-works/index.html`
 - `explainers/index.html`
 - `favicon.ico`
