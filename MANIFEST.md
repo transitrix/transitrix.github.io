@@ -61,6 +61,7 @@ admits future files.
 - `recipes/index.html`
 - `repository-mcp/index.html`
 - `robots.txt`
+- `semantic-standards/index.html`
 - `sitemap.xml`
 - `strategy-and-behaviour/index.html`
 - `ttrs/index.html`

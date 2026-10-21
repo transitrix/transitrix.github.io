@@ -17,17 +17,17 @@ class PublicAcceptanceTests(unittest.TestCase):
         return {"status": 200, "sha256": hashlib.sha256((self.root / path).read_bytes()).hexdigest(),
                 "headers": {"content-type": "text/plain; charset=utf-8"}}
 
-    def test_all_58_files_including_markers_and_exact_16_negative_paths_are_checked(self):
+    def test_all_declared_files_including_markers_and_exact_16_negative_paths_are_checked(self):
         seen = []
         def fetch(path):
             seen.append(path)
             return self.response(path)
         result = check_public(self.root, self.paths, fetch)
         self.assertTrue(result["passed"])
-        self.assertEqual(result["positive_count"], 58)
+        self.assertEqual(result["positive_count"], len(self.paths))
         self.assertEqual(result["negative_count"], 16)
         self.assertEqual(set(seen), self.paths | set(NEGATIVE_PATHS))
-        self.assertEqual(len(seen), 74)
+        self.assertEqual(len(seen), len(self.paths) + 16)
 
     def test_legacy_bytes_fallback_redirect_missing_positive_and_bad_mime_fail(self):
         cases = (("README.md", {"status": 200}),

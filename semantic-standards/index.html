@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Semantic Standards and Interoperability | Transitrix</title>
+  <meta name="description" content="Semantic foundations, persistent identity, provenance, validation and explicit mapping limits in Transitrix. Read the authoritative profile and ArchiMate differences register.">
+  <link rel="canonical" href="https://transitrix.com/semantic-standards/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://transitrix.com/semantic-standards/">
+  <meta property="og:title" content="Semantic Standards and Interoperability | Transitrix">
+  <meta property="og:description" content="Semantic foundations, persistent identity, provenance, validation and explicit mapping limits in Transitrix. Read the authoritative profile and ArchiMate differences register.">
+  <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/learn/">Learn</a></li>
+          <li><a href="/dsl-examples/">Examples</a></li>
+          <li><a href="https://github.com/transitrix/methodology" target="_blank" rel="noopener noreferrer">Methodology</a></li>
+          <li><a href="/library/">Library</a></li>
+          <li><a href="/install/">Install &amp; start</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap" tabindex="-1">
+    <div class="hero">
+      <h1>Semantic Standards and Interoperability</h1>
+      <p class="lede">Keep the meaning when a model crosses a boundary: identity, context, mapping limits and evidence matter as much as the format.</p>
+    </div>
+
+    <section aria-labelledby="foundations-heading">
+      <h2 id="foundations-heading">A foundation, with explicit differences</h2>
+      <p>Transitrix uses plain-text models under Git. ArchiMate 3.2 is a starting foundation, alongside BPMN for process modelling. Transitrix also makes deliberate choices about identity, time, stakeholder interests and evidence. Better model representation takes precedence over strict fidelity.</p>
+      <p>A matching name does not guarantee a matching meaning. The maintained <a href="https://github.com/transitrix/methodology/blob/main/docs/standards-review/archimate-differences.md" target="_blank" rel="noopener noreferrer">ArchiMate differences register</a> records the source, rationale, status, direction and information loss for each comparison. A partial mapping stays partial; a lossy mapping names what it cannot preserve.</p>
+    </section>
+
+    <section aria-labelledby="profile-heading">
+      <h2 id="profile-heading">One authoritative profile</h2>
+      <p>The <a href="https://github.com/transitrix/methodology/blob/main/method/semantic-standards-profile.md" target="_blank" rel="noopener noreferrer">Transitrix Semantic Standards Profile</a> defines obligations for explicitly declared scopes: authoring and interpretation, an optional semantic interchange contract, and a tool's claim of support. It preserves Git/YAML authoring and does not require every model to become RDF.</p>
+      <p>Within a claimed scope, MUST means required, SHOULD means a recommendation whose departure needs a reason and evidence, and MAY means optional. A declaration names its profile version, subject, source revision, supported subset and exceptions. The profile and register in Methodology are authoritative; this page is an introduction.</p>
+      <ul>
+        <li><strong>RDF 1.1, Turtle and JSON-LD 1.1:</strong> requirements for a selected interchange target, with explicit graph context, supported fields and losses. A serialization is not a complete mapping contract.</li>
+        <li><strong>SKOS and OWL 2:</strong> distinct ways to describe retrieval concepts and formal classes. An ontology or inference regime is an optional, separately justified choice.</li>
+        <li><strong>SHACL 1.0 and SPARQL 1.1:</strong> explicit constraints and questions for a declared dataset. Shape validation, inference and approval are separate.</li>
+        <li><strong>PROV-O, Dublin Core Terms and DCAT 3:</strong> possible evidence and metadata mappings for actual resources and datasets. A catalogue entry alone does not establish a service or dataset publication.</li>
+      </ul>
+      <p>ISO terminology and architecture standards inform the reviewed correspondence. Where full requirements were unavailable, clause-level conformance remains unevaluated. No upper ontology or external metadata-registry profile is adopted merely by citing it.</p>
+    </section>
+
+    <section aria-labelledby="identity-heading">
+      <h2 id="identity-heading">A concept, a class and an instance</h2>
+      <p>A taxonomy concept such as <em>payment processing</em> helps readers find related things. An ontology class such as <em>Application</em> describes a formally interpreted category. A particular <em>Payments application</em> is an instance. They can be connected without becoming the same resource.</p>
+      <p>Identifiers preserve catalogue and local scope. Two organisations can both use the same local application ID without referring to the same application. A persistent resource IRI should survive a repository move; a snapshot and a vocabulary version identify descriptions, not replacement identities.</p>
+      <p>The <a href="https://github.com/transitrix/methodology/blob/main/method/semantic-standards-profile.md#worked-interpretation-concept-class-and-instance" target="_blank" rel="noopener noreferrer">worked profile example</a> shows separate identifiers, a deliberately non-equivalent vocabulary mapping and source-backed provenance. Its fictional namespaces are illustrative, not a deployed Transitrix vocabulary.</p>
+    </section>
+
+    <section aria-labelledby="evidence-heading">
+      <h2 id="evidence-heading">Evidence is not approval</h2>
+      <p>“Declared”, “observed”, “inferred” and “AI-proposed” describe different origins. A useful evidence record identifies the source and version, responsible agent and time, or keeps missing information explicitly unknown. Approval does not change how the assertion originated; a matching digest does not prove that a document was generated from particular inputs.</p>
+      <p>A query also needs a known dataset, date and inference regime. An unavailable or incomplete dataset is unknown, not a successful answer with zero results. A shape pass checks its declared constraints; it cannot by itself admit a fact or certify a model.</p>
+    </section>
+
+    <section aria-labelledby="support-heading">
+      <h2 id="support-heading">Requirements and implemented support</h2>
+      <p>Current Transitrix specifications and validators have their own documented scopes. The semantic profile is a documentation contract, not a bundled RDF exporter, OWL reasoner, SHACL engine or SPARQL endpoint. The <a href="https://github.com/transitrix/methodology/tree/main/docs/standards-review" target="_blank" rel="noopener noreferrer">standards review</a> supplies evidence and illustrative checks; proposed mappings do not establish released tool capabilities.</p>
+      <p>An integration must name its implemented subset, versions, test evidence and unsupported cases before claiming support. Changed identities, relation meanings or required fields also need compatibility and migration evidence. Conceptual alignment, tested interoperability, formal conformance and certification are different claims.</p>
+      <p>For the source formats and tools you can use today, see the <a href="/dsl-examples/">model examples</a>, <a href="/install/">installation options</a> and <a href="/library/archimate-cheat-sheet/">ArchiMate reference sheet</a>.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <p>
+          <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+          <a href="https://x.com/transitrix">@transitrix</a>
+        </p>
+      </div>
+      <p class="footer-attribution">Created and maintained by Valerii Korobeinikov — enterprise-architecture advisory at <a href="https://korobeinikov.consulting">korobeinikov.consulting</a></p>
+    </div>
+  </footer>
+  <script src="../assets/js/theme.js"></script>
+</body>
+</html>
