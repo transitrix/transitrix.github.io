@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSVLOD cheat sheet — 24 EA artifacts, free PDF | Transitrix</title>
+  <meta name="description" content="Svyatoslav Kotusev&#x27;s six CSVLOD categories and 24 artifact types from Enterprise Architecture on a Page v1.2. Free one-page PDF and readable web reference.">
+  <link rel="canonical" href="https://transitrix.com/library/csvlod-cheat-sheet/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://transitrix.com/library/csvlod-cheat-sheet/">
+  <meta property="og:title" content="CSVLOD cheat sheet — 24 EA artifacts, free PDF | Transitrix">
+  <meta property="og:description" content="Svyatoslav Kotusev&#x27;s six CSVLOD categories and 24 artifact types from Enterprise Architecture on a Page v1.2. Free one-page PDF and readable web reference.">
+  <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <style>
+    .csvlod-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .csvlod-focus { grid-column: 1 / -1; margin: 1rem 0 0; font-size: 1.1rem; }
+    .csvlod-cell { min-width: 0; border-top: 1px solid var(--border); padding-top: 1rem; }
+    .csvlod-cell h3 { margin-top: .25rem; }
+    .csvlod-cell ul { padding-left: 1.25rem; }
+    .csvlod-coordinate { color: var(--muted); margin: 0; font-size: .9rem; }
+    @media (max-width: 640px) { .csvlod-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/learn/">Learn</a></li>
+          <li><a href="/dsl-examples/">Examples</a></li>
+          <li><a href="https://github.com/transitrix/methodology" target="_blank" rel="noopener noreferrer">Methodology</a></li>
+          <li><a href="/library/">Library</a></li>
+          <li><a href="/install/">Install &amp; start</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap" tabindex="-1">
+    <div class="hero">
+      <p class="pub-date"><a href="../">&larr; Library</a></p>
+      <h1>CSVLOD cheat sheet</h1>
+      <p class="lede">Enterprise architecture on a page: six categories and 24 artifact types from Svyatoslav Kotusev's poster v1.2.</p>
+      <p>Use the two axes to place an architecture artifact: what it describes and how it describes it. CSVLOD stands for Considerations, Standards, Visions, Landscapes, Outlines and Designs.</p>
+      <p><a class="btn" href="csvlod-cheat-sheet.pdf">Download the one-page PDF</a></p>
+      <p>Landscape, 297 &times; 167 mm. Free to read and download, with no sign-up.</p>
+    </div>
+    <section aria-labelledby="matrix-heading">
+      <h2 id="matrix-heading">Read the two axes</h2>
+      <p><strong>What Artifacts Describe?</strong> The columns are <strong>Rules</strong>, <strong>Structures</strong> and <strong>Changes</strong>, from generic to specific. <strong>How Artifacts Describe?</strong> The rows are <strong>Business-Focused</strong> and <strong>IT-Focused</strong>.</p>
+      <div class="csvlod-grid">
+        <h3 class="csvlod-focus">Business-Focused</h3>
+        <section class="csvlod-cell" aria-labelledby="considerations-heading">
+          <p class="csvlod-coordinate">Rules</p>
+          <h3 id="considerations-heading">Considerations</h3>
+          <p>Organisation-wide principles and context that guide architecture decisions.</p>
+          <ul><li>Policies</li><li>Principles</li><li>Direction Statements</li><li>Conceptual Data Models</li><li>Analytical Reports</li></ul>
+        </section>
+        <section class="csvlod-cell" aria-labelledby="visions-heading">
+          <p class="csvlod-coordinate">Structures</p>
+          <h3 id="visions-heading">Visions</h3>
+          <p>A shared business view for directing longer-term IT investment.</p>
+          <ul><li>Context Diagrams</li><li>Value Chains</li><li>Business Capability Models</li><li>Target States</li><li>Roadmaps</li></ul>
+        </section>
+        <section class="csvlod-cell" aria-labelledby="outlines-heading">
+          <p class="csvlod-coordinate">Changes</p>
+          <h3 id="outlines-heading">Outlines</h3>
+          <p>Business-readable proposals for evaluating and funding specific initiatives.</p>
+          <ul><li>Initiative Proposals</li><li>Options Assessments</li><li>Solution Overviews</li></ul>
+        </section>
+        <h3 class="csvlod-focus">IT-Focused</h3>
+        <section class="csvlod-cell" aria-labelledby="standards-heading">
+          <p class="csvlod-coordinate">Rules</p>
+          <h3 id="standards-heading">Standards</h3>
+          <p>Technical guidance and reusable approaches for consistent implementation.</p>
+          <ul><li>IT Principles</li><li>Technology Reference Models</li><li>Guidelines</li><li>Logical Data Models</li><li>Patterns</li></ul>
+        </section>
+        <section class="csvlod-cell" aria-labelledby="landscapes-heading">
+          <p class="csvlod-coordinate">Structures</p>
+          <h3 id="landscapes-heading">Landscapes</h3>
+          <p>A technical overview of the existing IT estate and its evolution.</p>
+          <ul><li>Inventories</li><li>Enterprise System Portfolios</li><li>Landscape Diagrams</li><li>IT Roadmaps</li></ul>
+        </section>
+        <section class="csvlod-cell" aria-labelledby="designs-heading">
+          <p class="csvlod-coordinate">Changes</p>
+          <h3 id="designs-heading">Designs</h3>
+          <p>Technical specifications for teams implementing approved solutions.</p>
+          <ul><li>Preliminary Solution Designs</li><li>Solution Designs</li></ul>
+        </section>
+      </div>
+    </section>
+    <section aria-labelledby="use-heading">
+      <h2 id="use-heading">Use it as a reading aid</h2>
+      <p>The taxonomy describes observed architecture practice. It is not a requirement to create every listed artifact, and this sheet does not reproduce the source poster's example diagrams or usage-frequency legend.</p>
+      <p>For a concrete application of the six perspectives, see the <a href="../acme-architecture-on-a-page/">Acme architecture worked example</a>. That example is a Transitrix interpretation of a fictional repository; this reference sheet preserves Kotusev's taxonomy without mapping it to Transitrix model types.</p>
+    </section>
+    <section aria-labelledby="sources-heading">
+      <h2 id="sources-heading">Sources and attribution</h2>
+      <p>The taxonomy and artifact names are by <strong>Svyatoslav Kotusev</strong>. This is an independent Transitrix reference summary, not the author's original poster or an endorsement.</p>
+      <ul>
+        <li><a href="https://eaonapage.com/Enterprise%20Architecture%20on%20a%20Page%20(v1.2).pdf" target="_blank" rel="noopener noreferrer">Enterprise Architecture on a Page, v1.2</a> — the source for the names, groups and axes on this sheet.</li>
+        <li><a href="https://kotusev.com/Enterprise%20Architecture%20on%20a%20Single%20Page.pdf" target="_blank" rel="noopener noreferrer">Enterprise Architecture on a Single Page</a> — Kotusev's November 2017 BCS article explaining the poster.</li>
+      </ul>
+      <p>The sheet summarises the named v1.2 poster, rather than later editions or every possible architecture artifact. Short category descriptions are paraphrased. Primary sources checked 21 October 2026.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <p>
+          <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+          <a href="https://x.com/transitrix">@transitrix</a>
+        </p>
+      </div>
+      <p class="footer-attribution">Created and maintained by Valerii Korobeinikov — enterprise-architecture advisory at <a href="https://korobeinikov.consulting">korobeinikov.consulting</a></p>
+    </div>
+  </footer>
+  <script src="../../assets/js/theme.js"></script>
+</body>
+</html>
