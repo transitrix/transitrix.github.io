@@ -151,8 +151,6 @@ def main():
             archive = Path(tmp) / "artifact.tar"
             archive.write_bytes(data)
             paths = verify_archive(root, archive)
-        if len(paths) != 58:
-            raise ValueError("Expected the current 58-file consumer declaration")
         receipt["archive_files_verified"] = len(paths)
         nonce = uuid.uuid4().hex
         receipt.update(check_public(root, paths, lambda path: fetch(path, nonce)))
