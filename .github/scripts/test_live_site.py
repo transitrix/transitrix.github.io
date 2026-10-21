@@ -72,6 +72,9 @@ class PublicAcceptanceTests(unittest.TestCase):
         changed = copy.deepcopy(records)
         changed[1]["workflow_run"]["id"] = 9
         with self.assertRaises(ValueError): check_identity(*changed, 1, 2)
+        changed = copy.deepcopy(records)
+        changed[3][0]["log_url"] = "https://github.com/x/y/actions/runs/9"
+        with self.assertRaises(ValueError): check_identity(*changed, 1, 2)
 
     def test_cli_accepts_manifest_sized_archive_and_rejects_corruption(self):
         sha = "a" * 40
@@ -120,9 +123,4 @@ class PublicAcceptanceTests(unittest.TestCase):
                         self.assertEqual(receipt["negative_count"], 16)
                     else:
                         self.assertIn("error", receipt)
-        changed = copy.deepcopy(records)
-        changed[3][0]["log_url"] = "https://github.com/x/y/actions/runs/9"
-        with self.assertRaises(ValueError): check_identity(*changed, 1, 2)
-
-
 if __name__ == "__main__": unittest.main()
