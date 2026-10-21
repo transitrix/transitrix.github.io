@@ -18,11 +18,16 @@ function initialElements() {
   return elements;
 }
 
-async function load(fetch) {
+async function load(fetch, signal = new AbortController().signal) {
   const elements = initialElements();
   const context = vm.createContext({
     document: { getElementById: id => elements[id] },
-    fetch: url => { assert.equal(url, api); return fetch(); },
+    AbortSignal: { timeout: ms => { assert.equal(ms, 8000); return signal; } },
+    fetch: (url, options) => {
+      assert.equal(url, api);
+      assert.equal(options.signal, signal);
+      return fetch(url, options);
+    },
     console: { error() {} },
   });
   await vm.runInContext(script, context, { timeout: 1000 });
@@ -67,4 +72,12 @@ test('release names stay text and release tags stay within the tag URL', async (
   assert.equal(elements['spec-link'].href, 'https://github.com/transitrix/methodology/releases/tag/v8%2Fpreview%3F%23');
   assert.match(elements['version-placeholder'].textContent, /Breaking changes/);
   assert.doesNotMatch(elements['version-placeholder'].textContent, /<img/);
+});
+
+test('a timed-out request keeps a truthful fallback destination and label', async () => {
+  const signal = AbortSignal.abort(new DOMException('Request timed out', 'TimeoutError'));
+  const elements = await load(async (url, { signal }) => { throw signal.reason; }, signal);
+  assert.equal(elements['spec-link'].href, latest);
+  assert.equal(elements['spec-link'].textContent, 'Read the full methodology specification on GitHub');
+  assert.equal(elements['version-placeholder'].textContent, 'View the latest methodology specification on GitHub.');
 });
