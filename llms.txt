@@ -8,6 +8,8 @@ Each notation has exactly one canonical extension — either `*.<short-name>.tra
 
 ## Canonical reference
 
+- [Semantic standards and interoperability](https://transitrix.com/semantic-standards/): Scope of the normative profile, persistent identifiers, provenance, validation claims and explicit ArchiMate mapping limits. Methodology holds the authoritative profile and register.
+
 - [DSL examples](https://transitrix.com/dsl-examples/): One minimal, schema-valid YAML example per notation Transitrix Studio ships (BPMN, goals, DGCA, capability maps, process maps, process blueprints, activity networks, activity cards, scenarios, applications, products, nested blocks, compliance impact) — copy-paste ready, all on one page.
 - [Recipe format `.ttrs`](https://transitrix.com/recipes/): What a `.ttrs` recipe contains, how `<basename>.<kind>.ttrs` is read, the `{{ … }}` directive language, and the reference states an implementation must distinguish. Links the normative specification, the reference implementation and the conformance fixture.
 - [Notation specs](https://github.com/transitrix/methodology/tree/main/notations): The full specification for every notation, with larger worked examples per format.
