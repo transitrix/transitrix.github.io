@@ -57,6 +57,8 @@ admits future files.
 - `library/acme-architecture-on-a-page/index.html`
 - `library/archimate-cheat-sheet/archimate-cheat-sheet.pdf`
 - `library/archimate-cheat-sheet/index.html`
+- `library/bpmn-cheat-sheet/bpmn-cheat-sheet.pdf`
+- `library/bpmn-cheat-sheet/index.html`
 - `library/csvlod-cheat-sheet/csvlod-cheat-sheet.pdf`
 - `library/csvlod-cheat-sheet/index.html`
 - `library/index.html`

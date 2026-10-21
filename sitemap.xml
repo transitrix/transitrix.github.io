@@ -63,6 +63,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/archimate-cheat-sheet/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/library/bpmn-cheat-sheet/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/bpmn-cheat-sheet/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/library/csvlod-cheat-sheet/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/library/csvlod-cheat-sheet/"/>
   </url>
@@ -113,6 +117,9 @@
   </url>
   <url>
     <loc>https://transitrix.com/library/archimate-cheat-sheet/archimate-cheat-sheet.pdf</loc>
+  </url>
+  <url>
+    <loc>https://transitrix.com/library/bpmn-cheat-sheet/bpmn-cheat-sheet.pdf</loc>
   </url>
   <url>
     <loc>https://transitrix.com/library/csvlod-cheat-sheet/csvlod-cheat-sheet.pdf</loc>
