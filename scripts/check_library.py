@@ -11,7 +11,7 @@ This check never launches a browser and never re-renders. It cannot detect a
 PDF that is out of date with a source that is not in this repository; do not
 add a check that pretends to.
 
-Explainer one-pagers (transitrix-hq#325) use the same published-PDF contract
+Explainer one-pagers use the same published-PDF contract
 (geometry, one page, checksum, no source.html) under explainers/, listed in
 explainers/SHA256SUMS. Directories without a one-pager are ignored.
 
