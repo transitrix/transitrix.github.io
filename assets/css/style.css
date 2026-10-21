@@ -1013,3 +1013,24 @@ button:focus-visible {
 .site-footer a {
   overflow-wrap: anywhere;
 }
+
+/* Leave room for long element names when mobile readers enlarge their text. */
+@media (max-width: 480px) {
+  .archimate-sheet {
+    width: 100%;
+    padding-inline: 12px;
+  }
+
+  .archimate-sheet .sheet-layer {
+    padding: 12px;
+  }
+
+  .archimate-sheet .sheet-element {
+    gap: 8px;
+  }
+
+  .archimate-sheet .element-symbol {
+    width: 26px;
+    height: 23px;
+  }
+}
