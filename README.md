@@ -18,9 +18,7 @@ npx serve .
 
 ## Contributing
 
-Content changes go through pull requests. Routine updates are handled by automation.
-
-**Work for this repository is filed in [`transitrix/transitrix-hq`](https://github.com/transitrix/transitrix-hq)** (a private repository), not in this repository's issue tracker. If you'd like to propose a change, report a problem, or request a feature, open a pull request here or email `hello@transitrix.com`.
+To propose a change, open a pull request. To report a problem or request a feature, email `hello@transitrix.com`.
 
 ## Consumer website artifact
 
@@ -32,29 +30,15 @@ uploads `site-consumer-preview`. Build locally without deployment:
 python3 .github/scripts/build_site.py --output /tmp/transitrix-site-preview
 ```
 
-The output path must not exist. Reader URLs and included file bytes are preserved;
-security contact, discovery files, downloads, domain markers and licensing remain.
-Contributor scripts, templates, tests, workflows and source-only assets stay in the
-public repository. Their exact paths remain covered by the repository inventory.
-Uploading this preview does not change the Pages source or live publication.
-A legacy repository-root source also serves some repository-only paths; select
-GitHub Actions and perform a verified manual deployment to publish only the
-consumer artifact.
+The output path must not exist. `MANIFEST.md` declares the website files and
+repository-only contributor tools separately. The preview includes only the
+website files; generating or uploading it does not publish the site.
 
 ## Manual publication
 
-`Deploy consumer website manually` runs only through `workflow_dispatch` on main.
-It repeats the publication tests, builds the consumer directory and verifies a
-regular-file `artifact.tar` before deploying through the existing `github-pages`
-environment. It never deploys on pull requests or pushes. Only the deploy job has
-Pages/OIDC write permissions; the standard Ubuntu runner uses no dependency cache
-and retains its small Pages artifact for one day.
-
-The tar packager preserves exact declared dot paths, including security.txt and
-the static-host marker. It rejects missing/extra/changed content and links.
-Activating this workflow requires selecting GitHub Actions as the Pages source;
-this does not change DNS, custom-domain or HTTPS settings. Until that source change
-is explicitly applied, legacy root publication remains active.
+Run `Deploy consumer website manually` from main with GitHub Actions selected as
+the Pages source. The workflow tests, builds and verifies the website archive
+before deployment. Pushes and pull requests do not trigger this workflow.
 
 After a completed manual deployment, verify the selected artifact and public
 responses from a clean checkout of its exact SHA:
@@ -65,13 +49,8 @@ python3 .github/scripts/check_live_site.py --run-id RUN_ID --artifact-id ARTIFAC
   --pages-deployment-id PAGES_DEPLOYMENT_ID --output /tmp/site-acceptance.json
 ```
 
-Use the artifact and Pages deployment identifiers from the deployment log and
-the corresponding `github-pages` environment record. The read-only verifier uses
-existing `gh` access to bind the identifiers to a successful manual main run,
-downloads that exact artifact, verifies all 58 archived file hashes, and requires
-all 58 public files to return matching bytes. It also checks the exact 16 legacy
-repository-only URLs for HTTP 404 and requires `text/plain` for security.txt.
-Redirects, HTTP errors, fallback responses and changed bytes fail acceptance.
-The JSON receipt records identifiers, hashes and selected cache/request headers;
-keep it outside the checkout. A successful workflow alone is not public acceptance.
-This command does not deploy or change hosting settings.
+Use identifiers from the deployment log and the corresponding `github-pages`
+environment record. The verifier requires existing `gh` access. It checks the
+selected artifact, exact public file bytes, security.txt content type, and HTTP
+404 responses for excluded repository-only paths. It writes a JSON receipt to
+the output path. A successful workflow alone does not establish public acceptance.
