@@ -51,6 +51,9 @@ admits future files.
 - `is-it-open-source/index.html`
 - `learn/index.html`
 - `library/SHA256SUMS`
+- `library/acme-architecture-on-a-page/acme-architecture-on-a-page.pdf`
+- `library/acme-architecture-on-a-page/acme-architecture-on-a-page.png`
+- `library/acme-architecture-on-a-page/index.html`
 - `library/archimate-cheat-sheet/archimate-cheat-sheet.pdf`
 - `library/archimate-cheat-sheet/index.html`
 - `library/index.html`

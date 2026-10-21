@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acme architecture on a page — A3 worked example | Transitrix</title>
+  <meta name="description" content="Read a fictional Acme Corp architecture across six CSVLOD cells. Source-backed, manually assembled snapshot with a free A3 PDF and accessible text summary.">
+  <link rel="canonical" href="https://transitrix.com/library/acme-architecture-on-a-page/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://transitrix.com/library/acme-architecture-on-a-page/">
+  <meta property="og:title" content="Acme architecture on a page — A3 worked example | Transitrix">
+  <meta property="og:description" content="Read a fictional Acme Corp architecture across six CSVLOD cells. Source-backed, manually assembled snapshot with a free A3 PDF and accessible text summary.">
+  <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <style>
+    .architecture-preview { margin: 1.5rem 0; }
+    .architecture-preview img { display: block; width: 100%; height: auto; background: white; border: 1px solid var(--border); }
+    .architecture-preview figcaption { margin-top: .75rem; }
+    .architecture-reading { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+    .architecture-reading section { min-width: 0; }
+    .architecture-reading h3 { margin-top: 0; }
+    .architecture-reading ul { padding-left: 1.25rem; }
+    .architecture-provenance { overflow-wrap: anywhere; }
+    @media (max-width: 640px) { .architecture-reading { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/learn/">Learn</a></li>
+          <li><a href="/dsl-examples/">Examples</a></li>
+          <li><a href="https://github.com/transitrix/methodology" target="_blank" rel="noopener noreferrer">Methodology</a></li>
+          <li><a href="/library/">Library</a></li>
+          <li><a href="/install/">Install &amp; start</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap" tabindex="-1">
+    <div class="hero">
+      <p class="pub-date"><a href="../">&larr; Library</a></p>
+      <h1>Acme architecture on a page</h1>
+      <p class="lede">A fictional organisation, read across six connected perspectives: business direction, capabilities, planned changes, technical guidance, systems and solution designs.</p>
+      <p>This is a worked example of reading a Transitrix repository through Svyatoslav Kotusev's CSVLOD taxonomy. It shows selected model content and explicit gaps; it is not a reference sheet of the taxonomy itself.</p>
+      <p><a class="btn" href="acme-architecture-on-a-page.pdf">Download the A3 PDF</a></p>
+      <p>One landscape page, 420 &times; 297 mm. Free to read and download, with no sign-up.</p>
+    </div>
+
+    <section aria-labelledby="preview-heading">
+      <h2 id="preview-heading">The architecture snapshot on one surface</h2>
+      <figure class="architecture-preview">
+        <a href="acme-architecture-on-a-page.png" aria-label="Open the full-size Acme architecture preview">
+          <img src="acme-architecture-on-a-page.png" width="2000" height="1415" alt="Six-cell Acme architecture snapshot: Considerations, Visions and Outlines above Standards, Landscapes and Designs. A detailed text reading follows below." aria-describedby="preview-caption">
+        </a>
+        <figcaption id="preview-caption">Snapshot checked 21 October 2026. Open the full-size preview or use the PDF to inspect small labels. The text below provides the reading without relying on the image.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="reading-heading">
+      <h2 id="reading-heading">Read the six cells</h2>
+      <p>The rows separate business-focused and IT-focused material. The columns separate rules, structures and changes. These are reading perspectives, not a claim that every selected record is a complete CSVLOD artefact.</p>
+      <div class="architecture-reading">
+        <section aria-labelledby="considerations-heading">
+          <h3 id="considerations-heading">Considerations &mdash; business rules</h3>
+          <p>EU market-entry pressure and competition connect to the goal of launching in three EU markets. Support response time connects to the goal of halving response time.</p>
+          <p>The model holds one principle, Customer Data Purpose Limitation: order and support data stay within their collected purpose; marketing profiling requires separate explicit opt-in. Principles belong in Considerations. The separate count of admitted policies is zero.</p>
+        </section>
+        <section aria-labelledby="visions-heading">
+          <h3 id="visions-heading">Visions &mdash; business structures</h3>
+          <p>The capability map covers Order Management, Customer Relationship Management and the supporting Compliance &amp; Data Protection capability. Current-to-target maturity is 3&rarr;3 for Order Management, 2&rarr;3 for CRM and 1&rarr;3 for Compliance. Order Intake is 3&rarr;3; Order Fulfilment is 2&rarr;3.</p>
+          <p>Two state records describe the baseline and EU target. The five-stage order flow is receive order &rarr; allocate inventory &rarr; pick and pack &rarr; ship &rarr; confirm delivery and close. It involves OMS, CRM, Customer Support Lead, Operations Lead and Data Protection Officer.</p>
+        </section>
+        <section aria-labelledby="outlines-heading">
+          <h3 id="outlines-heading">Outlines &mdash; business changes</h3>
+          <p>One target scenario describes EU go-live. Three changes cover EU-localised CRM and payments, data-protection gaps and customer onboarding.</p>
+          <p>One GDPR remediation action card contains two planned milestones: the archive-erasure gap closed on 15 September 2026 and the pre-audit cleared on 31 October 2026. These dates are the model's plan, not verified completion. There is no dedicated activity-network view.</p>
+        </section>
+        <section aria-labelledby="standards-heading">
+          <h3 id="standards-heading">Standards &mdash; IT rules</h3>
+          <p>One internal standard, Engineering Coding Conventions, is issued by VP Engineering with an effective date of 1 January 2026. This is organisation-issued guidance, not an external technical standard or a patterns catalogue.</p>
+          <p>Policy, principle and internal-standard counts use distinct record types; one count does not silently include the others.</p>
+        </section>
+        <section aria-labelledby="landscapes-heading">
+          <h3 id="landscapes-heading">Landscapes &mdash; IT structures</h3>
+          <p>The selected portfolio contains two applications: the internally supplied Order Management System (maturity 3) and Salesforce CRM (maturity 2). One outbound REST integration carries order and erasure events from OMS to CRM.</p>
+          <p>The blocks panel groups active order, payment, contact and consent data separately from cold storage. The archive is explicitly modelled as an erasure gap. One business-object primitive represents a customer order; this is not a complete logical data model. There is no dedicated integration-map view, and no NODE or TECHNOLOGY_SERVICE primitives are modelled.</p>
+        </section>
+        <section aria-labelledby="designs-heading">
+          <h3 id="designs-heading">Designs &mdash; IT changes</h3>
+          <p>Zero SRS or SDD document-view instances are modelled in this repository snapshot. This does not mean that the specifications do not exist or that the fictional organisation has no designs.</p>
+        </section>
+      </div>
+    </section>
+
+    <section aria-labelledby="limits-heading">
+      <h2 id="limits-heading">How this example was assembled</h2>
+      <p>The page is manually assembled. The systems-and-stores panel retains an existing <code>renderBlocksSvg()</code> rendering of the personal-data view; the remaining cells contain manually transcribed, source-checked text. There is no composition command or automatic refresh supplied with this example.</p>
+      <p>Counts refer to selected populations in the pinned fictional model. Maturity is resolved from versioned attribute histories at 21 October 2026; arrows show current and target values, not measured progress. Targets, scenario statements and milestone labels are not proof of achieved outcomes or legal compliance. A zero means no instance in the named model population, not that the real-world thing cannot exist.</p>
+    </section>
+
+    <section class="architecture-provenance" aria-labelledby="sources-heading">
+      <h2 id="sources-heading">Sources and provenance</h2>
+      <p>The <a href="https://github.com/transitrix/acme-corp/tree/a82d56ab399dd091b1903cf67ea2bc8485260fb6/reports/architecture-on-a-page" target="_blank" rel="noopener noreferrer">rendered source and cell-to-source mapping</a> identify the exact report revision. Its model baseline is <a href="https://github.com/transitrix/acme-corp/tree/053008958d5a4ccc9cad7d2b9d671ad337c03094" target="_blank" rel="noopener noreferrer">Acme Corp revision 0530089</a>, pinned to Methodology 7.0.0 and checked on 21 October 2026. Downloaded copies do not update when the repository changes.</p>
+      <p>The reading frame is Svyatoslav Kotusev's <a href="https://eaonapage.com/Enterprise%20Architecture%20on%20a%20Page%20(v1.2).pdf" target="_blank" rel="noopener noreferrer">Enterprise Architecture on a Page, v1.2</a>, explained in his <a href="https://kotusev.com/Enterprise%20Architecture%20on%20a%20Single%20Page.pdf" target="_blank" rel="noopener noreferrer">2017 article</a>. This Acme example is a Transitrix interpretation, not a reproduction of his poster or an endorsement.</p>
+      <p>For the underlying approach, see <a href="/enterprise-as-text/">enterprise architecture as text</a> and the <a href="https://github.com/transitrix/methodology" target="_blank" rel="noopener noreferrer">Methodology</a>.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <p>
+          <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+          <a href="https://x.com/transitrix">@transitrix</a>
+        </p>
+      </div>
+      <p class="footer-attribution">Created and maintained by Valerii Korobeinikov — enterprise-architecture advisory at <a href="https://korobeinikov.consulting">korobeinikov.consulting</a></p>
+    </div>
+  </footer>
+  <script src="../../assets/js/theme.js"></script>
+</body>
+</html>
