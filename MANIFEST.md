@@ -24,6 +24,12 @@ admits future files.
 - `assets/img/transitrix-icon.svg`
 - `assets/js/theme.js`
 - `assets/og/transitrix-og.png`
+- `capability-maps/SHA256SUMS`
+- `capability-maps/acme-capability-map-demo.zip`
+- `capability-maps/acme-cycle.svg`
+- `capability-maps/acme-mdm-coverage.svg`
+- `capability-maps/index.html`
+- `capability-maps/render-dsm-capabilities-html-6.8.2.zip`
 - `de/dsl-examples/index.html`
 - `de/dsm/index.html`
 - `de/index.html`

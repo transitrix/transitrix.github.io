@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business capabilities, system coverage and time | Transitrix</title>
+  <meta name="description" content="Explore business capability hierarchy, management-cycle stages, system coverage and dated scenarios with a portable Acme Corp example.">
+  <link rel="canonical" href="https://transitrix.com/capability-maps/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://transitrix.com/capability-maps/">
+  <meta property="og:title" content="Business capabilities, system coverage and time | Transitrix">
+  <meta property="og:description" content="Explore business capability hierarchy, management-cycle stages, system coverage and dated scenarios with a portable Acme Corp example.">
+  <meta property="og:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://transitrix.com/assets/og/transitrix-og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/transitrix-icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/img/favicon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/assets/img/apple-touch-icon.png">
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1d2971bbe7964ede92ee02e5c78da48c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <style>
+    .map-preview { margin: 1.5rem 0; border: 1px solid var(--border, #445); border-radius: 10px; overflow: hidden; background: #f5f7fa; }
+    .map-preview img { display: block; width: 100%; height: auto; }
+    .map-preview figcaption { padding: .9rem 1rem; background: var(--bg, #17212b); color: var(--text, #edf2f7); font-size: .9rem; }
+    .capability-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    .capability-table th, .capability-table td { padding: .65rem .75rem; border-bottom: 1px solid var(--border, #445); text-align: left; vertical-align: top; }
+    .download-links { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .download-links a { display: inline-block; padding: .7rem 1rem; border: 1px solid currentColor; border-radius: 7px; }
+    .example-note { border-left: 3px solid #38b2ac; padding-left: 1rem; }
+    .table-scroll { overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../">Transitrix</a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/learn/">Learn</a></li>
+          <li><a href="/dsl-examples/">Examples</a></li>
+          <li><a href="https://github.com/transitrix/methodology" target="_blank" rel="noopener noreferrer">Methodology</a></li>
+          <li><a href="/library/">Library</a></li>
+          <li><a href="/install/">Install &amp; start</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap" tabindex="-1">
+    <div class="path-position"><a href="../learn/">Learn</a> / Capability maps</div>
+    <div class="hero">
+      <h1>Business capabilities, system coverage and time</h1>
+      <p class="lede">See what the business can do, how its systems support that work, and which state of the organisation you are looking at.</p>
+      <p class="pub-date">By Valerii Korobeinikov · <time datetime="2026-10-23">23 October 2026</time> · 6 min read</p>
+    </div>
+
+    <section aria-labelledby="one-model">
+      <h2 id="one-model">One map, several useful questions</h2>
+      <p>A capability map names the abilities an organisation needs: order management, customer relationship management, fulfilment planning, data quality control. It gives a stable structure for discussing change even when teams, processes and applications are being reorganised.</p>
+      <p>The same structure can answer different questions. Which abilities belong together? Which help set direction, plan work, execute it or check results? Which systems support them? What was different last quarter, and what is only planned for next year?</p>
+      <p>The standalone capability-map skill turns explicitly supplied data into an interactive HTML file and a native vector image. The HTML works locally in a browser; Python 3 generates it without a server or external rendering service.</p>
+      <div class="download-links">
+        <a href="acme-capability-map-demo.zip" download>Download the interactive Acme example (ZIP)</a>
+        <a href="render-dsm-capabilities-html-6.8.2.zip" download>Download the skill (ZIP)</a>
+      </div>
+      <p class="example-note">Acme Corp is a teaching example. Its source-backed core comes from the public Acme model; added capabilities, classifications, technical mappings and historical/planned scenarios are illustrative. The diagram keeps these disclosures visible. It does not describe a measured deployment.</p>
+    </section>
+
+    <section aria-labelledby="structure">
+      <h2 id="structure">Keep the business structure readable</h2>
+      <p>Level-one vertical capabilities form domain columns. Their level-two and level-three capabilities sit inside the relevant parent, with enough width for their names. Horizontal capabilities form bands across domains; explicit intersection boxes show where their more specific abilities apply.</p>
+      <p>For example, Order Management is a domain. A horizontal data-management capability can contain separate abilities for order, customer and inventory data. Its identity and hierarchy matter independently of whether those boxes also carry the tag MDM, meaning master data management.</p>
+      <p>The classic layout emphasises this structure. Turning on <strong>Sort by layers</strong> arranges explicitly classified abilities into coloured zones while keeping their parent frames and horizontal intersections.</p>
+      <figure class="map-preview">
+        <a href="acme-cycle.svg"><img src="acme-cycle.svg" alt="Acme teaching map with vertical business domains, horizontal capabilities and coloured management-cycle zones; nested cards remain within their parent frames." loading="lazy"></a>
+        <figcaption>The same hierarchy grouped by management-cycle stage. Open the vector image for detail, or use the interactive download to switch layouts.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="cycle">
+      <h2 id="cycle">Five stages describe the role of an ability</h2>
+      <p>The stage classification adapts Plan–Do–Check–Act with an explicit Learning stage. Strategic planning belongs to Strategic; Planning describes tactical and operational planning. Strategic also includes significant changes to direction informed by what the organisation has learned.</p>
+      <div class="table-scroll"><table class="capability-table">
+        <thead><tr><th scope="col">Our stage</th><th scope="col">Cycle correspondence</th><th scope="col">Examples of abilities</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Strategic</th><td>Act + strategic Plan</td><td>Choose direction, set strategic priorities, redesign the organisation.</td></tr>
+          <tr><th scope="row">Learning</th><td>Learn</td><td>Research, reflect, retain knowledge and develop competence.</td></tr>
+          <tr><th scope="row">Planning</th><td>Tactical/operational Plan</td><td>Plan capacity, budgets, resources and schedules.</td></tr>
+          <tr><th scope="row">Execution</th><td>Do</td><td>Fulfil orders, run operations and maintain reference data.</td></tr>
+          <tr><th scope="row">Assurance</th><td>Check</td><td>Check quality, outcomes, controls and compliance.</td></tr>
+        </tbody>
+      </table></div>
+      <p>This is a way to organise a view, not a process sequence. Improvement can happen within every domain. A broad parent capability can remain unclassified while its children occupy different stages; a missing stage stays visibly unspecified.</p>
+      <p><strong>Tags answer a different question.</strong> ESG (environmental, social and governance), MDM and Support describe subject affiliation or a supporting role. They appear on boxes and can filter the map. A tag neither creates a horizontal capability nor changes its stage. Neither classification is inherited automatically.</p>
+    </section>
+
+    <section aria-labelledby="coverage">
+      <h2 id="coverage">Show system coverage without inventing support</h2>
+      <p>A system can link directly to a business capability. It can also expose a named technical ability with its own explicit business-capability mappings. Those two evidence paths remain distinct, even when they lead to the same box.</p>
+      <p>Select one or more systems and enable <strong>Coverage polygons</strong>. Each system receives a translucent polygon and a name inside it. The example lets you compare Data Hub, Governance Portal and Warehouse System over reference-data abilities.</p>
+      <figure class="map-preview">
+        <a href="acme-mdm-coverage.svg"><img src="acme-mdm-coverage.svg" alt="Planned Acme teaching scenario filtered by MDM, with three translucent system coverage polygons and a red outline around their overlapping region." loading="lazy"></a>
+        <figcaption>Three systems over an MDM-filtered planned scenario. The red contour encloses the area inside at least two selected outer polygons, including any three-way intersection.</figcaption>
+      </figure>
+      <p>Use <strong>Functional overlap</strong> to outline that shared geometric region in red. It is a prompt for investigation: two systems near the same business ability may perform complementary work. The contour alone proves neither duplicate functionality nor a reason to retire a system. Polygon area is not a coverage percentage, and an absent link means support has not been specified.</p>
+      <p>Switch between angled and rectangular polygons, then round their corners independently. These choices change presentation, not mapping facts. System labels, coverage and backlog are optional; labels expand boxes only when shown.</p>
+    </section>
+
+    <section aria-labelledby="time">
+      <h2 id="time">Choose a date and keep plans visibly separate</h2>
+      <p>The timeline moves through explicitly supplied state periods. In the Acme teaching example, you can inspect a historical period, the current demonstration and a planned 2027 scenario. Capabilities, maturity assessments and system mappings change at their stated boundaries.</p>
+      <p>A selected date is not the date on which evidence was observed. A plan does not become an observed result just because its date has passed. The example therefore keeps the selected date, snapshot basis and scenario kind separate. Dates outside the supplied periods show no data rather than extending the last known state.</p>
+      <p>Try this route through the download:</p>
+      <ol>
+        <li>Open the extracted HTML. Compare the classic layout with <strong>Sort by layers</strong>.</li>
+        <li>Select the <strong>MDM</strong> tag and Data Hub, Governance Portal and Warehouse System. Enable coverage and overlap.</li>
+        <li>Move between October 2026 and January 2027. Read the current/planned caption as mappings change.</li>
+        <li>Enable <strong>Diagram only</strong> and <strong>Fit to screen</strong>. Restore controls, then download the exact visible SVG.</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="use">
+      <h2 id="use">Use it with your own model</h2>
+      <p>The skill download contains agent instructions, a human README, renderer, input contract, tests and source/illustration notes. Copy the folder into an Agent Skills host or run the renderer directly:</p>
+      <pre><code>python3 scripts/render.py assets/example.json capability-map.html
+python3 scripts/render.py assets/example.json capability-map.svg --no-backlog</code></pre>
+      <p>Replace the example with an explicit JSON projection of your source model. The renderer does not ingest native Transitrix YAML or edit DSM/Studio. The core methodology correction is merged but not yet part of a tagged release; the bundled mapping notes identify its revision and the limits of released validators. A successful render does not establish source-model validity.</p>
+      <p>The downloadable HTML contains all supplied snapshots. Its filters are presentation controls, not a way to remove sensitive source data before sharing. The provided demonstration uses public and synthetic teaching data.</p>
+      <p>Browse the <a href="https://github.com/transitrix/methodology/tree/832e486f710e7b9b0622e869b22fdd59249378ac/transitrix/skills/render-dsm-capabilities-html">skill source and README</a>. Read the <a href="https://github.com/transitrix/methodology/blob/888c03d33c2d899ec85a612901075b67811614e5/guides/modelling-capabilities.md">capability modelling guide</a>, inspect the <a href="https://github.com/transitrix/acme-corp/tree/e331590b13935d1d0922063acbf1f6a0cb3cdba2">Acme source revision</a>, or verify the downloads against <a href="SHA256SUMS">their SHA-256 checksums</a>.</p>
+    </section>
+    <p class="next-step">Continue with <a href="../dsl-examples/">model examples</a> or the <a href="../learn/">learning path</a>.</p>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <p>
+          <a href="https://github.com/transitrix">github.com/transitrix</a> ·
+          <a href="https://x.com/transitrix">@transitrix</a>
+        </p>
+      </div>
+      <p class="footer-attribution">Created and maintained by Valerii Korobeinikov — enterprise-architecture advisory at <a href="https://korobeinikov.consulting">korobeinikov.consulting</a></p>
+    </div>
+  </footer>
+  <script src="../assets/js/theme.js"></script>
+</body>
+</html>

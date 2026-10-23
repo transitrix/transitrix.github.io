@@ -8,6 +8,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/capability-maps/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/capability-maps/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/do-i-need-dsm/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/do-i-need-dsm/"/>
   </url>
