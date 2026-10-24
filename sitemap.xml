@@ -38,6 +38,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/explainers/how-the-repository-works/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/explainers/what-is-architecture-as-code/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/explainers/what-is-architecture-as-code/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/install/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/install/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/install/"/>

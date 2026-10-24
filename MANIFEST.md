@@ -42,6 +42,8 @@ admits future files.
 - `explainers/how-the-repository-works/how-the-repository-works.pdf`
 - `explainers/how-the-repository-works/index.html`
 - `explainers/index.html`
+- `explainers/what-is-architecture-as-code/index.html`
+- `explainers/what-is-architecture-as-code/what-is-architecture-as-code.pdf`
 - `favicon.ico`
 - `index.html`
 - `install/go/claude/index.html`
