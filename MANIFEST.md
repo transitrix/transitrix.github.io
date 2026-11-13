@@ -51,6 +51,7 @@ admits future files.
 - `explainers/what-is-architecture-as-code/index.html`
 - `explainers/what-is-architecture-as-code/what-is-architecture-as-code.pdf`
 - `favicon.ico`
+- `glossary/index.html`
 - `index.html`
 - `install/go/claude/index.html`
 - `install/go/jetbrains/index.html`
