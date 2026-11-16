@@ -45,16 +45,16 @@ class SiteArtifactTests(unittest.TestCase):
                 self.assertEqual(len(menus), 1)
                 german = path.startswith("de/")
                 expected = [
-                    ("/learn/", "Lernen (EN)" if german else "Learn"),
-                    ("/de/dsl-examples/" if german else "/dsl-examples/", "Beispiele" if german else "Examples"),
                     ("/methodology/", "Methodik (EN)" if german else "Methodology"),
                     ("/studio/", "Studio (EN)" if german else "Studio"),
+                    ("/de/dsl-examples/" if german else "/dsl-examples/", "Beispiele" if german else "Examples"),
+                    ("/learn/", "Lernen (EN)" if german else "Learn"),
                     ("/library/", "Bibliothek (EN)" if german else "Library"),
                     ("/de/install/" if german else "/install/", "Installieren & starten" if german else "Install & start"),
                 ]
                 self.assertEqual(menus[0]["label"], "Hauptnavigation" if german else "Primary")
                 self.assertEqual([(a["href"], a["text"].strip()) for a in menus[0]["links"]], expected)
-                for overview_link in menus[0]["links"][2:4]:
+                for overview_link in menus[0]["links"][:2]:
                     self.assertNotIn("target", overview_link)
                     self.assertEqual(overview_link.get("hreflang"), "en" if german else None)
                     destination = overview_link["href"].lstrip("/") + "index.html"
