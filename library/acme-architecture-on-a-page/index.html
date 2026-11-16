@@ -74,6 +74,51 @@
       <p>One landscape page, 420 &times; 297 mm. Free to read and download, with no sign-up.</p>
     </div>
 
+    <nav class="path-nav" aria-label="Acme use cases">
+      <a href="#explain-a-decision">Explain a decision</a>
+      <a href="#describe-a-process">Describe a process</a>
+      <a href="#connect-requirements-and-systems">Connect requirements and systems</a>
+    </nav>
+
+    <section aria-labelledby="explain-a-decision">
+      <h2 id="explain-a-decision">Explain a decision</h2>
+      <p>Why is the fictional Acme planning to change its customer systems and payment processing?</p>
+      <dl>
+        <dt><strong>Why now</strong></dt>
+        <dd>The model records a closing window for EU market entry and pressure from competitors.</dd>
+        <dt><strong>What Acme wants to achieve</strong></dt>
+        <dd><a href="https://github.com/transitrix/acme-corp/blob/053008958d5a4ccc9cad7d2b9d671ad337c03094/canon/elements/01_motivation/goals/GOAL-EU-1.yaml">Launch in three EU markets</a>.</dd>
+        <dt><strong>What it plans to change</strong></dt>
+        <dd><a href="https://github.com/transitrix/acme-corp/blob/053008958d5a4ccc9cad7d2b9d671ad337c03094/canon/elements/05_implementation/changes/CHANGE-EU-CRM-1.yaml">Adapt its customer relationship software and payment processing for those markets</a>. The change record links directly to the launch goal.</dd>
+      </dl>
+      <p>This example explains the rationale recorded in the plan. It does not establish that the changes shipped or the launch happened.</p>
+      <p>See how the <a href="/methodology/">Transitrix Methodology</a> keeps these records connected, or read the <a href="#outlines-heading">other changes in the architecture snapshot</a>.</p>
+    </section>
+
+    <section aria-labelledby="describe-a-process">
+      <h2 id="describe-a-process">Describe a process</h2>
+      <p>What happens when the fictional Acme receives an order it cannot fulfil from stock?</p>
+      <ol>
+        <li>Sales receives the order. The order is validated before the stock decision.</li>
+        <li>If the item is in stock, the order goes to pick and pack, then ships.</li>
+        <li>If the item is out of stock, Sales notifies the customer of the backorder. This path ends without a shipment in the model.</li>
+      </ol>
+      <p>Read the <a href="https://github.com/transitrix/acme-corp/blob/053008958d5a4ccc9cad7d2b9d671ad337c03094/canon/elements/02_business/processes/PROCESS-ORD-FULFILL-1.yaml">Order Fulfilment record</a> to see how the two paths are defined. The broader five-stage summary below answers a different question: how fulfilment fits into the architecture snapshot.</p>
+      <p>For a small example you can copy, open the <a href="/dsl-examples/#bpmn">simplified BPMN YAML example</a>. It contains a start, one task and an end. The <a href="/library/bpmn-cheat-sheet/">BPMN cheat sheet</a> explains the symbols and has a direct PDF download. To render YAML in an editor, follow <a href="/install/">the Transitrix Studio installation guide</a> for the VS Code extension.</p>
+    </section>
+
+    <section aria-labelledby="connect-requirements-and-systems">
+      <h2 id="connect-requirements-and-systems">Connect requirements and systems</h2>
+      <p>Which order steps does the fictional Acme associate with a data erasure requirement, and where does it record a gap?</p>
+      <ul>
+        <li>The <a href="https://github.com/transitrix/acme-corp/blob/053008958d5a4ccc9cad7d2b9d671ad337c03094/canon/elements/01_motivation/requirements/REQUIREMENT-GDPR-DATA-ERASURE-1.yaml">requirement record</a> describes Acme’s erasure obligation within the example model.</li>
+        <li>The <a href="https://github.com/transitrix/acme-corp/blob/053008958d5a4ccc9cad7d2b9d671ad337c03094/canon/assertions/ASSERTION-ECOMM-GDPR-ERASURE-1.yaml">e-commerce assessment record</a> links that requirement to the e-commerce platform and three process steps: validate the order, pick and pack, and ship.</li>
+        <li>The assessment says the active-order database and customer relationship system are covered, and records the order-history archive as a gap. The <a href="#landscapes-heading">systems reading</a> shows the selected integration between order management and Salesforce CRM.</li>
+      </ul>
+      <p>These are the relationships and claims recorded in a fictional snapshot. The example provides neither a run of the Transitrix Studio requirements report nor evidence of legal compliance.</p>
+      <p>To model another system, start with the <a href="/dsl-examples/#applications">application catalogue example</a>. For projects with requirements and relationship records, see the <a href="https://github.com/transitrix/transitrix-studio/blob/v3.10.0/README.md#release-scoped-requirement-reports">Transitrix Studio requirements report prerequisites</a>.</p>
+    </section>
+
     <section aria-labelledby="preview-heading">
       <h2 id="preview-heading">The architecture snapshot on one surface</h2>
       <figure class="architecture-preview">
