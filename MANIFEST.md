@@ -81,6 +81,7 @@ admits future files.
 - `semantic-standards/index.html`
 - `sitemap.xml`
 - `strategy-and-behaviour/index.html`
+- `studio/index.html`
 - `ttrs/index.html`
 - `vs-drawing-tools/index.html`
 - `what-can-i-model/index.html`
