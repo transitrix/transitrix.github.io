@@ -47,15 +47,18 @@ class SiteArtifactTests(unittest.TestCase):
                 expected = [
                     ("/learn/", "Lernen (EN)" if german else "Learn"),
                     ("/de/dsl-examples/" if german else "/dsl-examples/", "Beispiele" if german else "Examples"),
-                    ("https://github.com/transitrix/methodology", "Methodik (EN)" if german else "Methodology"),
+                    ("/methodology/", "Methodik (EN)" if german else "Methodology"),
+                    ("/studio/", "Studio (EN)" if german else "Studio"),
                     ("/library/", "Bibliothek (EN)" if german else "Library"),
                     ("/de/install/" if german else "/install/", "Installieren & starten" if german else "Install & start"),
                 ]
                 self.assertEqual(menus[0]["label"], "Hauptnavigation" if german else "Primary")
                 self.assertEqual([(a["href"], a["text"].strip()) for a in menus[0]["links"]], expected)
-                methodology = menus[0]["links"][2]
-                self.assertEqual(methodology.get("target"), "_blank")
-                self.assertEqual(set(methodology.get("rel", "").split()), {"noopener", "noreferrer"})
+                for overview_link in menus[0]["links"][2:4]:
+                    self.assertNotIn("target", overview_link)
+                    self.assertEqual(overview_link.get("hreflang"), "en" if german else None)
+                    destination = overview_link["href"].lstrip("/") + "index.html"
+                    self.assertEqual(overview_link.get("aria-current"), "page" if path == destination else None)
                 for href, _ in expected:
                     if href.startswith("/"):
                         self.assertTrue((root / href.lstrip("/") / "index.html").is_file())
