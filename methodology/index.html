@@ -55,31 +55,33 @@
   </header>
   <main id="main" class="wrap" tabindex="-1">
     <div class="hero">
-      <h1>The published methodology</h1>
-      <p class="lede"><span id="version-placeholder">Read the latest published specification.</span></p>
+      <h1>Transitrix Methodology</h1>
+      <p class="lede">Keep the goals, processes, capabilities and systems behind a decision in a versioned architecture repository.</p>
+      <p>Methodology defines what goes in the model and how its records relate. <a href="/studio/">Transitrix Studio</a> opens and previews models written with those rules.</p>
     </div>
 
-    <section>
-      <p>The Transitrix methodology is a published, open specification: Architecture-as-Code for the enterprise — the git-native, text-first discipline software already has, carried up to the strategy, business and architecture layers that code-scoped tools never reach.</p>
+    <section aria-labelledby="model-heading">
+      <h2 id="model-heading">What your team maintains</h2>
+      <p>Write structured text for things your team needs to track, such as a goal, a process step or an application. Link those records so readers can trace why a change is planned and what it affects. Keep source evidence, modelling rules and accepted facts in their own places. Changes can then be reviewed in version control.</p>
+    </section>
 
-      <h2>What the specification covers</h2>
-      <p>
-        The specification defines the notations, validation rules, and patterns for enterprise-layer text-first modeling:
-        purpose-built notations for processes, goals, capabilities, applications, strategy and behaviour;
-        a schema-validation framework to catch invalid models at author time;
-        patterns for common decision flows and architectural questions.
-      </p>
+    <section aria-labelledby="example-heading">
+      <h2 id="example-heading">Worked example: Acme’s expansion</h2>
+      <p>In the fictional Acme model, market pressure and competition connect to a goal of launching in three EU markets. The model records planned changes to customer systems, data protection and onboarding. The worked example presents those records alongside the capabilities and systems involved.</p>
+      <p><a class="btn" href="/library/acme-architecture-on-a-page/#considerations-heading">Read the Acme example</a></p>
+      <p>The example is a snapshot of a fictional plan. Its targets and dates describe planned outcomes.</p>
+    </section>
 
-      <h2>Versions and stability</h2>
-      <p>
-        The specification follows semantic versioning. Major releases ship a migration recipe for existing models, not a release note.
-        A major release is the right time to adopt breaking changes that improve the language; the recipe walks you from any prior major to the current one.
-      </p>
+    <section aria-labelledby="adopt-heading">
+      <h2 id="adopt-heading">Start with one question</h2>
+      <p>Choose a decision or process your team already needs to explain. Record the relevant facts, connect them and review the result together. Follow <a href="/learn/">the getting-started guide</a> or open the <a href="/dsl-examples/">model examples</a> to see the file formats directly.</p>
+    </section>
 
-      <h2>Read the full specification</h2>
-      <p>
-        <a id="spec-link" href="https://github.com/transitrix/methodology/releases/latest">Read the full methodology specification on GitHub</a>.
-      </p>
+    <section aria-labelledby="spec-heading">
+      <h2 id="spec-heading">Read the full specification</h2>
+      <p>The specification defines the notations, validation rules and modelling patterns. Major releases include migration instructions for existing models.</p>
+      <p id="version-placeholder">Read the latest published specification.</p>
+      <p><a id="spec-link" href="https://github.com/transitrix/methodology/releases/latest">Read the full methodology specification on GitHub</a> · <a href="https://github.com/transitrix/methodology">View source on GitHub</a></p>
     </section>
   </main>
   <footer class="site-footer">

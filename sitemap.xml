@@ -105,6 +105,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/strategy-and-behaviour/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/studio/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/studio/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/vs-drawing-tools/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/vs-drawing-tools/"/>
   </url>
