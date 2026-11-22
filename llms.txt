@@ -41,7 +41,7 @@ Each notation has exactly one canonical extension — either `*.<short-name>.tra
 - [transitrix.com](https://transitrix.com/): Project home page — the stack, the thesis, and what's open today.
 - [github.com/transitrix](https://github.com/transitrix): All public Transitrix repositories.
 
-- [Acme architecture on a page](https://transitrix.com/library/acme-architecture-on-a-page/): Manually assembled fictional architecture snapshot across six CSVLOD cells, with an A3 PDF, text reading and pinned model sources.
+- [Acme architecture on a page](https://transitrix.com/library/acme-architecture-on-a-page/): Manually assembled fictional architecture snapshot across six CSVLOD cells based on Svyatoslav Kotusev's methodology, with an A3 PDF, text reading and pinned model sources.
 
 ## Capability maps
 - /capability-maps/ — Standalone capability-map skill overview, management-cycle stages, tags, explicit system coverage, dated scenarios and a downloadable Acme teaching example.
