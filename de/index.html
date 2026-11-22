@@ -62,18 +62,19 @@
     </div>
   </header>
   <main id="main" class="wrap" tabindex="-1">
-    <div class="hero">
+    <div class="hero hero-split">
       <h1>Das Unternehmen als Text.<br>Geführt von Menschen und Maschinen gemeinsam.</h1>
-      <p class="lede">
-        Architecture-as-Code für das Unternehmen. Transitrix bringt die textorientierte, git-native Disziplin auf die Strategie-, Business- und EA-Schichten, die Code-native Architekturwerkzeuge nie erreichen — ArchiMate-basiert, für die Business-Schicht entwickelt, ein formales Unternehmensmodell über alle Architekturebenen aus einer Quelle.
-      </p>
-      <p class="lede-sub">
-        Eine offene Forschungsinitiative auf dem Weg zur autonomen Organisation — wo Strategie, Prozesse und Fähigkeiten als Text modelliert werden und Menschen und Maschinen gemeinsam auf demselben Modell handeln können.
-      </p>
+      <p class="lede" lang="en">Architecture-as-Code for the enterprise — the git-native, text-first discipline software already has, carried up to the strategy, business and architecture layers that code-scoped tools never reach.</p>
+      <p class="lede-sub">Schreiben Sie wenige Zeilen Text, sehen Sie ein Diagramm.</p>
       <div class="hero-actions">
-        <a class="btn" href="install/">Installieren &amp; starten</a>
-        <a class="btn" href="https://github.com/transitrix/methodology">Methodik lesen</a>
+        <a class="btn btn-primary" href="install/">Diagramm zeichnen — 5 Minuten</a>
+        <a class="hero-link" href="/methodology/" hreflang="en">Methodik lesen (EN)</a>
       </div>
+      <p class="hero-note">Frei und Open Source. Keine Anmeldung.</p>
+      <figure class="product-shot">
+        <img src="../assets/img/studio-preview.gif" alt="Transitrix Studio in VS Code: links eine Zielbaum-Quelldatei, rechts die Diagrammvorschau mit einem neu hinzugefügten Zielzweig." width="700" height="394">
+        <figcaption>Transitrix Studio — Quelldatei und Diagrammvorschau, aktualisiert beim Speichern.</figcaption>
+      </figure>
     </div>
 
     <section aria-labelledby="ways-in-heading">
@@ -94,75 +95,34 @@
       </div>
     </section>
 
+    <section aria-labelledby="outcomes-heading">
+      <h2 id="outcomes-heading">Was es Ihnen gibt</h2>
+      <div class="project-grid">
+        <article class="card"><h3>Strategie mit der Umsetzung verbunden</h3><p>Verfolgen Sie ein Ziel bis zu den Fähigkeiten und Systemen, von denen es abhängt, und sehen Sie die Kette als Diagramm.</p></article>
+        <article class="card"><h3>Prozesse als Text beschrieben</h3><p>Beschreiben Sie Prozesse in strukturiertem YAML, zeigen Sie sie als BPMN oder Prozess-Blueprints an und prüfen Sie jede Änderung in Git.</p></article>
+        <article class="card"><h3>Anforderungen bis zur Auslieferung nachverfolgt</h3><p>Verfolgen Sie Anforderungen zu Zielen sowie zu Verifikation und Release-Abdeckung aus demselben Modell.</p></article>
+      </div>
+    </section>
+
     <section aria-labelledby="about-heading">
-      <h2 id="about-heading">Worum es geht</h2>
-      <p>Organisationen haben Mühe, kohärent zu bleiben, wenn sie wachsen. Strategiedokumente driften von der Realität ab. Prozesse leben in Köpfen oder isolierten Tools. Wenn sich Bedingungen ändern, geht die Anpassung langsam — weil das Unternehmen nicht lesbar genug ist, um sich schnell zu verändern.</p>
-      <p>Die These hinter Transitrix ist einfach: Wenn man ein Unternehmen als Text beschreiben kann — Ziele, Prozesse, Fähigkeiten, Rollen — entsteht eine Grundlage, die sowohl Menschen als auch Maschinen lesen, versionieren und nutzen können. Text ist ehrlich, vergleichbar und kombinierbar. Wir nennen das Architecture-as-Code.</p>
-      <p>Transitrix ist eine offene Forschungsinitiative, die erkundet, wie weit die Idee des textnativen Unternehmens tragen kann. Die Methodik und Transitrix Studio sind öffentlich; die Arbeit läuft weiter — durch offene Entwicklung und Early-Adopter-Piloten.</p>
+      <h2 id="about-heading">Was das ist</h2>
+      <p lang="en"><strong>Against code-scoped tools.</strong> Architecture-as-Code exists today and stops at software. The layers where the money is committed — motivation, strategy, business — are the ones it never reaches, and they are the ones this covers.</p>
+      <p lang="en"><strong>Against context and memory layers.</strong> This is a formal model, not free-form notes and not opaque embeddings. It validates, it diffs, and a change to it is reviewed the way a change to code is reviewed. A machine can act on it because it is grounded, not because it was remembered.</p>
     </section>
 
-    <section aria-labelledby="stack-heading">
-      <h2 id="stack-heading">Der Stack</h2>
-      <p class="section-intro">Zwei Einheiten sind heute offen. Zwei weitere führen dieselbe These fort.</p>
-      <div class="stack-grid">
-        <article class="card">
-          <div class="card-meta">Methodik · offen</div>
-          <h3>Transitrix</h3>
-          <p>Das Fundament. Eine textnative Methode, um eine Organisation — Ziele, Prozesse, Fähigkeiten, Struktur — als Code zu modellieren. Beschreibt <em>wie</em> ein Unternehmen dargestellt werden soll, damit es lesbar, versionierbar und ausführbar bleibt.</p>
-          <a class="card-link" href="/methodology/" hreflang="en">Methodik im Überblick (EN) →</a>
-          <a class="card-link" href="https://github.com/transitrix/methodology">Auf GitHub ansehen →</a>
-        </article>
-        <article class="card">
-          <div class="card-meta">Werkzeug · offen</div>
-          <h3>Transitrix Studio</h3>
-          <p>Die einheitliche Editor-Erweiterung und CLI zum Erstellen und Vorschau von Transitrix-Formaten — die Referenzimplementierung der Methodik. Zeigt den vollständigen Transitrix-Notationssatz, von BPMN-Prozessdiagrammen und Zielbäumen über Fähigkeitskarten und FGCA bis zu Prozess-Blueprints — mit Live-Vorschau beim Tippen.</p>
-          <a class="card-link" href="/studio/" hreflang="en">Transitrix Studio im Überblick (EN) →</a>
-          <a class="card-link" href="install/">Installieren →</a>
-        </article>
-      </div>
-      <div class="stack-subhead">Auf der Roadmap</div>
-      <div class="stack-grid stack-grid--secondary">
-        <article class="card">
-          <div class="card-meta">Strategieprodukt · noch nicht öffentlich</div>
-          <h3>Transitrix DSM</h3>
-          <p>Dynamisches Strategiemanagement, das auf dem Transitrix-Modell operiert und sich aktualisiert, wenn sich das Unternehmensmodell verändert — noch nicht öffentlich verfügbar.</p>
-          <a class="card-link" href="dsm/">Mehr zu Transitrix DSM →</a>
-        </article>
-        <article class="card">
-          <div class="card-meta">Forschung · Phase 2</div>
-          <h3>Transitrix Swarm</h3>
-          <p>Eine Forschungsplattform zur Modellierung dessen, was Agenten innerhalb eines Transitrix-beschriebenen Unternehmens tun. Die Verhaltensschicht des Stacks. Im Narrativ vorhanden; in den nächsten sechs Monaten nicht aktiv in Entwicklung.</p>
-        </article>
-      </div>
-      <p>Beide sind nicht offen. <a href="strategy-and-behaviour/">Was sie tun und wie Sie sie in Aktion sehen →</a></p>
+    <section aria-labelledby="work-with-us-heading">
+      <h2 id="work-with-us-heading">Möchten Sie das in Ihrer Organisation einsetzen?</h2>
+      <p lang="en"><strong>You leave with a decision you can keep true.</strong> Not a report of one — the model the decision was made in, in your own repository, and the method to keep it current after we are gone.</p>
+      <p>Was Ihre Organisation danach in der Hand hält: die Entscheidung, das Modell im eigenen Repository sowie die Methode und ein Team, das es aktuell halten kann. Der Einstieg ist ein kurzes Gespräch über eine konkrete Entscheidung vor Ihnen.</p>
+      <p><a class="btn" href="mailto:hello@transitrix.com">Sprechen Sie mit uns — hello@transitrix.com</a> · <a href="/library/acme-architecture-on-a-page/" hreflang="en">Acme-Beispiel (EN)</a> · <a href="/studio/" hreflang="en">Transitrix Studio entdecken (EN)</a></p>
     </section>
 
-    <section aria-labelledby="see-heading">
-      <h2 id="see-heading">So funktioniert es</h2>
-      <p>Aus wenigen Zeilen Text wird ein Diagramm, das man lesen, prüfen und versionieren kann. Sie schreiben eine Transitrix-Datei in VS Code; die Vorschau entsteht daneben, während Sie tippen.</p>
-      <figure class="product-shot">
-        <img src="../assets/img/studio-preview.gif" alt="Transitrix Studio in VS Code: eine Ziel-Baum-Quelldatei links; rechts zeichnet sich die Vorschau live neu, wenn ein neues Ziel hinzugefügt wird und der Zweig erscheint." loading="lazy" width="700" height="394">
-        <figcaption>Transitrix Studio — eine Transitrix-Quelldatei und ihre Live-Vorschau, die sich beim Bearbeiten neu zeichnet.</figcaption>
-      </figure>
-    </section>
-
-    <section aria-labelledby="layers-heading">
-      <h2 id="layers-heading">Ein Modell, jede Ebene</h2>
-      <p>Sie beschreiben Ihr Unternehmen einmal, als Text. Zwei Editor-Erweiterungen rendern dieses eine Modell über jede Ebene hinweg — sodass dieselbe Quelle den Vorstand und die Codebasis gleichermaßen bedient.</p>
-      <ul>
-        <li><strong>Geschäftsnahe Ebenen — Transitrix Studio.</strong> Eigens entwickelte Notationen für Strategie und Betrieb: Zielbäume, Fähigkeitskarten, Prozess-Blueprints, BPMN und Aktivitätsnetzwerke. Für die Business-/IT-Schnittstelle gebaut, keine abgespeckten Kopien generischer Diagramme.</li>
-        <li><strong>Technische Ebenen — PlantUML.</strong> Sequenz-, Zustands-, ER-/Klassen- und C4-Komponentendiagramme — aus demselben Modell erzeugt — rendern in <a href="https://plantuml.com/">PlantUML</a>, nativ in Studio: kein Java, kein Graphviz, funktioniert sogar im Browser über vscode.dev. Studio stellt PlantUML dar wie Markdown — ein fremdes Format, keine Transitrix-Notation.</li>
-        <li><strong>Mermaid, als Fallback.</strong> Wo eine leichtere, schnellere Ansicht genügt, rendern dieselben Ebenen zusätzlich in standardmäßigem <a href="https://mermaid.js.org/">Mermaid</a>, über die empfohlene Editor-Erweiterung.</li>
-      </ul>
-      <p class="note">Auf offenen Standards aufgebaut — ArchiMate 3.2 und BPMN 2.0 — und alles als reiner, diff-barer Text. Nichts bindet Sie: Die technischen Ansichten sind standardmäßiges PlantUML und Mermaid, und Ihre Dateien bleiben lesbar, mit oder ohne unsere Werkzeuge.</p>
-    </section>
-
-    <section aria-labelledby="open-heading">
-      <h2 id="open-heading">Was heute offen ist</h2>
-      <p>Sowohl die Methodik als auch Transitrix Studio sind öffentlich. Die Methodikspezifikation liegt unter <a href="https://github.com/transitrix/methodology">github.com/transitrix/methodology</a>. Transitrix Studio — eine Editor-Erweiterung und CLI — lässt sich in VS Code, Cursor, VSCodium, Windsurf und IntelliJ IDEA installieren; siehe die <a href="install/">Installationsoptionen</a>. Quellcode unter <a href="https://github.com/transitrix/transitrix-studio">github.com/transitrix/transitrix-studio</a>. Die genaue Struktur jeder Notation zeigen die <a href="dsl-examples/">Modellbeispiele</a>; Rezepte — Fließtext mit Direktiven, benannt <code>*.&lt;kind&gt;.ttrs</code> — beschreibt die Seite <a href="recipes/">Das <code>.ttrs</code>-Rezeptformat</a>.</p>
-      <p>Wenn Sie Transitrix für einen Piloten prüfen oder die Arbeit verfolgen möchten, schreiben Sie an <a href="mailto:hello@transitrix.com">hello@transitrix.com</a>.</p>
-      <div class="note">
-        <strong>Releases verfolgen</strong> — via Atom/RSS abonnieren: <a href="https://github.com/transitrix/transitrix-studio/releases.atom">Transitrix Studio</a> · <a href="https://github.com/transitrix/methodology/releases.atom">Methodik</a>. URL in einen RSS/Atom-Reader eintragen oder auf GitHub Watch → Releases wählen.
+    <section aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Lernen · Bibliothek · Fragen</h2>
+      <div class="project-grid">
+        <article class="card"><h3>Lernen</h3><p>Acht kurze Schritte zum ersten Diagramm in etwa 20–30 Minuten.</p><a class="card-link" href="/learn/" hreflang="en">Lernpfad starten (EN) →</a></article>
+        <article class="card"><h3>Bibliothek</h3><p>Spickzettel, Erklärungen und Beispiele — online lesen oder als PDF herunterladen, ohne Anmeldung.</p><a class="card-link" href="/library/" hreflang="en">Bibliothek öffnen (EN) →</a></article>
+        <article class="card"><h3>Fragen</h3><p><a href="/de/dsl-examples/">Modellbeispiele</a> · <a href="/de/recipes/">Rezepte</a> · <a href="/de/strategy-and-behaviour/">Strategie und Verhalten</a></p></article>
       </div>
     </section>
   </main>
