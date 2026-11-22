@@ -16,6 +16,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/do-i-need-dsm/"/>
   </url>
   <url>
+    <loc>https://transitrix.com/downloads/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/downloads/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/downloads/"/>
+  </url>
+  <url>
     <loc>https://transitrix.com/dsl-examples/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/dsl-examples/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/dsl-examples/"/>
@@ -141,6 +146,11 @@
     <loc>https://transitrix.com/de/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/"/>
+  </url>
+  <url>
+    <loc>https://transitrix.com/de/downloads/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://transitrix.com/de/downloads/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://transitrix.com/downloads/"/>
   </url>
   <url>
     <loc>https://transitrix.com/de/dsl-examples/</loc>
