@@ -1088,3 +1088,62 @@ main.wrap { padding-block: 2.5rem 4rem; }
     height: 23px;
   }
 }
+
+/* Downloads and Collateral */
+.download-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.download-preview {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0d1516;
+}
+
+.download-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.download-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.download-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.download-pill:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: var(--text);
+}
+
+.download-pill .pill-res {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+}

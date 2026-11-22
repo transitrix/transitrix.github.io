@@ -50,6 +50,7 @@ class SiteArtifactTests(unittest.TestCase):
                     ("/de/dsl-examples/" if german else "/dsl-examples/", "Beispiele" if german else "Examples"),
                     ("/learn/", "Lernen (EN)" if german else "Learn"),
                     ("/library/", "Bibliothek (EN)" if german else "Library"),
+                    ("/downloads/", "Downloads"),
                     ("/de/install/" if german else "/install/", "Installieren & starten" if german else "Install & start"),
                 ]
                 self.assertEqual(menus[0]["label"], "Hauptnavigation" if german else "Primary")
